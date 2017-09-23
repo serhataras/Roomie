@@ -1,40 +1,25 @@
-# 3.K
-CS-319 Object Oriented Programming Project 
+# Roomie
 
-Current Stage: Initial Projects Details needs to be determined
+## CS-319 Object Oriented Programming Lecture Term Project 
 
-## Rules!! 
+Current Stage: Project Details has been determined. Next Assignment's work is under attention. 
 
-Before working pull everything, After finishing the work push everything.
+## Description of the Project
 
-### Don't delete! comment out!
+A Story based Android Game which is designed to simulate the life of a common Student at the Flat with other Students. 
 
-### Only code owner can delete their code!
+Throughout the flow of Roomie, the player is going to face with different situations which will lead him different choices. 
+These situations are mainly focused on common problems and some extreme cases about a Student's Flat Life resulting with academic and social life dilemmas. The ways that players handle the problems will change the course of events of the game. Eventually, these paths will determine who you are going to be after your graduation which is the end of the game. 
 
-### Comment! Comment! Comment!
 
-### Don't forget Header Comment for Classes
+## Technical Details of the Project
 
-### Don't forget Header Comment for Methods
+Android API 23 (Marshmallow) is going to be used in the project developement. 
 
-Don't forget Casual Comment for Algorithms. Example Code : http://grepcode.com/file_/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/util/ArrayList.java/?v=source Convention Guides: http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html && http://www.oracle.com/technetwork/java/codeconventions-141999.html#385
+Java will be the native programming language of the Roomie Game, since Android uses Java as native language. 
 
-If you can do it pass it to another colleague, If you can't do it pass it to another colleague.
+IntelliJ IDEA and all of its support for android (Android Studio) will be the Main developement environment.
 
-If there is simultaneous development by 2 or more colleague, developers must create new branches and develop there. After finishing developing the feature send the merge request. Merger gonna merge.
+Github will be used as a project management tool to comminucate between the developers.
 
-Add a rule whenever needed.
-
-## What is Issues?
-
-### This is the part we pass the tasks to other colleague
-
-### This is the part we report the bugs.
-
-### This is the part we report the duplicates.
-
-### This is the part we ask for help from other colleagues.
-
-###  Labels : Type of the Issue 
-### Milestone : Stage of the Project 
-### Assignee : To whom we pass
+UML visualization tools (Visual Paradigm) will be provided by the instructor. 
