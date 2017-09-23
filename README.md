@@ -1,10 +1,10 @@
-# Roomie
+# Roomie - The Game 
 
 ## CS-319 Object Oriented Programming Lecture Term Project 
 
 Current Stage: Project Details has been determined. Next Assignment's work is under attention. 
 
-## Description of the Project
+## Description of the Roomie - The Game
 
 A Story based Android Game which is designed to simulate the life of a common Student at the Flat with other Students. 
 
