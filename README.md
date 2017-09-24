@@ -1,9 +1,12 @@
 # Roomie
 ## CS-319 Object Oriented Programming Lecture Term Project 
 
+
 Current Stage: Project Details has been determined. Next Assignment's work is under attention. 
 
+
 ## Description of the Roomie - The Game
+
 
 A Story based Android Game which is designed to simulate the life of a common Student at the Flat with other Students. 
 
@@ -13,12 +16,19 @@ These situations are mainly focused on common problems and some extreme cases ab
 
 ## Technical Details of the Project
 
-Android API 23 (Marshmallow) is going to be used in the project developement. 
 
-Java will be the native programming language of the Roomie Game, since Android uses Java as native language. 
+-Android API 23 (Marshmallow) is going to be used in the project developement. 
 
-IntelliJ IDEA and all of its support for android (Android Studio) will be the Main developement environment.
+-Java will be the native programming language of the Roomie Game, since Android uses Java as native language. 
 
-Github will be used as a project management tool to comminucate between the developers.
+-IntelliJ IDEA and all of its support for android (Android Studio) will be the Main developement environment.
 
-UML visualization tools (Visual Paradigm) will be provided by the instructor. 
+-Github will be used as a project management tool to comminucate between the developers.
+
+-UML visualization tools (Visual Paradigm) will be provided by the instructor. 
+
+
+## Developers of the Project
+
+
+- Serhat Aras - Eliz Tekcan - Selen Haysal - Deniz Alkışlar - Ekinsu Bozdağ
