@@ -36,3 +36,7 @@ These situations are mainly focused on common problems and some extreme cases ab
 - Selen Haysal 
 - Deniz Alkışlar 
 - Ekinsu Bozdağ
+
+## Reports
+- [Analysis Report Draft](https://github.com/serhataras/Roomie/blob/master/Roomie_Documentation/3.K%20Roomie%20Analysis%20Report%20Draft.pdf "Analysis Report of the Roomie")
+
