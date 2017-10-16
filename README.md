@@ -1,11 +1,8 @@
 # Roomie
-## CS-319 Object Oriented Programming Lecture Term Project 
+## CS-319 Object Oriented Programming Term Project 
 
 
 - Current Stage: Analysis Report is uploaded to the GitHub. As developers of the Roomie, iteration is going to start in 8th of October. Branches are partially ready. Master is ready to clone and pull. Reports' links added to GitHub README.md.
-
-                Design Report due 21.10.17
-                Initial Report Draft Constructed. The work load will be distributed to the group partners..
 
 
 ## Description of the Roomie - The Game
@@ -44,4 +41,3 @@ These situations are mainly focused on common problems and some extreme cases ab
 ## Reports
 - [Analysis Report Draft](https://github.com/serhataras/Roomie/blob/master/Roomie_Documentation/3.K%20Roomie%20Analysis%20Report%20Draft.pdf "Analysis Report of the Roomie")
 
-- [Design Report Draft](https://github.com/serhataras/Roomie/blob/master/Roomie_Documentation/#")
