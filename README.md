@@ -42,4 +42,4 @@ These situations are mainly focused on common problems and some extreme cases ab
 
 ## Reports
 - [Analysis Report Draft](https://github.com/serhataras/Roomie/blob/master/Roomie_Documentation/3.K%20Roomie%20Analysis%20Report%20Draft.pdf "Analysis Report of the Roomie")
-- [Design Report Draft](https://github.com/serhataras/Roomie/blob/master/#)
+- [Design Report Draft](https://github.com/serhataras/Roomie/blob/master/Roomie_Documentation/3.K%20Roomie%20System%20Design%20Report.pdf"Design Report of the Roomie")
