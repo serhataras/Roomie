@@ -1,3 +1,5 @@
+package src;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +13,7 @@ public class School extends Outdoor
     String[] options;
     int random;
     public static final int MAX_QUESTION = 4;
-    static final String FILE_NAME= "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Quiz";
+    static final String FILE_NAME= "./src/Other/Quiz";
 
 
     School()
@@ -76,10 +78,10 @@ public class School extends Outdoor
 
     //test
 
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         School s = new School();
         for(int k = 0; k< MAX_QUESTION; k++)
             System.out.println(s.questions[k]);
-    }*/
+    }
 
 }

@@ -1,3 +1,5 @@
+package src;
+
 import android.content.ClipData;
 
 import java.io.BufferedReader;
