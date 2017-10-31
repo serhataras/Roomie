@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.threek.roomie.Fragments.KitchenFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="?attr/colorButtonNormal">
+
+        <ImageButton
+            android:id="@+id/kitchenCupboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/kitchenStall"
+            android:layout_toEndOf="@+id/kitchenStall"
+            android:background="@null"
+            app:srcCompat="@drawable/kitchen_cupboard" />
+
+        <ImageButton
+            android:id="@+id/kitchenFridge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/kitchenStall"
+            android:layout_toStartOf="@+id/kitchenStall"
+            android:background="@null"
+            app:srcCompat="@drawable/kitchen_fridge" />
+
+        <ImageButton
+            android:id="@+id/kitchenStall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/kitchenTable"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="11dp"
+            android:background="@null"
+            app:srcCompat="@drawable/kitchen_stall" />
+
+        <ImageButton
+            android:id="@+id/kitchenTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            app:srcCompat="@drawable/kitchen_table" />
+    </RelativeLayout>
+</FrameLayout>
