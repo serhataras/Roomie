@@ -1,4 +1,4 @@
-package com.threek.roomie.Fragments;
+package com.threek.roomie.Fragments.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
