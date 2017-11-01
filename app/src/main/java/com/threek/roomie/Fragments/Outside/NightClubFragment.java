@@ -15,6 +15,7 @@ import com.threek.roomie.R;
 public class NightClubFragment extends Fragment {
 
 
+
     public NightClubFragment() {
         // Required empty public constructor
     }
