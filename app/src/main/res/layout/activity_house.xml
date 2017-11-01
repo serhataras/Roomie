@@ -15,77 +15,154 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="43dp"
-            android:max="10"
-            android:progress="6" />
-
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/progressBar"
-            android:layout_marginStart="37dp"
-            android:layout_toEndOf="@+id/progressBar"
-            android:max="10"
-            android:progress="4" />
-
-        <ProgressBar
-            android:id="@+id/progressBar3"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/progressBar2"
-            android:layout_marginStart="33dp"
-            android:layout_toEndOf="@+id/progressBar2"
-            android:max="10"
-            android:progress="1" />
-
-        <ProgressBar
-            android:id="@+id/progressBar4"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/progressBar3"
-            android:layout_marginStart="33dp"
-            android:layout_toEndOf="@+id/progressBar3"
-            android:max="10"
-            android:progress="2" />
-
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/rightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/progressBar"
-            android:layout_marginBottom="110dp"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button3"
-            android:layout_alignBottom="@+id/button3"
-            android:layout_toEndOf="@+id/progressBar3"
-            android:text="Button" />
+            android:layout_marginBottom="25dp"
+            android:text="Change Room"
+            android:layout_above="@+id/moneyText"
+            android:layout_alignStart="@+id/thisRoomText"
+            android:layout_alignEnd="@+id/thisRoomText" />
 
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="500dp"
             android:layout_height="150dp"
-            android:layout_above="@+id/button3"
-            android:layout_marginBottom="41dp"
-            android:layout_alignStart="@+id/button3"
-            android:layout_alignEnd="@+id/button4"></FrameLayout>
+            android:layout_alignEnd="@+id/muteBox"
+            android:layout_alignStart="@+id/imageButton"
+            android:layout_below="@+id/imageButton"
+            android:layout_marginTop="27dp"></FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="27dp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <CheckBox
+            android:id="@+id/muteBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="19dp"
+            android:text="Mute" />
+
+        <TextView
+            android:id="@+id/thisRoomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rightButton"
+            android:layout_centerHorizontal="true"
+            android:text="This Room"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/healthBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/healthText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/healthText"
+            android:layout_marginBottom="53dp"
+            android:max="10"
+            android:progress="10" />
+
+        <ProgressBar
+            android:id="@+id/moneyBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/moneyText"
+            android:layout_alignStart="@+id/moneyText"
+            android:layout_below="@+id/moneyText"
+            android:max="10"
+            android:progress="10" />
+
+        <ProgressBar
+            android:id="@+id/socialityBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/socialityText"
+            android:layout_alignStart="@+id/socialityText"
+            android:layout_alignTop="@+id/healthBar"
+            android:max="10"
+            android:progress="10" />
+
+        <ProgressBar
+            android:id="@+id/gradesBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/gradesText"
+            android:layout_alignStart="@+id/gradesText"
+            android:layout_below="@+id/gradesText"
+            android:max="10"
+            android:progress="10" />
+
+        <TextView
+            android:id="@+id/healthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/healthBar"
+            android:layout_alignStart="@+id/content"
+            android:text="TextView"
+            tools:text="Health" />
+
+        <TextView
+            android:id="@+id/moneyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/socialityBar"
+            android:layout_toEndOf="@+id/imageButton"
+            android:text="Money" />
+
+        <TextView
+            android:id="@+id/socialityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/socialityBar"
+            android:layout_toEndOf="@+id/rightButton"
+            android:text="Sociality" />
+
+        <TextView
+            android:id="@+id/gradesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/moneyText"
+            android:layout_alignBottom="@+id/moneyText"
+            android:layout_alignEnd="@+id/content"
+            android:text="Grades" />
+
+        <TextView
+            android:id="@+id/playerNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/muteBox"
+            android:layout_alignEnd="@+id/backpackButton"
+            android:layout_toEndOf="@+id/imageButton"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <ToggleButton
+            android:id="@+id/backpackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/content"
+            android:layout_alignStart="@+id/moneyText"
+            android:text="Backpack"
+            android:textOff="Open Backpack"
+            android:textOn="Close Backpack"
+            android:textSize="8sp" />
 
     </RelativeLayout>
 </LinearLayout>
