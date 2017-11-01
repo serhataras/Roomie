@@ -2,7 +2,7 @@ package com.threek.roomie.Fragments.House;
 
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,19 +27,23 @@ public class KitchenFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
-
-
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
 
         View root = inflater.inflate(R.layout.fragment_kitchen, container, false);
 
+        buttons[0] = (ImageButton) root.findViewById(R.id.item1);
+        buttons[1] = (ImageButton) root.findViewById(R.id.item2);
+        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
+        buttons[3] = (ImageButton) root.findViewById(R.id.item4);
+
         return root;
     }
+
 
 }

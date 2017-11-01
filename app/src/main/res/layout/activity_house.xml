@@ -16,22 +16,14 @@
         tools:layout_editor_absoluteY="8dp">
 
         <Button
-            android:id="@+id/leftButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/content"
-            android:layout_below="@+id/content"
-            android:layout_marginTop="28dp"
-            android:text="Button" />
-
-        <Button
             android:id="@+id/rightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/leftButton"
-            android:layout_alignBottom="@+id/leftButton"
-            android:layout_alignEnd="@+id/content"
-            android:text="Button" />
+            android:layout_marginBottom="25dp"
+            android:text="Change Room"
+            android:layout_above="@+id/moneyText"
+            android:layout_alignStart="@+id/thisRoomText"
+            android:layout_alignEnd="@+id/thisRoomText" />
 
         <FrameLayout
             android:id="@+id/content"
@@ -66,8 +58,7 @@
             android:id="@+id/thisRoomText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/leftButton"
-            android:layout_alignBottom="@+id/leftButton"
+            android:layout_above="@+id/rightButton"
             android:layout_centerHorizontal="true"
             android:text="This Room"
             android:textSize="18sp"
@@ -78,10 +69,10 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/healthText"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/leftButton"
-            android:layout_marginBottom="54dp"
-            android:layout_marginEnd="@dimen/house_bar_margin"
+            android:layout_alignStart="@+id/healthText"
+            android:layout_marginBottom="53dp"
             android:max="10"
             android:progress="10" />
 
@@ -90,8 +81,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/healthBar"
-            android:layout_alignEnd="@+id/rightButton"
+            android:layout_alignEnd="@+id/moneyText"
+            android:layout_alignStart="@+id/moneyText"
+            android:layout_below="@+id/moneyText"
             android:max="10"
             android:progress="10" />
 
@@ -100,8 +92,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/socialityText"
+            android:layout_alignStart="@+id/socialityText"
             android:layout_alignTop="@+id/healthBar"
-            android:layout_toEndOf="@+id/healthBar"
             android:max="10"
             android:progress="10" />
 
@@ -110,8 +103,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/moneyText"
-            android:layout_toStartOf="@+id/rightButton"
+            android:layout_alignEnd="@+id/gradesText"
+            android:layout_alignStart="@+id/gradesText"
+            android:layout_below="@+id/gradesText"
             android:max="10"
             android:progress="10" />
 
@@ -120,8 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/healthBar"
-            android:layout_alignEnd="@+id/healthBar"
-            android:layout_alignStart="@+id/healthBar"
+            android:layout_alignStart="@+id/content"
             android:text="TextView"
             tools:text="Health" />
 
@@ -130,26 +123,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/socialityBar"
-            android:layout_alignEnd="@+id/socialityBar"
-            android:layout_toEndOf="@+id/healthBar"
+            android:layout_toEndOf="@+id/imageButton"
             android:text="Money" />
 
         <TextView
             android:id="@+id/socialityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/gradesBar"
-            android:layout_alignStart="@+id/gradesBar"
+            android:layout_above="@+id/socialityBar"
+            android:layout_toEndOf="@+id/rightButton"
             android:text="Sociality" />
 
         <TextView
             android:id="@+id/gradesText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/moneyBar"
-            android:layout_alignEnd="@+id/moneyBar"
-            android:layout_alignStart="@+id/moneyBar"
+            android:layout_alignBaseline="@+id/moneyText"
+            android:layout_alignBottom="@+id/moneyText"
+            android:layout_alignEnd="@+id/content"
             android:text="Grades" />
+
+        <TextView
+            android:id="@+id/playerNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/muteBox"
+            android:layout_alignEnd="@+id/backpackButton"
+            android:layout_toEndOf="@+id/imageButton"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <ToggleButton
+            android:id="@+id/backpackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/content"
+            android:layout_alignStart="@+id/moneyText"
+            android:text="Backpack"
+            android:textOff="Open Backpack"
+            android:textOn="Close Backpack"
+            android:textSize="8sp" />
 
     </RelativeLayout>
 </LinearLayout>
