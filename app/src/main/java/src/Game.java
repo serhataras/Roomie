@@ -56,9 +56,60 @@ public class Game {
         //TO DO
     }
 
-    public boolean checkExtremeOption(){
-        return (currentEvent.getOptionArray())[0].isExtreme
+    public boolean checkExtremeOption(Option opt){
+        return opt.isExtreme();
+    }
+
+    public Item generateRandomItem(){
+       return random.throwItem();
     }
 
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public GameEnvironment getGameEnvironment() {
+        return gameEnvironment;
+    }
+
+    public void setGameEnvironment(GameEnvironment gameEnvironment) {
+        this.gameEnvironment = gameEnvironment;
+    }
+
+    public Randomizer getRandom() {
+        return random;
+    }
+
+    public void setRandom(Randomizer random) {
+        this.random = random;
+    }
+
+    public Events getEvents() {
+        return events;
+    }
+
+    public void setEvents(Events events) {
+        this.events = events;
+    }
+
+    public Event getCurrentEvent() {
+        return currentEvent;
+    }
+
+    public void setCurrentEvent(Event currentEvent) {
+        this.currentEvent = currentEvent;
+    }
+
+    public String getPressedButtonId() {
+        return pressedButtonId;
+    }
+
+    public void setPressedButtonId(String pressedButtonId) {
+        this.pressedButtonId = pressedButtonId;
+    }
 }
