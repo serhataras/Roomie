@@ -92,10 +92,9 @@ public class ItemCollection {
     }
 
     //for testing
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         ItemCollection i = new ItemCollection();
-        i.readFile();
         for(int k = 0; k< 12; k++)
             System.out.println(i.items[k]);
-    }*/
+    }
 }

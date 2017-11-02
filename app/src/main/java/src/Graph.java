@@ -14,25 +14,49 @@ import java.util.Map;
 class Graph {
     private Map<Event, List<Event>> adjacencyList;
 
-    public Graph(int vertices) {
+    public Graph(int vertices, Event[] allEvents) {
         adjacencyList = new HashMap<Event, List<Event>>();
 
         for (int i = 0; i < vertices; ++i) {
-            adjacencyList.put(new Event(), new LinkedList<Event>());
+            adjacencyList.put(allEvents[i], new LinkedList<Event>());
         }
     }
 
-    public void setEdge(Event to, Event from){
-
+    public void setEdge(Event to, Event from)
+    {
         List<Event> sls = adjacencyList.get(to);
         sls.add(from);
-
-        List<Event> dls = adjacencyList.get(from);
-        dls.add(to);
     }
 
     public List<Event> getEdge(int to)
     {
         return adjacencyList.get(to);
     }
+
+    @Override
+    public String toString() {
+        return "Graph{" +
+                "adjacencyList=" + adjacencyList +
+                '}';
+    }
+
+    //test
+
+    /*public static void main(String args[])
+    {
+        Option[] arr = new Option[2];
+
+        arr[0] = new Option();
+        arr[1] = new Option();
+
+        Event a = new Event("Event a", arr);
+        Event b = new Event("Event b", arr);
+        Event[] events = new Event[2];
+        events[0] = a;
+        events[1] = b;
+        Graph g = new Graph(2, events);
+        g.setEdge(a,b);
+
+        System.out.print(g);
+    }*/
 }

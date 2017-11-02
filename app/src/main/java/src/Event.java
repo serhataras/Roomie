@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Arrays;
+
 /**
  * Created by eliztekcan on 30.10.2017.
  */
@@ -11,6 +13,11 @@ public class Event {
 
     Event(){
         optionArray = new Option[MAX_OPTION];
+    }
+
+    Event(String question, Option[] optionArray){
+        this.optionArray = optionArray;
+        this.question = question;
     }
 
     public Option[] getOptionArray() {
@@ -31,5 +38,13 @@ public class Event {
 
     public static int getMaxOption() {
         return MAX_OPTION;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "question='" + question + '\'' +
+                //", optionArray=" + Arrays.toString(optionArray) +
+                '}';
     }
 }
