@@ -24,7 +24,7 @@ public class EventActivity extends AppCompatActivity {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
-    int a;//dummy, delete after view update
+
     private CountDownTimer countDownTimer;
     public boolean timerStopped;
 
@@ -82,16 +82,11 @@ public class EventActivity extends AppCompatActivity {
     /** Timer method: CountDownTimer **/
     private void setTimerStartListener() {
         // will be called at every 1500 milliseconds i.e. every 1.5 second.
-        countDownTimer = new CountDownTimer(1500, 1500) {
+        countDownTimer = new CountDownTimer(10, 20000) {
             public void onTick(long millisUntilFinished) {
-                if(mShakeDetector.handleShakeEvent() {
+                if(mShakeDetector.handleShakeEvent()) {
                     stopTimer();
                 }
-                else
-                {
-
-                }
-
             }
 
             public void onFinish() {
