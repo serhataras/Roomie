@@ -59,14 +59,15 @@ public class HouseActivity extends AppCompatActivity {
         livingRoomFragment = new LivingRoomFragment();
         backpackFragment = new BackpackFragment();
 
-        kitchenFragment.setListeners(new ItemListener());
-        bathroomFragment.setListeners(new ItemListener());
-        bedroomFragment.setListeners(new ItemListener());
-        livingRoomFragment.setListeners(new ItemListener());
-
         playerButton = (ImageButton) findViewById(R.id.playerButton);
+        playerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEventDialog("Do you wanna go out or study at home?");
+            }
+        });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this));
+        playerNameText.setText("John Doe");
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());

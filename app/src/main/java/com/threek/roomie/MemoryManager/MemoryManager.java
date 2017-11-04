@@ -3,6 +3,7 @@ package com.threek.roomie.MemoryManager;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.threek.roomie.Game.Gender;
 
@@ -20,23 +21,23 @@ public class MemoryManager {
     private static final String GENDER_KEY = "Gender";
 
     // methods
-    public static void saveName(Activity activity, String name)
+    public static void saveName(Context context, String name)
     {
-        SharedPreferences preferences = activity.getSharedPreferences(FILE_NAME, FILE_MODE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(NAME_KEY, name);
         editor.commit();
     }
 
-    public static String loadName(Activity activity)
+    public static String loadName(Context context)
     {
-        SharedPreferences preferences = activity.getSharedPreferences(FILE_NAME, FILE_MODE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(NAME_KEY, "asd");
     }
 
-    public static void saveGender(Activity activity, Gender gender)
+    public static void saveGender(Context context, Gender gender)
     {
-        SharedPreferences preferences = activity.getSharedPreferences(FILE_NAME, FILE_MODE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
 
         // enum to boolean conversion
@@ -54,9 +55,9 @@ public class MemoryManager {
         editor.commit();
     }
 
-    public static Gender loadGender(Activity activity)
+    public static Gender loadGender(Context context)
     {
-        SharedPreferences preferences = activity.getSharedPreferences(FILE_NAME, FILE_MODE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         Boolean genderToReturn = preferences.getBoolean(GENDER_KEY, true);
 
