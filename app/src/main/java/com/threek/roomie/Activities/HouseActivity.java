@@ -18,7 +18,7 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import com.threek.roomie.*;
+import com.threek.roomie.Game.Game;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
@@ -59,14 +59,15 @@ public class HouseActivity extends AppCompatActivity {
         livingRoomFragment = new LivingRoomFragment();
         backpackFragment = new BackpackFragment();
 
-        kitchenFragment.setListeners(new ItemListener());
-        bathroomFragment.setListeners(new ItemListener());
-        bedroomFragment.setListeners(new ItemListener());
-        livingRoomFragment.setListeners(new ItemListener());
-
         playerButton = (ImageButton) findViewById(R.id.playerButton);
+        playerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEventDialog("Do you wanna go out or study at home?");
+            }
+        });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this));
+        playerNameText.setText("John Doe");
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());

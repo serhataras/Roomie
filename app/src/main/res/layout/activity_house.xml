@@ -82,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="@dimen/ha_side_margin"
+            android:layout_alignStart="@+id/backpackButton"
+            android:layout_marginStart="140dp"
             android:text="ToggleButton"
             android:textOff="Volume Off"
             android:textOn="Volume On"
@@ -129,7 +129,7 @@
             android:text="Grades" />
 
         <ProgressBar
-            android:id="@+id/progressBar1"
+            android:id="@+id/healthBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
             android:progress="10" />
 
         <ProgressBar
-            android:id="@+id/progressBar4"
+            android:id="@+id/gradesBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

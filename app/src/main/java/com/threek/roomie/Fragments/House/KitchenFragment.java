@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.threek.roomie.R;
 
@@ -26,7 +27,8 @@ public class KitchenFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
-        name = "Kitchen Fragment";
+
+        name = "Kitchen";
     }
 
 
@@ -49,9 +51,4 @@ public class KitchenFragment extends Fragment {
         return name;
     }
 
-    public void setListeners(View.OnClickListener listener)
-    {
-        //for (int i = 0; i < 4; i++)
-            //buttons[i].setOnClickListener(listener);
-    }
 }
