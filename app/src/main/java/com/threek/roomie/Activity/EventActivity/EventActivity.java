@@ -88,10 +88,8 @@ public class EventActivity extends AppCompatActivity {
                     stopTimer();
                 }
             }
-
             public void onFinish() {
-
-
+            //create an intent or another activity call
             }
         }.start();
     }
