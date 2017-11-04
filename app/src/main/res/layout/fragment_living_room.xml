@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="?attr/colorButtonNormal">
+        android:background="@android:color/holo_red_dark">
 
         <ImageButton
             android:id="@+id/item3"
@@ -42,8 +42,9 @@
             android:id="@+id/item4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_marginBottom="32dp"
             android:background="@null"
            />
     </RelativeLayout>

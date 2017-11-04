@@ -18,7 +18,8 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import com.threek.roomie.*;
+import com.threek.roomie.Game.Game;
+import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
 public class HouseActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class HouseActivity extends AppCompatActivity {
     private ImageButton playerButton;
     private TextView playerNameText;
     private ToggleButton backpackButton;
-    private CheckBox muteBox;
+    private ToggleButton muteButton;
 
     private Button changeButton;
     private TextView thisRoomText;
@@ -58,18 +59,20 @@ public class HouseActivity extends AppCompatActivity {
         livingRoomFragment = new LivingRoomFragment();
         backpackFragment = new BackpackFragment();
 
-        kitchenFragment.setListeners(new ItemListener());
-        bathroomFragment.setListeners(new ItemListener());
-        bedroomFragment.setListeners(new ItemListener());
-        livingRoomFragment.setListeners(new ItemListener());
-
         playerButton = (ImageButton) findViewById(R.id.playerButton);
+        playerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEventDialog("Do you wanna go out or study at home?");
+            }
+        });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
+        playerNameText.setText("John Doe");
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
 
-        muteBox = (CheckBox) findViewById(R.id.muteBox);
+        muteButton = (ToggleButton) findViewById(R.id.muteBox);
 
         changeButton = (Button) findViewById(R.id.changeRoomButton);
         changeButton.setOnClickListener(new ChangeRoomListener());
@@ -158,7 +161,7 @@ public class HouseActivity extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-            if (!(backpackButton.isChecked()))
+            if ((backpackButton.isChecked()))
             {
                 // hides current fragment
                 getSupportFragmentManager().beginTransaction().hide(currentFragment).commitNow();

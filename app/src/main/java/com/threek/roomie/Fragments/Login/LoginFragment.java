@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment {
     private void saveProperties()
     {
         // saving user inputs
-        MemoryManager.saveGender(getActivity(), gender);
-        MemoryManager.saveName(getActivity(), name);
+        MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
+        MemoryManager.saveName(getActivity().getApplicationContext(), name);
     }
 }

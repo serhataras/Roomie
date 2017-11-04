@@ -1,21 +1,21 @@
 package com.threek.roomie.Fragments.House;
 
-import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import com.threek.roomie.Activity.HouseActivity;
 import com.threek.roomie.R;
 
 
 public class KitchenFragment extends Fragment {
 
     // attributes
+    private String name;
+
     private ImageButton[] buttons;
 
     public KitchenFragment() {
@@ -27,6 +27,8 @@ public class KitchenFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
+
+        name = "Kitchen";
     }
 
 
@@ -45,5 +47,8 @@ public class KitchenFragment extends Fragment {
         return root;
     }
 
+    public String getName() {
+        return name;
+    }
 
 }
