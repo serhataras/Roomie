@@ -4,6 +4,7 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -24,6 +25,10 @@ public class EventActivity extends AppCompatActivity {
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     int a;//dummy, delete after view update
+    private CountDownTimer countDownTimer;
+    public boolean timerStopped;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,7 @@ public class EventActivity extends AppCompatActivity {
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
         mShakeDetector.determineLevel(4);
+        startTimer();
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
 
             @Override
@@ -43,11 +49,8 @@ public class EventActivity extends AppCompatActivity {
 				 * method you would use to setup whatever you want done once the
 				 * device has been shook.
 				 */
-                if(mShakeDetector.handleShakeEvent())
-                   a=1;
-                //handle the shake if it is true:;
-                    // (TextView)findViewById(R.id.shake_count);
-                //
+
+                setTimerStartListener();
             }
         });
     }
@@ -64,7 +67,39 @@ public class EventActivity extends AppCompatActivity {
         mSensorManager.unregisterListener(mShakeDetector);
         super.onPause();
     }
+    /** Starts the timer **/
+    public void startTimer() {
+        setTimerStartListener();
+        timerStopped = false;
+    }
 
+    /** Stop the timer **/
+    public void stopTimer() {
+        countDownTimer.cancel();
+        timerStopped = true;
+    }
+
+    /** Timer method: CountDownTimer **/
+    private void setTimerStartListener() {
+        // will be called at every 1500 milliseconds i.e. every 1.5 second.
+        countDownTimer = new CountDownTimer(1500, 1500) {
+            public void onTick(long millisUntilFinished) {
+                if(mShakeDetector.handleShakeEvent() {
+                    stopTimer();
+                }
+                else
+                {
+
+                }
+
+            }
+
+            public void onFinish() {
+
+
+            }
+        }.start();
+    }
 
 
 }
