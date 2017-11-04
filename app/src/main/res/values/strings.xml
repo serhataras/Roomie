@@ -2,10 +2,10 @@
     <string name="app_name">Roomie</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lf_male">Male</string>
     <string name="lf_female">Female</string>
     <string name="lf_name">Name</string>
     <string name="lf_gameStart">Start Game</string>
+    <string name="ha_question">Question</string>
+    <string name="ha_ok">OK</string>
 </resources>

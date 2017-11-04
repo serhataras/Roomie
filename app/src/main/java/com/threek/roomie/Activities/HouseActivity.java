@@ -1,6 +1,8 @@
 package com.threek.roomie.Activities;
 
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
+import com.threek.roomie.Game.Event;
+import com.threek.roomie.Game.Game;
 import com.threek.roomie.R;
 
 public class HouseActivity extends AppCompatActivity {
@@ -42,6 +46,8 @@ public class HouseActivity extends AppCompatActivity {
     private ProgressBar socialityBar;
     private ProgressBar gradesBar;
 
+    private Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,11 @@ public class HouseActivity extends AppCompatActivity {
         bedroomFragment = new BedroomFragment();
         livingRoomFragment = new LivingRoomFragment();
         backpackFragment = new BackpackFragment();
+
+        kitchenFragment.setListeners(new ItemListener());
+        bathroomFragment.setListeners(new ItemListener());
+        bedroomFragment.setListeners(new ItemListener());
+        livingRoomFragment.setListeners(new ItemListener());
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
         playerNameText = (TextView) findViewById(R.id.playerNameText);
@@ -70,6 +81,8 @@ public class HouseActivity extends AppCompatActivity {
         moneyBar = (ProgressBar) findViewById(R.id.moneyBar);
         socialityBar = (ProgressBar) findViewById(R.id.socialityBar);
         gradesBar = (ProgressBar) findViewById(R.id.gradesBar);
+
+        game = new Game();
 
         // adds all fragments to the activity and shows only the living room fragment
         getSupportFragmentManager().beginTransaction().add(R.id.content, kitchenFragment).commitNow();
@@ -165,5 +178,28 @@ public class HouseActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().show(currentFragment).commitNow();
             }
         }
+    }
+
+    // button listener for items in the rooms
+    private class ItemListener implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View view) {
+            // TODO
+        }
+    }
+
+    // dialog for event question
+    private void showEventDialog(String question)
+    {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle(getString(R.string.ha_question));
+        dialog.setMessage(question);
+        dialog.setNeutralButton(getString(R.string.ha_ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        dialog.show();
     }
 }
