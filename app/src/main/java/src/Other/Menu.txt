@@ -1,0 +1,10 @@
+Cheese cake*-1 3
+Pizza*-2 4
+Salad*2  2
+Souffle*-1 4
+Cake*-1 3
+Sandwich*3  2
+Lemonade*2  1
+French fries*-2 1
+Soup*2  1
+Breakfast*4  3
