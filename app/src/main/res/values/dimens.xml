@@ -1,4 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="house_bar_margin">60dp</dimen>
+    <dimen name="ha_side_margin">25dp</dimen>
+    <dimen name="ha_top_btw_margin">5dp</dimen>
+    <dimen name="ha_stat_text_top_bargin">30dp</dimen>
+    <dimen name="ha_stat_text_btw_bargin">95dp</dimen>
+    <dimen name="ha_stat_bar_top_bargin">12dp</dimen>
 </resources>
