@@ -18,7 +18,6 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import com.threek.roomie.Game.Event;
 import com.threek.roomie.Game.Game;
 import com.threek.roomie.R;
 
@@ -46,7 +45,7 @@ public class HouseActivity extends AppCompatActivity {
     private ProgressBar socialityBar;
     private ProgressBar gradesBar;
 
-    private Game game;
+    //private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +81,7 @@ public class HouseActivity extends AppCompatActivity {
         socialityBar = (ProgressBar) findViewById(R.id.socialityBar);
         gradesBar = (ProgressBar) findViewById(R.id.gradesBar);
 
-        game = new Game();
+        //game = new Game();
 
         // adds all fragments to the activity and shows only the living room fragment
         getSupportFragmentManager().beginTransaction().add(R.id.content, kitchenFragment).commitNow();

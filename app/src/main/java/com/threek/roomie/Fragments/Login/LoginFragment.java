@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.threek.roomie.Activities.HouseActivity;
+import com.threek.roomie.Game.Gender;
+import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
 public class LoginFragment extends Fragment {
@@ -21,7 +23,7 @@ public class LoginFragment extends Fragment {
     private Button startGameButton;
 
     private String name;
-    private boolean gender; // female = false, male = true
+    private Gender gender; // female = false, male = true
 
     public LoginFragment()
     {
@@ -34,7 +36,7 @@ public class LoginFragment extends Fragment {
 
         // init
         name = "";
-        gender = false;
+        gender = Gender.MALE;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class LoginFragment extends Fragment {
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = true;
+                gender = Gender.MALE;
 
                 // set other button unchecked
                 femaleButton.setChecked(false);
@@ -58,7 +60,7 @@ public class LoginFragment extends Fragment {
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = false;
+                gender = Gender.FEMALE;
 
                 // set other button unchecked
                 maleButton.setChecked(false);
@@ -87,6 +89,8 @@ public class LoginFragment extends Fragment {
     // method for saving properties to the device
     private void saveProperties()
     {
-        // TODO implement the method
+        // saving user inputs
+        MemoryManager.saveGender(getActivity(), gender);
+        MemoryManager.saveName(getActivity(), name);
     }
 }
