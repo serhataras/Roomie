@@ -18,8 +18,7 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import com.threek.roomie.Game.Game;
-import com.threek.roomie.MemoryManager.MemoryManager;
+import com.threek.roomie.*;
 import com.threek.roomie.R;
 
 public class HouseActivity extends AppCompatActivity {
@@ -36,7 +35,7 @@ public class HouseActivity extends AppCompatActivity {
     private ImageButton playerButton;
     private TextView playerNameText;
     private ToggleButton backpackButton;
-    private ToggleButton muteButton;
+    private CheckBox muteBox;
 
     private Button changeButton;
     private TextView thisRoomText;
@@ -66,12 +65,11 @@ public class HouseActivity extends AppCompatActivity {
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this));
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
 
-        muteButton = (ToggleButton) findViewById(R.id.muteBox);
+        muteBox = (CheckBox) findViewById(R.id.muteBox);
 
         changeButton = (Button) findViewById(R.id.changeRoomButton);
         changeButton.setOnClickListener(new ChangeRoomListener());
@@ -160,7 +158,7 @@ public class HouseActivity extends AppCompatActivity {
         @Override
         public void onClick(View view)
         {
-            if ((backpackButton.isChecked()))
+            if (!(backpackButton.isChecked()))
             {
                 // hides current fragment
                 getSupportFragmentManager().beginTransaction().hide(currentFragment).commitNow();
