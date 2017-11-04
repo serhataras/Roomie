@@ -17,7 +17,7 @@
             android:layout_alignBottom="@+id/item2"
             android:layout_toEndOf="@+id/item2"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_cupboard" />
+             />
 
         <ImageButton
             android:id="@+id/item1"
@@ -26,7 +26,7 @@
             android:layout_alignBottom="@+id/item2"
             android:layout_toStartOf="@+id/item2"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_fridge" />
+            />
 
         <ImageButton
             android:id="@+id/item2"
@@ -36,7 +36,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_stall" />
+            />
 
         <ImageButton
             android:id="@+id/item4"
@@ -45,6 +45,6 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_table" />
+             />
     </RelativeLayout>
 </FrameLayout>

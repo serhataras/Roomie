@@ -9,7 +9,7 @@ public class Events
     Graph eventCollection;
 
     Events(){
-        eventCollection = new Graph();
+        //eventCollection = new Graph();
     }
 
     public void addEvent(){
