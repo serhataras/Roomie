@@ -31,7 +31,7 @@ public class MemoryManager {
     public static String loadName(Activity activity)
     {
         SharedPreferences preferences = activity.getSharedPreferences(FILE_NAME, FILE_MODE);
-        return preferences.getString(NAME_KEY, "");
+        return preferences.getString(NAME_KEY, "asd");
     }
 
     public static void saveGender(Activity activity, Gender gender)

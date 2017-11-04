@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.threek.roomie.Activities.HouseActivity">
+    tools:context="com.threek.roomie.Activities.HouseActivity"
+    android:weightSum="1">
 
 
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="383dp"
+        android:layout_height="496dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -19,11 +20,10 @@
             android:id="@+id/changeRoomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/moneyText"
-            android:layout_alignEnd="@+id/thisRoomText"
-            android:layout_alignStart="@+id/thisRoomText"
-            android:layout_marginBottom="25dp"
-            android:text="Change Room" />
+            android:layout_below="@+id/thisRoomText"
+            android:layout_centerHorizontal="true"
+            android:text="Change Room"
+            android:textSize="12sp" />
 
         <FrameLayout
             android:id="@+id/content"
@@ -32,7 +32,7 @@
             android:layout_alignEnd="@+id/muteBox"
             android:layout_alignStart="@+id/playerButton"
             android:layout_below="@+id/playerButton"
-            android:layout_marginTop="27dp"></FrameLayout>
+            android:layout_marginTop="49dp"></FrameLayout>
 
         <ImageButton
             android:id="@+id/playerButton"
@@ -40,39 +40,101 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/ha_side_margin"
             android:layout_marginTop="27dp"
             app:srcCompat="@mipmap/ic_launcher" />
-
-        <CheckBox
-            android:id="@+id/muteBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/playerButton"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="19dp"
-            android:text="Mute" />
 
         <TextView
             android:id="@+id/thisRoomText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/changeRoomButton"
+            android:layout_below="@+id/content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
             android:text="This Room"
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/playerNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/backpackButton"
+            android:layout_alignStart="@+id/backpackButton"
+            android:layout_marginStart="@dimen/ha_top_btw_margin"
+            android:text="Name"
+            android:textSize="14sp" />
+
+        <ToggleButton
+            android:id="@+id/backpackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/content"
+            android:layout_marginStart="@dimen/ha_top_btw_margin"
+            android:layout_toEndOf="@+id/playerButton"
+            android:text="Backpack"
+            android:textOff="Open Backpack"
+            android:textOn="Close Backpack"
+            android:textSize="8sp" />
+
+        <ToggleButton
+            android:id="@+id/muteBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/ha_side_margin"
+            android:text="ToggleButton"
+            android:textOff="Volume Off"
+            android:textOn="Volume On"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/content"
+            android:layout_below="@+id/changeRoomButton"
+            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
+            android:text="Health" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView1"
+            android:layout_below="@+id/changeRoomButton"
+            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
+            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
+            android:text="Money" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_below="@+id/changeRoomButton"
+            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
+            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
+            android:text="Sociality" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/changeRoomButton"
+            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
+            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
+            android:text="Grades" />
+
         <ProgressBar
-            android:id="@+id/healthBar"
+            android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/healthText"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/healthText"
-            android:layout_marginBottom="53dp"
+            android:layout_alignStart="@+id/textView1"
+            android:layout_alignTop="@+id/moneyBar"
             android:max="10"
             android:progress="10" />
 
@@ -81,9 +143,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/moneyText"
-            android:layout_alignStart="@+id/moneyText"
-            android:layout_below="@+id/moneyText"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
             android:max="10"
             android:progress="10" />
 
@@ -92,77 +154,22 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/socialityText"
-            android:layout_alignStart="@+id/socialityText"
-            android:layout_alignTop="@+id/healthBar"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
             android:max="10"
             android:progress="10" />
 
         <ProgressBar
-            android:id="@+id/gradesBar"
+            android:id="@+id/progressBar4"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/gradesText"
-            android:layout_alignStart="@+id/gradesText"
-            android:layout_below="@+id/gradesText"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
             android:max="10"
             android:progress="10" />
-
-        <TextView
-            android:id="@+id/healthText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/healthBar"
-            android:layout_alignStart="@+id/content"
-            android:text="TextView"
-            tools:text="Health" />
-
-        <TextView
-            android:id="@+id/moneyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/socialityBar"
-            android:layout_toEndOf="@+id/playerButton"
-            android:text="Money" />
-
-        <TextView
-            android:id="@+id/socialityText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/socialityBar"
-            android:layout_toEndOf="@+id/changeRoomButton"
-            android:text="Sociality" />
-
-        <TextView
-            android:id="@+id/gradesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/moneyText"
-            android:layout_alignBottom="@+id/moneyText"
-            android:layout_alignEnd="@+id/content"
-            android:text="Grades" />
-
-        <TextView
-            android:id="@+id/playerNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/muteBox"
-            android:layout_alignEnd="@+id/backpackButton"
-            android:layout_toEndOf="@+id/playerButton"
-            android:text="TextView"
-            android:textSize="18sp" />
-
-        <ToggleButton
-            android:id="@+id/backpackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/content"
-            android:layout_alignStart="@+id/moneyText"
-            android:text="Backpack"
-            android:textOff="Open Backpack"
-            android:textOn="Close Backpack"
-            android:textSize="8sp" />
 
     </RelativeLayout>
 </LinearLayout>
