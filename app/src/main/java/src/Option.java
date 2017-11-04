@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Arrays;
+
 /**
  * Created by eliztekcan on 26.10.2017.
  */
@@ -11,6 +13,13 @@ public class Option {
 
     Option(){
         effect = new int[4];
+    }
+
+    Option(OptionType optionType, String id, boolean isExtreme, int effect[]){
+        this.optionType = optionType;
+        this.id         = id;
+        this.isExtreme  = isExtreme;
+        this.effect     = effect;
     }
 
     public OptionType getOptionType() {
@@ -43,5 +52,15 @@ public class Option {
 
     public void setEffect(int[] effect) {
         this.effect = effect;
+    }
+
+    @Override
+    public String toString() {
+        return "Option{" +
+                "optionType=" + optionType +
+                ", id='" + id + '\'' +
+                ", isExtreme=" + isExtreme +
+                ", effect=" + Arrays.toString(effect) +
+                '}';
     }
 }

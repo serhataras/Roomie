@@ -13,7 +13,7 @@ public class School extends Outdoor
     String[] options;
     int random;
     public static final int MAX_QUESTION = 4;
-    static final String FILE_NAME= "./src/Other/Quiz";
+    static final String FILE_NAME= "/src/Other/Quiz.txt";
 
 
     School()
