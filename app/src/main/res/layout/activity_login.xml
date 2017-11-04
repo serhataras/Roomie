@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.threek.roomie.Activity.LoginActivity">
+    tools:context="com.threek.roomie.Activities.LoginActivity">
 
 </android.support.constraint.ConstraintLayout>

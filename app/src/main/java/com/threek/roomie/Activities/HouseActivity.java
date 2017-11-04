@@ -1,4 +1,4 @@
-package com.threek.roomie.Activity;
+package com.threek.roomie.Activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
