@@ -14,7 +14,7 @@ import com.threek.roomie.R;
 public class KitchenFragment extends Fragment {
 
     // attributes
-    private static final String name = "Kitchen";
+    private String name;
 
     private ImageButton[] buttons;
 
@@ -27,6 +27,7 @@ public class KitchenFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
+        name = "Kitchen";
     }
 
 
