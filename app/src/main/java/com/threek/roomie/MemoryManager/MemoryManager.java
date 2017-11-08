@@ -23,7 +23,7 @@ public class MemoryManager {
     // methods
     public static void saveName(Context context, String name)
     {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(NAME_KEY, name);
         editor.commit();
@@ -31,13 +31,13 @@ public class MemoryManager {
 
     public static String loadName(Context context)
     {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
         return preferences.getString(NAME_KEY, "asd");
     }
 
     public static void saveGender(Context context, Gender gender)
     {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
         SharedPreferences.Editor editor = preferences.edit();
 
         // enum to boolean conversion
@@ -57,7 +57,7 @@ public class MemoryManager {
 
     public static Gender loadGender(Context context)
     {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
 
         Boolean genderToReturn = preferences.getBoolean(GENDER_KEY, true);
 
