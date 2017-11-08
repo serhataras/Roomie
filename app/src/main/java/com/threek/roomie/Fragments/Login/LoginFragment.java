@@ -22,7 +22,6 @@ public class LoginFragment extends Fragment {
     private EditText nameInput;
     private Button startGameButton;
 
-    private String name;
     private Gender gender; // female = false, male = true
 
     public LoginFragment()
@@ -35,7 +34,6 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // init
-        name = "";
         gender = Gender.MALE;
     }
 
@@ -46,6 +44,7 @@ public class LoginFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_login, container, false);
 
         maleButton = (RadioButton) root.findViewById(R.id.maleButton);
+        maleButton.setChecked(true);
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +90,6 @@ public class LoginFragment extends Fragment {
     {
         // saving user inputs
         MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
-        MemoryManager.saveName(getActivity().getApplicationContext(), name);
+        MemoryManager.saveName(getActivity().getApplicationContext(), nameInput.getText().toString());
     }
 }

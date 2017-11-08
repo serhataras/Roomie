@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.threek.roomie.Fragments.House.BackpackFragment;
@@ -67,7 +68,7 @@ public class HouseActivity extends AppCompatActivity {
             }
         });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText("John Doe");
+        playerNameText.setText(MemoryManager.loadName(this.getApplicationContext()));
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
@@ -104,6 +105,12 @@ public class HouseActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
         getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        kitchenFragment.addListeners(new ItemListener());
     }
 
     // button listener for changing the rooms
@@ -187,7 +194,11 @@ public class HouseActivity extends AppCompatActivity {
     {
         @Override
         public void onClick(View view) {
-            // TODO
+            Toast.makeText(HouseActivity.this, view.getId() + " is pressed", Toast.LENGTH_LONG).show();
+            gradesBar.setProgress((int) (Math.random() * 10) + 1);
+            socialityBar.setProgress((int) (Math.random() * 10) + 1);
+            moneyBar.setProgress((int) (Math.random() * 10) + 1);
+            healthBar.setProgress((int) (Math.random() * 10) + 1);
         }
     }
 
