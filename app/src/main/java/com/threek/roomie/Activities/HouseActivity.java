@@ -18,7 +18,7 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import com.threek.roomie.Game.Game;
+import src.*;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
