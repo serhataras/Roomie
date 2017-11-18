@@ -1,8 +1,8 @@
-package com.threek.roomie.Fragments.Login;
+package com.threek.roomie.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import com.threek.roomie.Activities.HouseActivity;
-import com.threek.roomie.Game.Gender;
-import com.threek.roomie.MemoryManager.MemoryManager;
+import com.threek.roomie.Activity.HouseActivity;
 import com.threek.roomie.R;
 
 public class LoginFragment extends Fragment {
@@ -22,7 +20,8 @@ public class LoginFragment extends Fragment {
     private EditText nameInput;
     private Button startGameButton;
 
-    private Gender gender; // female = false, male = true
+    private String name;
+    private boolean gender; // female = false, male = true
 
     public LoginFragment()
     {
@@ -34,7 +33,8 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // init
-        gender = Gender.MALE;
+        name = "";
+        gender = false;
     }
 
     @Override
@@ -44,11 +44,10 @@ public class LoginFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_login, container, false);
 
         maleButton = (RadioButton) root.findViewById(R.id.maleButton);
-        maleButton.setChecked(true);
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = Gender.MALE;
+                gender = true;
 
                 // set other button unchecked
                 femaleButton.setChecked(false);
@@ -59,7 +58,7 @@ public class LoginFragment extends Fragment {
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = Gender.FEMALE;
+                gender = false;
 
                 // set other button unchecked
                 maleButton.setChecked(false);
@@ -88,8 +87,6 @@ public class LoginFragment extends Fragment {
     // method for saving properties to the device
     private void saveProperties()
     {
-        // saving user inputs
-        MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
-        MemoryManager.saveName(getActivity().getApplicationContext(), nameInput.getText().toString());
+        // TODO implement the method
     }
 }

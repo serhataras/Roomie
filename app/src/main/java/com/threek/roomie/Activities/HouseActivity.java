@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.threek.roomie.Fragments.House.BackpackFragment;
@@ -18,11 +18,12 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
+import com.threek.roomie.Game.Game;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
-public class HouseActivity extends AppCompatActivity
-{
+public class HouseActivity extends AppCompatActivity {
+
     // fragments
     private Fragment currentFragment;
     private KitchenFragment kitchenFragment;
@@ -58,15 +59,14 @@ public class HouseActivity extends AppCompatActivity
         livingRoomFragment = new LivingRoomFragment();
         backpackFragment = new BackpackFragment();
 
+        kitchenFragment.setListeners(new ItemListener());
+        bathroomFragment.setListeners(new ItemListener());
+        bedroomFragment.setListeners(new ItemListener());
+        livingRoomFragment.setListeners(new ItemListener());
+
         playerButton = (ImageButton) findViewById(R.id.playerButton);
-        playerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showEventDialog("Do you wanna go out or study at home?");
-            }
-        });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this.getApplicationContext()));
+        playerNameText.setText(MemoryManager.loadName(this));
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
@@ -103,16 +103,6 @@ public class HouseActivity extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
         getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (MemoryManager.loadGameStarted(this))
-        {
-            kitchenFragment.addListeners(new ItemListener());
-            MemoryManager.saveGameStarted(this, false);
-        }
     }
 
     // button listener for changing the rooms
@@ -196,11 +186,7 @@ public class HouseActivity extends AppCompatActivity
     {
         @Override
         public void onClick(View view) {
-            Toast.makeText(HouseActivity.this, view.getId() + " is pressed", Toast.LENGTH_LONG).show();
-            gradesBar.setProgress((int) (Math.random() * 10) + 1);
-            socialityBar.setProgress((int) (Math.random() * 10) + 1);
-            moneyBar.setProgress((int) (Math.random() * 10) + 1);
-            healthBar.setProgress((int) (Math.random() * 10) + 1);
+            // TODO
         }
     }
 
