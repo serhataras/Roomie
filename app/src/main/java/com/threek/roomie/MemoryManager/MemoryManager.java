@@ -1,9 +1,7 @@
 package com.threek.roomie.MemoryManager;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.threek.roomie.Game.Gender;
 
@@ -17,8 +15,13 @@ public class MemoryManager {
     private static final String FILE_NAME = "SaveFile";
     private static final int FILE_MODE = Context.MODE_PRIVATE;
 
+    private static final String DEFAULT_NAME = "John Doe";
+    private static final boolean DEFAULT_GENDER = true;
+    private static final boolean DEFAULT_GAME_STARTED = true;
+
     private static final String NAME_KEY = "Name";
     private static final String GENDER_KEY = "Gender";
+    private static final String GAME_START_KEY = "GameStarted";
 
     // methods
     public static void saveName(Context context, String name)
@@ -32,7 +35,7 @@ public class MemoryManager {
     public static String loadName(Context context)
     {
         SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
-        return preferences.getString(NAME_KEY, "asd");
+        return preferences.getString(NAME_KEY, DEFAULT_NAME);
     }
 
     public static void saveGender(Context context, Gender gender)
@@ -41,7 +44,7 @@ public class MemoryManager {
         SharedPreferences.Editor editor = preferences.edit();
 
         // enum to boolean conversion
-        Boolean genderToSave;
+        boolean genderToSave;
         if (gender.equals(Gender.MALE))
         {
             genderToSave = true;
@@ -59,7 +62,7 @@ public class MemoryManager {
     {
         SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
 
-        Boolean genderToReturn = preferences.getBoolean(GENDER_KEY, true);
+        boolean genderToReturn = preferences.getBoolean(GENDER_KEY, DEFAULT_GENDER);
 
         // boolean to enum conversion
         if (genderToReturn)
@@ -69,5 +72,20 @@ public class MemoryManager {
         return  Gender.FEMALE;
     }
 
+    public static boolean loadGameStarted(Context context)
+    {
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
+
+        return preferences.getBoolean(GAME_START_KEY, DEFAULT_GAME_STARTED);
+    }
+
+    public static void saveGameStarted(Context context, boolean gameStarted)
+    {
+        SharedPreferences preferences = context.getSharedPreferences(FILE_NAME, FILE_MODE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putBoolean(GAME_START_KEY, gameStarted);
+        editor.commit();
+    }
 }
 
