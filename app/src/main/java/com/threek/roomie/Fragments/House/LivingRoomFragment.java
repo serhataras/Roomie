@@ -52,6 +52,10 @@ public class LivingRoomFragment extends Fragment
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setListeners(View.OnClickListener listener)
     {
         for (int i = 0; i < 4; i++)

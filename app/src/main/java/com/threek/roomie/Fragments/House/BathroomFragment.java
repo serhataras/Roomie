@@ -52,6 +52,8 @@ public class BathroomFragment extends Fragment {
         return name;
     }
 
+
+
     public void setListeners(View.OnClickListener listener)
     {
 

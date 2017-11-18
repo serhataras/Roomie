@@ -54,6 +54,10 @@ public class KitchenFragment extends Fragment {
         return name;
     }
 
+    public void setButtons(ImageButton[] buttons) {
+        this.buttons = buttons;
+    }
+
     public void addListeners(View.OnClickListener listener)
     {
         for (int i = 0; i < 4; i++)
