@@ -14,7 +14,7 @@ import com.threek.roomie.R;
  * A simple {@link Fragment} subclass.
  */
 public class BathroomFragment extends Fragment {
-
+    private String name;
     // attributes
     private ImageButton[] buttons;
 
@@ -27,6 +27,7 @@ public class BathroomFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
+        name="Bathroom";
     }
 
 
@@ -45,4 +46,17 @@ public class BathroomFragment extends Fragment {
         return root;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setListeners(View.OnClickListener listener){
+        for (int i = 0; i <4 ; i++) {
+            buttons[i].setOnClickListener(listener);
+        }
+    }
 }
