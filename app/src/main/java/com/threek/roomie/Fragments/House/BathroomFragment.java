@@ -15,8 +15,6 @@ import com.threek.roomie.R;
  */
 public class BathroomFragment extends Fragment {
 
-    private String name;
-
     // attributes
     private ImageButton[] buttons;
 
@@ -29,7 +27,6 @@ public class BathroomFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
-        name = "Bathroom";
     }
 
 
@@ -48,12 +45,4 @@ public class BathroomFragment extends Fragment {
         return root;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setListeners(View.OnClickListener listener)
-    {
-
-    }
 }

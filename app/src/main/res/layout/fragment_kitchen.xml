@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.threek.roomie.Fragments.House.KitchenFragment">
+    tools:context="com.threek.roomie.Fragments.KitchenFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_alignBottom="@+id/item2"
             android:layout_toEndOf="@+id/item2"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_cupboard" />
+             />
 
         <ImageButton
             android:id="@+id/item1"
@@ -26,7 +26,7 @@
             android:layout_alignBottom="@+id/item2"
             android:layout_toStartOf="@+id/item2"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_fridge" />
+           />
 
         <ImageButton
             android:id="@+id/item2"
@@ -36,7 +36,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_stall" />
+            />
 
         <ImageButton
             android:id="@+id/item4"
@@ -46,6 +46,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
             android:background="@null"
-            app:srcCompat="@drawable/kitchen_table" />
+            />
     </RelativeLayout>
 </FrameLayout>

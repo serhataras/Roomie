@@ -3,7 +3,7 @@
     <dimen name="house_bar_margin">60dp</dimen>
     <dimen name="ha_side_margin">25dp</dimen>
     <dimen name="ha_top_btw_margin">5dp</dimen>
-    <dimen name="ha_stat_text_top_bargin">20dp</dimen>
+    <dimen name="ha_stat_text_top_bargin">30dp</dimen>
     <dimen name="ha_stat_text_btw_bargin">85dp</dimen>
-    <dimen name="ha_stat_bar_top_bargin">0dp</dimen>
+    <dimen name="ha_stat_bar_top_bargin">12dp</dimen>
 </resources>
