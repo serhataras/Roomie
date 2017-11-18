@@ -15,6 +15,7 @@ import com.threek.roomie.R;
  */
 public class LivingRoomFragment extends Fragment
 {
+    private String name;
 
     // attributes
     private ImageButton[] buttons;
@@ -28,6 +29,7 @@ public class LivingRoomFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
+        name = "Living room";
     }
 
 
@@ -46,5 +48,17 @@ public class LivingRoomFragment extends Fragment
         return root;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setListeners(View.OnClickListener listener)
+    {
+        for (int i = 0; i < 4; i++)
+            buttons[i].setOnClickListener(listener);
+    }
 }
