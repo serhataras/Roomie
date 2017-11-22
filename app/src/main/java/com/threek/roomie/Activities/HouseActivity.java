@@ -21,7 +21,12 @@ import com.threek.roomie.Fragments.House.LivingRoomFragment;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
-public class HouseActivity extends AppCompatActivity
+import java.util.Observable;
+import java.util.Observer;
+
+import src.Observable.ObservableId;
+
+public class HouseActivity extends AppCompatActivity implements Observer
 {
     // fragments
     private Fragment currentFragment;
@@ -46,6 +51,7 @@ public class HouseActivity extends AppCompatActivity
     private ProgressBar gradesBar;
 
     //private Game game;
+    private ObservableId id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +109,8 @@ public class HouseActivity extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
         getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
+
+        id = new ObservableId(-1);
     }
 
     @Override
@@ -216,5 +224,10 @@ public class HouseActivity extends AppCompatActivity
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }

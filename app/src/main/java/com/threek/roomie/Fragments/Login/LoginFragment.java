@@ -11,9 +11,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.threek.roomie.Activities.HouseActivity;
-import com.threek.roomie.Game.Gender;
+
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
+
+import src.Gender;
 
 public class LoginFragment extends Fragment {
 
