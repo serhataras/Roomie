@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.threek.roomie.Fragments.House.BackpackFragment;
@@ -59,9 +58,17 @@ public class HouseActivity extends AppCompatActivity implements Observer
         setContentView(R.layout.activity_house);
 
         kitchenFragment = new KitchenFragment();
+        kitchenFragment.addListeners(new ItemListener());
+
         bathroomFragment = new BathroomFragment();
+        bathroomFragment.addListeners(new ItemListener());
+
         bedroomFragment = new BedroomFragment();
+        bedroomFragment.addListeners(new ItemListener());
+
         livingRoomFragment = new LivingRoomFragment();
+        livingRoomFragment.addListeners(new ItemListener());
+
         backpackFragment = new BackpackFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
@@ -111,6 +118,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
 
         id = new ObservableId(-1);
+        id.addObserver(this);
     }
 
     @Override
@@ -204,11 +212,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         @Override
         public void onClick(View view) {
-            Toast.makeText(HouseActivity.this, view.getId() + " is pressed", Toast.LENGTH_LONG).show();
-            gradesBar.setProgress((int) (Math.random() * 10) + 1);
-            socialityBar.setProgress((int) (Math.random() * 10) + 1);
-            moneyBar.setProgress((int) (Math.random() * 10) + 1);
-            healthBar.setProgress((int) (Math.random() * 10) + 1);
+            id.setValue(view.getId());
         }
     }
 
