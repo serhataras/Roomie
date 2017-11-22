@@ -27,4 +27,5 @@ public class BackpackFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_backpack, container, false);
     }
 
+
 }
