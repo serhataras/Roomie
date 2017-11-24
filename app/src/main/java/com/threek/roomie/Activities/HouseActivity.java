@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,12 +17,16 @@ import com.threek.roomie.Fragments.House.BathroomFragment;
 import com.threek.roomie.Fragments.House.BedroomFragment;
 import com.threek.roomie.Fragments.House.KitchenFragment;
 import com.threek.roomie.Fragments.House.LivingRoomFragment;
-import src.*;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
-public class HouseActivity extends AppCompatActivity {
+import java.util.Observable;
+import java.util.Observer;
 
+import src.Observable.ObservableId;
+
+public class HouseActivity extends AppCompatActivity implements Observer
+{
     // fragments
     private Fragment currentFragment;
     private KitchenFragment kitchenFragment;
@@ -47,6 +50,7 @@ public class HouseActivity extends AppCompatActivity {
     private ProgressBar gradesBar;
 
     //private Game game;
+    private ObservableId id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,19 +58,28 @@ public class HouseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_house);
 
         kitchenFragment = new KitchenFragment();
+        kitchenFragment.addListeners(new ItemListener());
+
         bathroomFragment = new BathroomFragment();
+        bathroomFragment.addListeners(new ItemListener());
+
         bedroomFragment = new BedroomFragment();
+        bedroomFragment.addListeners(new ItemListener());
+
         livingRoomFragment = new LivingRoomFragment();
+        livingRoomFragment.addListeners(new ItemListener());
+
         backpackFragment = new BackpackFragment();
 
-        kitchenFragment.setListeners(new ItemListener());
-        bathroomFragment.setListeners(new ItemListener());
-        bedroomFragment.setListeners(new ItemListener());
-        livingRoomFragment.setListeners(new ItemListener());
-
         playerButton = (ImageButton) findViewById(R.id.playerButton);
+        playerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEventDialog("Do you wanna go out or study at home?");
+            }
+        });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this));
+        playerNameText.setText(MemoryManager.loadName(this.getApplicationContext()));
 
         backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
@@ -103,6 +116,19 @@ public class HouseActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
         getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
+
+        id = new ObservableId(-1);
+        id.addObserver(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (MemoryManager.loadGameStarted(this))
+        {
+            kitchenFragment.addListeners(new ItemListener());
+            MemoryManager.saveGameStarted(this, false);
+        }
     }
 
     // button listener for changing the rooms
@@ -186,7 +212,7 @@ public class HouseActivity extends AppCompatActivity {
     {
         @Override
         public void onClick(View view) {
-            // TODO
+            id.setValue(view.getId());
         }
     }
 
@@ -202,5 +228,10 @@ public class HouseActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }
