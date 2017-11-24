@@ -27,7 +27,7 @@
 
         <FrameLayout
             android:id="@+id/content"
-            android:layout_width="500dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_alignEnd="@+id/muteBox"
             android:layout_alignStart="@+id/playerButton"
