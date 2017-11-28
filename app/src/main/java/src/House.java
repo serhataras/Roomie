@@ -5,7 +5,7 @@ package src;
  */
 public class House
 {
-    Room[] rooms;
+    private Room[] rooms;
 
     House()
     {

@@ -5,8 +5,8 @@ package src;
  */
 public class GameEnvironment
 {
-    Outdoor[] outdoor;
-    House house;
+    private Outdoor[] outdoor;
+    private House house;
 
     GameEnvironment()
     {

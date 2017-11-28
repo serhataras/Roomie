@@ -13,8 +13,8 @@ public class Library extends Outdoor
         70db is heavy traffic
    */
 
-    public final int HIGHEST_DB = 30;
-    int currentDb;
+    private final int HIGHEST_DB = 30;
+    private int currentDb;
 
     @Override
     public boolean isChallengeSuccess() {

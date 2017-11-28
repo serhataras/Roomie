@@ -7,9 +7,9 @@ import android.graphics.drawable.Drawable;
  */
 public class Outdoor
 {
-    String name;
-    Drawable background;
-    boolean challengeSuccess;
+    private String name;
+    private Drawable background;
+    private boolean challengeSuccess;
 
     Outdoor()
     {

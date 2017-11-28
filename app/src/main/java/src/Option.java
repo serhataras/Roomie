@@ -6,10 +6,10 @@ import java.util.Arrays;
  * Created by eliztekcan on 26.10.2017.
  */
 public class Option {
-    OptionType optionType;
-    String id;
-    boolean isExtreme;
-    int effect[];
+    private OptionType optionType;
+    private String id;
+    private boolean isExtreme;
+    private int effect[];
 
     Option(){
         effect = new int[4];

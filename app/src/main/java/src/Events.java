@@ -11,10 +11,10 @@ import java.util.Arrays;
 
 public class Events
 {
-    Graph eventCollection;
-    Event[] allEvents;
-    public static final int MAX_EVENT_COUNT = 6;
-    public static final String FILE_NAME = "/Users/eliztekcan/StudioProjects/Roomie/app/src/main/java/src/Other/Events.txt";
+    private Graph eventCollection;
+    private Event[] allEvents;
+    private static final int MAX_EVENT_COUNT = 6;
+    private static final String FILE_NAME = "/Users/eliztekcan/StudioProjects/Roomie/app/src/main/java/src/Other/Events.txt";
 
 
     Events(){
@@ -93,7 +93,7 @@ public class Events
                         opt2 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(lineInd, qInd), false, effect);
                     }
                 }
-                Option[] arr = new Option[Event.MAX_OPTION];
+                Option[] arr = new Option[Event.getMaxOption()];
                 arr[0] = opt1;
                 arr[1] = opt2;
                 allEvents[index] = new Event(sCurrentLine.substring(0, starInd),arr);

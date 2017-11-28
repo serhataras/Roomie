@@ -8,8 +8,8 @@ import android.graphics.drawable.Drawable;
  */
 public class Room
 {
-    HouseItem[] items;
-    Drawable background;
+    private HouseItem[] items;
+    private Drawable background;
 
     Room()
     {

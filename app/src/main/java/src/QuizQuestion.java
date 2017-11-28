@@ -6,9 +6,9 @@ import java.util.Arrays;
  * Created by eliztekcan on 28.10.2017.
  */
 public class QuizQuestion {
-    String[] options;
-    int correctAnswerIndex;
-    String question;
+    private String[] options;
+    private int correctAnswerIndex;
+    private String question;
 
     QuizQuestion()
     {

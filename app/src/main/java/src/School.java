@@ -9,11 +9,11 @@ import java.io.IOException;
  */
 public class School extends Outdoor
 {
-    QuizQuestion[] questions;
-    String[] options;
-    int random;
-    public static final int MAX_QUESTION = 4;
-    static final String FILE_NAME= "/src/Other/Quiz.txt";
+    private QuizQuestion[] questions;
+    private String[] options;
+    private int random;
+    private static final int MAX_QUESTION = 4;
+    private static final String FILE_NAME= "/src/Other/Quiz.txt";
 
 
     School()

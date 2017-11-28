@@ -12,10 +12,10 @@ import java.io.IOException;
  */
 public class ItemCollection {
 
-    public static final int MAX_ITEM = 12;
-    Item[] items;
-    int[] boost;
-    static final String FILE_NAME= "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Backpack.txt";
+    private static final int MAX_ITEM = 12;
+    private Item[] items;
+    private int[] boost;
+    private static final String FILE_NAME= "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Backpack.txt";
 
     ItemCollection(){
         items = new Item[MAX_ITEM];
@@ -42,6 +42,14 @@ public class ItemCollection {
 
     public Item[] getItems() {
         return items;
+    }
+
+    public static int getMaxItem() {
+        return MAX_ITEM;
+    }
+
+    public int[] getBoost() {
+        return boost;
     }
 
     public void createCollection(){

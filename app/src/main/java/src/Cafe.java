@@ -9,9 +9,9 @@ import java.io.IOException;
  */
 public class Cafe extends Outdoor
 {
-    FoodItem[] menu;
-    public final int MAX_FOOD = 10;
-    public final String FILE_NAME = "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Menu.txt";
+    private FoodItem[] menu;
+    private final int MAX_FOOD = 10;
+    private final String FILE_NAME = "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Menu.txt";
 
     Cafe()
     {
