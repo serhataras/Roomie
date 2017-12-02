@@ -8,7 +8,7 @@
           Implementation is heavly on the priority.
           Teamwork must be organized.
           Weekly meetings are in schedule.
-          Bug search, Activity and UI design is need focus.
+          Bug search, Activity and UI design needs focus.
           
 ## Description of the Roomie - The Game
 
