@@ -2,13 +2,14 @@
 ## CS-319 Object Oriented Programming Term Project 
 
 
-- Current Stage: Analysis Report is uploaded to the GitHub. As developers of the Roomie, iteration is going to start in 8th of October. Branches are partially ready. Master is ready to clone and pull. Reports' links added to GitHub README.md.
+- Current Stage: Revised Design Report is uploaded to the GitHub. As developers of the Roomie, iteration is continue. Branches are created as 3 individual(eliz(Eliz Tekcan)-alkışlar(Deniz Alkışlar)-Yoda(Serhat Aras)) and 1 shared for the works of Deniz Alkışlar and Serhat Aras. Yet Master is ready to clone and pull and up to date. Reports' links and roadmap for the following weeks added to GitHub README.md.
 
           Revised reports are finished. 
           Implementation is heavly on the priority.
           Teamwork must be organized.
           Weekly meetings are in schedule.
           Bug search, Activity and UI design needs focus.
+          **Meeting must be arranged with the Supervisor to work out the major problems.** 
           
 ## Description of the Roomie - The Game
 
