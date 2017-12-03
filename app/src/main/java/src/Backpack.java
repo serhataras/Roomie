@@ -37,4 +37,9 @@ public class Backpack {
     {
         itemList.add(item);
     }
+
+    public boolean hasAnItem(Item item){
+        //checks if the given item is in the backpack
+       return itemList.contains(item) == true;
+    }
 }
