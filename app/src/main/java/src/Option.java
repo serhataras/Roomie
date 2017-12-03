@@ -1,13 +1,15 @@
 package src;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by eliztekcan on 26.10.2017.
  */
 public class Option {
     private OptionType optionType;
-    private String id;
+    private String optionStr;
+    private int id;
     private boolean isExtreme;
     private int effect[];
 
@@ -15,11 +17,12 @@ public class Option {
         effect = new int[4];
     }
 
-    Option(OptionType optionType, String id, boolean isExtreme, int effect[]){
+    Option(OptionType optionType,  String optionStr, int effect[], int id){
         this.optionType = optionType;
+        this.optionStr  = optionStr;
         this.id         = id;
-        this.isExtreme  = isExtreme;
         this.effect     = effect;
+        assignExtremeCase();
     }
 
     public OptionType getOptionType() {
@@ -30,11 +33,11 @@ public class Option {
         this.optionType = optionType;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -52,6 +55,24 @@ public class Option {
 
     public void setEffect(int[] effect) {
         this.effect = effect;
+    }
+
+    public String getOptionStr() {
+        return optionStr;
+    }
+
+    public void setOptionStr(String optionStr) {
+        this.optionStr = optionStr;
+    }
+
+    public void assignExtremeCase(){
+        //assign rand to a random number in range [1,10]
+        int rand = 1 + (int)(Math.random()*10);
+        //if the random number is 10, our option results in an extreme case
+        if(rand == 10)
+            isExtreme = true;
+        else
+            isExtreme = false;
     }
 
     @Override
