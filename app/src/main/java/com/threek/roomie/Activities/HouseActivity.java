@@ -23,6 +23,7 @@ import com.threek.roomie.R;
 import java.util.Observable;
 import java.util.Observer;
 
+import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 
 public class HouseActivity extends AppCompatActivity implements Observer
@@ -51,6 +52,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
     //private Game game;
     private ObservableId id;
+    private ObservableEvent currentEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         id = new ObservableId(-1);
         id.addObserver(this);
+        currentEvent = null;
     }
 
     @Override
@@ -236,22 +239,40 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         if (observable == id)
         {
-            // get the option type from the current event
+            // if the option is not extreme
+                // get the option type from the current event
 
-            // if the option type is house
-                // refresh player's stats
+                // if the option type is house
+                    // refresh player's stats & change the current event
 
-            // if the option type is night club
-                // start the night club activity, return the shakeAmount as the result
+                // if the option type is night club
+                    // start the night club activity, return the shakeAmount as the result
+                    // refresh player's stats & change the current event
+                    // add a random item
 
-            // if the option type is cafe
-                // start the cafe activity, return the food choice
+                // if the option type is cafe
+                    // start the cafe activity, return the food choice
+                    // refresh player's stats & change the current event
 
-            // if the option type is library
-                // start the library activity, return dB as the result
+                // if the option type is library
+                    // start the library activity, return dB as the result
+                    // refresh player's stats & change the current event
+                    // add a random item
 
-            // if the option type is school
-                // start the school activity, return the answer choice as the result
+                // if the option type is school
+                    // start the school activity, return the answer choice as the result
+                    // refresh player's stats & change the current event
+
+            // if the option is extreme
+                // finish the game
+        }
+        else if (observable == currentEvent)
+        {
+            // deactivate all buttons in the house fragments
+
+            // activate only the event related buttons
+
+            // show the question
         }
     }
 }
