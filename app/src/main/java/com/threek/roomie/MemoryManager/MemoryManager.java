@@ -3,7 +3,7 @@ package com.threek.roomie.MemoryManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import src.Gender;
+import src.*;
 
 
 /**

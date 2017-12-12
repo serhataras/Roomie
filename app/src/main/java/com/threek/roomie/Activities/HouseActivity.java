@@ -58,20 +58,17 @@ public class HouseActivity extends AppCompatActivity implements Observer
         setContentView(R.layout.activity_house);
 
         kitchenFragment = new KitchenFragment();
-        kitchenFragment.addListeners(new ItemListener());
 
         bathroomFragment = new BathroomFragment();
-        bathroomFragment.addListeners(new ItemListener());
 
         bedroomFragment = new BedroomFragment();
-        bedroomFragment.addListeners(new ItemListener());
 
         livingRoomFragment = new LivingRoomFragment();
-        livingRoomFragment.addListeners(new ItemListener());
 
         backpackFragment = new BackpackFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
+
         playerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,8 +124,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
         if (MemoryManager.loadGameStarted(this))
         {
             kitchenFragment.addListeners(new ItemListener());
+            bathroomFragment.addListeners(new ItemListener());
+            bedroomFragment.addListeners(new ItemListener());
+            livingRoomFragment.addListeners(new ItemListener());
             MemoryManager.saveGameStarted(this, false);
         }
+
     }
 
     // button listener for changing the rooms
