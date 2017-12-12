@@ -61,4 +61,25 @@ public class BedroomFragment extends Fragment {
         for (int i = 0; i < 4; i++)
             buttons[i].setOnClickListener(listener);
     }
+
+    public boolean activateButton(int id)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (buttons[i].getId() == id)
+            {
+                buttons[i].setActivated(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deactivateAllButtons()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].setActivated(false);
+        }
+    }
 }
