@@ -231,7 +231,26 @@ public class HouseActivity extends AppCompatActivity implements Observer
     }
 
     @Override
-    public void update(Observable observable, Object o) {
+    public void update(Observable observable, Object o)
+    {
+        if (observable == id)
+        {
+            // get the option type from the current event
 
+            // if the option type is house
+                // refresh player's stats
+
+            // if the option type is night club
+                // start the night club activity, return the shakeAmount as the result
+
+            // if the option type is cafe
+                // start the cafe activity, return the food choice
+
+            // if the option type is library
+                // start the library activity, return dB as the result
+
+            // if the option type is school
+                // start the school activity, return the answer choice as the result
+        }
     }
 }
