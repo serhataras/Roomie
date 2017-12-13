@@ -26,8 +26,7 @@
             android:layout_alignBottom="@+id/stall"
             android:layout_toStartOf="@+id/stall"
             android:background="@null"
-            android:src="@drawable/kitchen_fridge"
-           />
+            android:src="@drawable/kitchen_fridge" />
 
         <ImageButton
             android:id="@+id/stall"
@@ -37,8 +36,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
             android:background="@null"
-            android:src="@drawable/kitchen_stall"
-            />
+            android:src="@drawable/kitchen_stall" />
 
         <ImageButton
             android:id="@+id/table"
@@ -48,7 +46,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
             android:background="@null"
-            android:src="@drawable/kitchen_table"
-            />
+            android:src="@drawable/kitchen_table" />
     </RelativeLayout>
 </FrameLayout>

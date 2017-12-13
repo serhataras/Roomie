@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@android:color/holo_orange_light">
+        android:background="?attr/colorButtonNormal">
 
         <ImageButton
             android:id="@+id/bath"
