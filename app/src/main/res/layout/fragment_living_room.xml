@@ -11,45 +11,44 @@
         android:background="@android:color/holo_red_dark">
 
         <ImageButton
-            android:id="@+id/item3"
+            android:id="@+id/bigtable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toEndOf="@+id/item2"
-            android:background="@null"
-            android:src="@drawable/kitchen_cupboard"
-            />
-
-        <ImageButton
-            android:id="@+id/item1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toStartOf="@+id/item2"
-            android:background="@null"
-            android:src="@drawable/kitchen_fridge"
-            />
-
-        <ImageButton
-            android:id="@+id/item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/item4"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
+            android:layout_marginTop="10dp"
             android:background="@null"
-            android:src="@drawable/kitchen_stall"
-            />
+            android:src="@drawable/bigtable" />
 
         <ImageButton
-            android:id="@+id/item4"
+            android:id="@+id/plants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
+            android:layout_alignStart="@+id/sofa"
+            android:layout_below="@+id/bigtable"
+            android:layout_marginTop="8dp"
             android:background="@null"
-            android:src="@drawable/kitchen_table"
-            />
+            android:src="@drawable/plants" />
+
+        <ImageButton
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/bigtable"
+            android:layout_below="@+id/plants"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:src="@drawable/tv" />
+
+        <ImageButton
+            android:id="@+id/sofa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tv"
+            android:layout_alignTop="@+id/tv"
+            android:layout_marginTop="26dp"
+            android:background="@null"
+            android:src="@drawable/sofa" />
     </RelativeLayout>
 </FrameLayout>

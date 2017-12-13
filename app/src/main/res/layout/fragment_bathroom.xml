@@ -11,41 +11,23 @@
         android:background="@android:color/holo_orange_light">
 
         <ImageButton
-            android:id="@+id/item3"
+            android:id="@+id/bath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toEndOf="@+id/item2"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/toilet"
+            android:layout_marginStart="132dp"
             android:background="@null"
-            android:src="@drawable/kitchen_cupboard" />
+            android:src="@drawable/bath" />
 
         <ImageButton
-            android:id="@+id/item1"
+            android:id="@+id/toilet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toStartOf="@+id/item2"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="59dp"
+            android:layout_toEndOf="@+id/bath"
             android:background="@null"
-            android:src="@drawable/kitchen_fridge" />
-
-        <ImageButton
-            android:id="@+id/item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/item4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
-            android:background="@null"
-            android:src="@drawable/kitchen_stall" />
-
-        <ImageButton
-            android:id="@+id/item4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
-            android:background="@null"
-            android:src="@drawable/kitchen_table" />
+            android:src="@drawable/toilet" />
     </RelativeLayout>
 </FrameLayout>

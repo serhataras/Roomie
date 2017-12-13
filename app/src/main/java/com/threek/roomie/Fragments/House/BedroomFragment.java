@@ -40,10 +40,10 @@ public class BedroomFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_bedroom, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.item1);
-        buttons[1] = (ImageButton) root.findViewById(R.id.item2);
+        buttons[0] = (ImageButton) root.findViewById(R.id.fridge);
+        buttons[1] = (ImageButton) root.findViewById(R.id.stall);
         buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.item4);
+        buttons[3] = (ImageButton) root.findViewById(R.id.table);
 
         return root;
     }
