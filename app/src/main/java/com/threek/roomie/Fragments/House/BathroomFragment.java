@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import com.threek.roomie.R;
 
 import src.BathroomItems;
+import src.Game;
+import src.RoomType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +20,7 @@ import src.BathroomItems;
 public class BathroomFragment extends Fragment {
 
     private String name;
+    private Game game;
 
     // attributes
     private ImageButton[] buttons;
@@ -32,6 +35,7 @@ public class BathroomFragment extends Fragment {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[2];
         name = "Bathroom";
+        game = Game.getInstance();
     }
 
 
@@ -44,6 +48,9 @@ public class BathroomFragment extends Fragment {
 
         buttons[BathroomItems.TOILET.ordinal()] = (ImageButton) root.findViewById(R.id.toilet);
         buttons[BathroomItems.BATH.ordinal()] = (ImageButton) root.findViewById(R.id.bath);
+
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BATHROOM.ordinal()].getItems()[BathroomItems.TOILET.ordinal()].setId(R.id.toilet);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BATHROOM.ordinal()].getItems()[BathroomItems.BATH.ordinal()].setId(R.id.bath);
 
         return root;
     }

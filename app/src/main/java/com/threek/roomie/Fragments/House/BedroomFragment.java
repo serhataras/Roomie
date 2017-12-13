@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import com.threek.roomie.R;
 
 import src.BedroomItems;
+import src.Game;
+import src.RoomType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +20,7 @@ import src.BedroomItems;
 public class BedroomFragment extends Fragment {
 
     private String name;
+    private Game game;
 
     // attributes
     private ImageButton[] buttons;
@@ -32,6 +35,7 @@ public class BedroomFragment extends Fragment {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
         name = "Bedroom";
+        game = Game.getInstance();
     }
 
 
@@ -46,6 +50,11 @@ public class BedroomFragment extends Fragment {
         buttons[BedroomItems.WARDROBE.ordinal()] = (ImageButton) root.findViewById(R.id.wardrobe);
         buttons[BedroomItems.DESK.ordinal()] = (ImageButton) root.findViewById(R.id.desk);
         buttons[BedroomItems.BOOKSHELF.ordinal()] = (ImageButton) root.findViewById(R.id.bookshelf);
+
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.BED.ordinal()].setId(R.id.bed);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.WARDROBE.ordinal()].setId(R.id.wardrobe);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.DESK.ordinal()].setId(R.id.desk);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.BOOKSHELF.ordinal()].setId(R.id.bookshelf);
 
         return root;
     }

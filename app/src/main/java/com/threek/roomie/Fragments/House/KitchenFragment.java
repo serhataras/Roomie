@@ -9,13 +9,16 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.Game;
 import src.KitchenItems;
+import src.RoomType;
 
 
 public class KitchenFragment extends Fragment {
 
     // attributes
-    private static final String NAME = "Kitchen";
+    private String name;
+    private Game game;
 
     private ImageButton[] buttons;
 
@@ -28,6 +31,9 @@ public class KitchenFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
+        name = "Kitchen";
+        game = Game.getInstance();
+
     }
 
 
@@ -42,11 +48,16 @@ public class KitchenFragment extends Fragment {
         buttons[KitchenItems.CUPBOARD.ordinal()] = (ImageButton) root.findViewById(R.id.cupboard);
         buttons[KitchenItems.TABLE.ordinal()] = (ImageButton) root.findViewById(R.id.table);
 
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.KITCHEN.ordinal()].getItems()[KitchenItems.FRIDGE.ordinal()].setId(R.id.fridge);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.KITCHEN.ordinal()].getItems()[KitchenItems.STALL.ordinal()].setId(R.id.stall);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.KITCHEN.ordinal()].getItems()[KitchenItems.CUPBOARD.ordinal()].setId(R.id.cupboard);
+        game.getGameEnvironment().getHouse().getRooms()[RoomType.KITCHEN.ordinal()].getItems()[KitchenItems.TABLE.ordinal()].setId(R.id.table);
+
         return root;
     }
 
     public String getName() {
-        return NAME;
+        return name;
     }
 
     public void setButtons(ImageButton[] buttons) {
