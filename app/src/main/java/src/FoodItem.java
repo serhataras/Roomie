@@ -5,9 +5,9 @@ package src;
  */
 public class FoodItem
 {
-    int price;
-    String name;
-    int health;
+    private int price;
+    private String name;
+    private int health;
 
     FoodItem()
     {

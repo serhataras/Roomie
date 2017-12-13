@@ -4,10 +4,10 @@ package src;
  * Created by eliztekcan on 26.10.2017.
  */
 public class Player {
-    String name;
-    Gender gender;
-    Stats[] stats;
-    Backpack backpack;
+    private String name;
+    private Gender gender;
+    private Stats[] stats;
+    private Backpack backpack;
 
     Player(){
         name = "";

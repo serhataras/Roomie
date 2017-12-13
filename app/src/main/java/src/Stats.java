@@ -4,8 +4,8 @@ package src;
  * Created by eliztekcan on 26.10.2017.
  */
 public class Stats {
-    int stat;
-    public static final int MAX_STAT = 10;
+    private  int stat;
+    private static final int MAX_STAT = 10;
 
     Stats(int stat){
         this.stat = stat;

@@ -7,8 +7,8 @@ public class NightClub extends Outdoor
 {
 
     //TO DO
-    public final int HIGHEST_SHAKE = 100;
-    int shakeAmount;
+    private final int HIGHEST_SHAKE = 100;
+    private int shakeAmount;
 
     @Override
     public boolean isChallengeSuccess()

@@ -8,12 +8,12 @@ import android.text.style.TtsSpan;
 
 public class Game {
 
-    Player player;
-    GameEnvironment gameEnvironment;
-    Randomizer random;
-    Events events;
-    Event currentEvent;
-    String pressedButtonId;
+    private Player player;
+    private GameEnvironment gameEnvironment;
+    private Randomizer random;
+    private Events events;
+    private Event currentEvent;
+    private String pressedButtonId;
 
     Game(){
         player = new Player();

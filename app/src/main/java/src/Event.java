@@ -7,9 +7,9 @@ import java.util.Arrays;
  */
 
 public class Event {
-    String question;
-    Option[] optionArray;
-    public static final int MAX_OPTION = 2;
+    private String question;
+    private Option[] optionArray;
+    private  static final int MAX_OPTION = 2;
 
     Event(){
         optionArray = new Option[MAX_OPTION];

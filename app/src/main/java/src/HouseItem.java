@@ -7,10 +7,10 @@ import android.graphics.drawable.Drawable;
  */
 public class HouseItem
 {
-    String name;
-    String id;
-    Drawable image;
-    boolean clickable;
+    private String name;
+    private String id;
+    private Drawable image;
+    private boolean clickable;
 
     HouseItem()
     {

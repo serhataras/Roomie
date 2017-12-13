@@ -6,7 +6,8 @@ import java.util.Random;
  * Created by eliztekcan on 26.10.2017.
  */
 public class Randomizer {
-    ItemCollection itemCollection;
+    private ItemCollection itemCollection;
+
     Randomizer(){
         itemCollection = new ItemCollection();
         Random rand = new Random();
@@ -14,9 +15,9 @@ public class Randomizer {
 
     public Item throwItem(){
         Random rand = new Random();
-        Item[] items = new Item[itemCollection.MAX_ITEM];
+        Item[] items = new Item[itemCollection.getMaxItem()];
         items = itemCollection.getItems();
-        return items[rand.nextInt(itemCollection.MAX_ITEM)];
+        return items[rand.nextInt(itemCollection.getMaxItem())];
     }
 
     public void setItemCollection(ItemCollection itemCollection) {
