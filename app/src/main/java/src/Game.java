@@ -14,6 +14,7 @@ public class Game {
     private Events events;
     private Event currentEvent;
     private int pressedButtonId;
+    private boolean gameHasStarted;
 
     // singleton object
     private static Game instance = null;
@@ -27,6 +28,7 @@ public class Game {
         events = new Events();
         currentEvent = null;
         pressedButtonId = -1;
+        gameHasStarted = true;
     }
 
     // method for getting singleton game instance
@@ -160,5 +162,13 @@ public class Game {
 
     public int getPressedButtonId() {
         return pressedButtonId;
+    }
+
+    public boolean isGameHasStarted() {
+        return gameHasStarted;
+    }
+
+    public void setGameHasStarted(boolean gameHasStarted) {
+        this.gameHasStarted = gameHasStarted;
     }
 }

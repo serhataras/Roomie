@@ -131,15 +131,14 @@ public class HouseActivity extends AppCompatActivity implements Observer
     @Override
     protected void onStart() {
         super.onStart();
-        if (MemoryManager.loadGameStarted(this))
+        if (game.isGameHasStarted())
         {
             kitchenFragment.addListeners(new ItemListener());
             bathroomFragment.addListeners(new ItemListener());
             bedroomFragment.addListeners(new ItemListener());
             livingRoomFragment.addListeners(new ItemListener());
-            MemoryManager.saveGameStarted(this, false);
+            game.setGameHasStarted(false);
         }
-
     }
 
     // button listener for changing the rooms
