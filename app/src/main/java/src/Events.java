@@ -13,7 +13,7 @@ public class Events
     private Graph eventCollection;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 6;
-    private static final String FILE_NAME = "/Users/eliztekcan/StudioProjects/Roomie/app/src/main/java/src/Other/Events.txt";
+    private static final String FILE_NAME = "/src/Other/Events.txt";
 
 
     Events(){
@@ -41,41 +41,69 @@ public class Events
                 int eqInd   = sCurrentLine.indexOf('=');
                 int colInd  = sCurrentLine.indexOf(':');
                 Option opt1 = null, opt2 = null;
-                int[] effect = new int[4];
-                effect[0] = Integer.parseInt(sCurrentLine.substring(eqInd+1, eqInd+3).replaceAll("\\s+",""));
-                effect[1] = Integer.parseInt(sCurrentLine.substring(eqInd+4, eqInd+6).replaceAll("\\s+",""));
-                effect[2] = Integer.parseInt(sCurrentLine.substring(eqInd+7, eqInd+9).replaceAll("\\s+",""));
-                effect[3] = Integer.parseInt(sCurrentLine.substring(eqInd+10, eqInd+12).replaceAll("\\s+",""));
-
+                Stats effect = new Stats();
+                effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(eqInd+1, eqInd+3).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(eqInd+4, eqInd+6).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(eqInd+7, eqInd+9).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(eqInd+10, eqInd+12).replaceAll("\\s+","")));
 
                 if(sCurrentLine.substring(qInd+2, qInd+3).equals("H") )
                 {
                     opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
 
                 }
-                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("O") )
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("S") )
                 {
 
-                    opt1 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    opt1 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                }
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("L") )
+                {
 
+                    opt1 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                }
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("N") )
+                {
+
+                    opt1 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                }
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("C") )
+                {
+
+                    opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
                 }
 
 
-                effect = new int[4];
+                effect.makeStatsZero();
 
-                effect[0] = Integer.parseInt(sCurrentLine.substring(colInd+1, colInd+3).replaceAll("\\s+",""));
-                effect[1] = Integer.parseInt(sCurrentLine.substring(colInd+4, colInd+6).replaceAll("\\s+",""));
-                effect[2] = Integer.parseInt(sCurrentLine.substring(colInd+7, colInd+9).replaceAll("\\s+",""));
-                effect[3] = Integer.parseInt(sCurrentLine.substring(colInd+10).replaceAll("\\s+",""));
+                effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(colInd+1, colInd+3).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(colInd+4, colInd+6).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(colInd+7, colInd+9).replaceAll("\\s+","")));
+                effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(colInd+10).replaceAll("\\s+","")));
 
                 if(sCurrentLine.substring(qInd+3, qInd+4).equals("H"))
                 {
                     opt2 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
 
                 }
-                else if(sCurrentLine.substring(qInd+3, qInd+4).equals("O") )
+                else if(sCurrentLine.substring(qInd+3, qInd+4).equals("S") )
                 {
-                    opt2 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+                    opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+
+                }
+                else if(sCurrentLine.substring(qInd+3, qInd+4).equals("L") )
+                {
+                    opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+
+                }
+                else if(sCurrentLine.substring(qInd+3, qInd+4).equals("N") )
+                {
+                    opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+
+                }
+                else if(sCurrentLine.substring(qInd+3, qInd+4).equals("C") )
+                {
+                    opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
 
                 }
                 Option[] arr = new Option[Event.getMaxOption()];

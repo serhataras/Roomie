@@ -52,7 +52,7 @@ public class BackpackFragment extends Fragment {
         useAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // use all the items
+                // TODO use all the items
             }
         });
 
@@ -60,7 +60,7 @@ public class BackpackFragment extends Fragment {
         sellAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // sell all the items
+                // TODO sell all the items
             }
         });
         return root;
@@ -110,7 +110,7 @@ public class BackpackFragment extends Fragment {
             useButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // use the item
+                    // TODO use the item
                 }
             });
 
@@ -118,7 +118,7 @@ public class BackpackFragment extends Fragment {
             sellButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // sell the item
+                    // TODO sell the item
                 }
             });
 

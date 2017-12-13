@@ -11,26 +11,22 @@ public class ItemCollection {
 
     private static final int MAX_ITEM = 12;
     private Item[] items;
-    private int[] boost;
-    private static final String FILE_NAME= "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Backpack.txt";
+    private Stats boost;
+    private static final String FILE_NAME= "/src/Other/Backpack.txt";
 
-    ItemCollection(){
+    public ItemCollection(){
         items = new Item[MAX_ITEM];
-        boost = new int[4];
-        int[] boost = new int[4];
+        boost = new Stats();
         //Add items to collection
         createCollection();
     }
 
-    private void setBoostArray(int health, int sociality, int grades, int money) {
-        //health
-        boost[0] = health;
-        //sociality
-        boost[1] = sociality;
-        //grades
-        boost[2] = grades;
-        //money
-        boost[3] = money;
+    private void setBoostArray(int health, int sociality, int grades, int money)
+    {
+        boost.setStatByIndex(StatType.HEALTH, health);
+        boost.setStatByIndex(StatType.SOCIALITY, sociality);
+        boost.setStatByIndex(StatType.GRADES, grades);
+        boost.setStatByIndex(StatType.MONEY, money);
     }
 
     public void setItems(Item[] items) {
@@ -45,7 +41,7 @@ public class ItemCollection {
         return MAX_ITEM;
     }
 
-    public int[] getBoost() {
+    public Stats getBoost() {
         return boost;
     }
 
@@ -66,10 +62,9 @@ public class ItemCollection {
                         Integer.parseInt(sCurrentLine.substring(starInd+4,starInd+6).replaceAll("\\s+","")),
                         Integer.parseInt(sCurrentLine.substring(starInd+7,starInd+9).replaceAll("\\s+","")),
                         Integer.parseInt(sCurrentLine.substring(starInd+10,starInd+12).replaceAll("\\s+","")));
-                items[index] = new Item(sCurrentLine.substring(0,starInd), null, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")), boost);
+                items[index] = new Item(sCurrentLine.substring(0,starInd), null, boost);
                 index++;
-                boost = new int[4];
-
+                boost.makeStatsZero();
             }
 
         } catch (IOException e) {

@@ -9,13 +9,13 @@ public class Option {
     private String optionStr;
     private int id;
     private boolean isExtreme;
-    private int effect[];
+    private Stats effect;
 
-    Option(){
-        effect = new int[4];
+    public Option(){
+        effect = new Stats();
     }
 
-    Option(OptionType optionType,  String optionStr, int effect[], int id){
+    public Option(OptionType optionType,  String optionStr, Stats effect, int id){
         this.optionType = optionType;
         this.optionStr  = optionStr;
         this.id         = id;
@@ -47,11 +47,11 @@ public class Option {
         isExtreme = extreme;
     }
 
-    public int[] getEffect() {
+    public Stats getEffect() {
         return effect;
     }
 
-    public void setEffect(int[] effect) {
+    public void setEffect(Stats effect) {
         this.effect = effect;
     }
 
@@ -65,7 +65,7 @@ public class Option {
 
     public void assignExtremeCase(){
         //assign rand to a random number in range [1,10]
-        int rand = 1 + (int)(Math.random()*10);
+        int rand = 1 + (int) (Math.random() * 10);
         //if the random number is 10, our option results in an extreme case
         if(rand == 10)
             isExtreme = true;
@@ -79,7 +79,7 @@ public class Option {
                 "optionType=" + optionType +
                 ", id='" + id + '\'' +
                 ", isExtreme=" + isExtreme +
-                ", effect=" + Arrays.toString(effect) +
+                ", effect=" + effect.toString() +
                 '}';
     }
 }
