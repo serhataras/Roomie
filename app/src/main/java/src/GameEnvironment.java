@@ -8,14 +8,14 @@ public class GameEnvironment
     private Outdoor[] outdoor;
     private House house;
 
-    GameEnvironment()
+    public GameEnvironment()
     {
         outdoor     = new Outdoor[4];
         house       = new House();
     }
 
 
-    GameEnvironment(Outdoor[] outdoor, House house)
+    public GameEnvironment(Outdoor[] outdoor, House house)
     {
         this.house      = house;
         this.outdoor    = outdoor;
