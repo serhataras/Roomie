@@ -18,6 +18,7 @@ import com.threek.roomie.R;
 
 import java.util.ArrayList;
 
+import src.Game;
 import src.Item;
 
 /**
@@ -25,7 +26,7 @@ import src.Item;
  */
 public class BackpackFragment extends Fragment {
 
-    private ArrayList<Item> itemList;
+    private Game game;
     private CustomListAdapter adapter;
 
     public BackpackFragment() {
@@ -35,7 +36,7 @@ public class BackpackFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // take itemList from the game instance
+        game = Game.getInstance();
         adapter = new CustomListAdapter();
     }
 
@@ -76,12 +77,12 @@ public class BackpackFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return itemList.size(); //returns total of items in the list
+            return game.getBackPackItems().size(); //returns total of items in the list
         }
 
         @Override
         public Object getItem(int position) {
-            return itemList.get(position); //returns list item at the specified position
+            return game.getBackPackItems().get(position); //returns list item at the specified position
         }
 
         @Override
@@ -96,7 +97,7 @@ public class BackpackFragment extends Fragment {
             convertView = LayoutInflater.from(getActivity()).inflate(R.layout.backpack_item, parent, false);
 
             // get current item to be displayed
-            Item currentItem = (Item) getItem(position);
+            final Item currentItem = (Item) getItem(position);
 
             // get the TextView for item name and item description
             //TextView textView = (TextView) convertView.findViewById(R.id.trip_text);
@@ -110,7 +111,7 @@ public class BackpackFragment extends Fragment {
             useButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO use the item
+                    game.getPlayer().sellAnItem(currentItem);
                 }
             });
 

@@ -23,6 +23,7 @@ import com.threek.roomie.R;
 import java.util.Observable;
 import java.util.Observer;
 
+import src.Game;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 
@@ -50,7 +51,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private ProgressBar socialityBar;
     private ProgressBar gradesBar;
 
-    //private Game game;
+    private Game game;
     private ObservableId id;
     private ObservableEvent currentEvent;
 
@@ -58,6 +59,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
+
+        game = Game.getInstance();
 
         kitchenFragment = new KitchenFragment();
 

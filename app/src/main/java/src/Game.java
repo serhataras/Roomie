@@ -137,4 +137,28 @@ public class Game {
     {
         return ((Cafe) gameEnvironment.getOutdoorEnvironment(OutdoorEnvironment.CAFE_ENVIRONMENT)).getMenu();
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public GameEnvironment getGameEnvironment() {
+        return gameEnvironment;
+    }
+
+    public Randomizer getRandom() {
+        return random;
+    }
+
+    public Events getEvents() {
+        return events;
+    }
+
+    public Event getCurrentEvent() {
+        return currentEvent;
+    }
+
+    public int getPressedButtonId() {
+        return pressedButtonId;
+    }
 }
