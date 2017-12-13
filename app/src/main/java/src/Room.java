@@ -12,13 +12,14 @@ public class Room
     private Drawable background;
 
     public static final int NUMBER_OF_ITEMS = 4;
-    Room()
+
+    public Room()
     {
         items       = new HouseItem[NUMBER_OF_ITEMS];
         background  = null;
     }
 
-    Room(HouseItem[] items, Drawable background)
+    public Room(HouseItem[] items, Drawable background)
     {
         this.items      = items;
         this.background = background;
