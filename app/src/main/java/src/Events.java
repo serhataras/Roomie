@@ -13,10 +13,11 @@ public class Events
     private Graph eventCollection;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 6;
-    private static final String FILE_NAME = "/src/Other/Events.txt";
+    private static final String FILE_NAME = "/Other/Events.txt";
 
 
-    Events(){
+    public Events(){
+        allEvents = new Event[MAX_EVENT_COUNT];
         allEvents = setEvents();
         eventCollection = new Graph(MAX_EVENT_COUNT, allEvents);
     }

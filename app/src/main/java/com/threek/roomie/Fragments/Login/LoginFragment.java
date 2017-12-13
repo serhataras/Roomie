@@ -15,6 +15,7 @@ import com.threek.roomie.Activities.HouseActivity;
 import com.threek.roomie.MemoryManager.MemoryManager;
 import com.threek.roomie.R;
 
+import src.Game;
 import src.Gender;
 
 public class LoginFragment extends Fragment {
@@ -25,6 +26,7 @@ public class LoginFragment extends Fragment {
     private Button startGameButton;
 
     private Gender gender; // female = false, male = true
+    private Game game;
 
     public LoginFragment()
     {
@@ -37,6 +39,7 @@ public class LoginFragment extends Fragment {
 
         // init
         gender = Gender.MALE;
+        game = Game.getInstance();
     }
 
     @Override
@@ -91,7 +94,9 @@ public class LoginFragment extends Fragment {
     private void saveProperties()
     {
         // saving user inputs
-        MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
-        MemoryManager.saveName(getActivity().getApplicationContext(), nameInput.getText().toString());
+        //MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
+        //MemoryManager.saveName(getActivity().getApplicationContext(), nameInput.getText().toString());
+        game.getPlayer().setGender(gender);
+        game.getPlayer().setName(nameInput.getText().toString());
     }
 }

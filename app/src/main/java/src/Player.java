@@ -43,6 +43,7 @@ public class Player {
 
         // add items stats to player's stats
         updateStats(item.getBoostAmount());
+        backpack.remove(item);
 
         // subtract price from the player's stats because using an item can't change the money
         stats.setStatByIndex(StatType.MONEY, price);
@@ -66,6 +67,7 @@ public class Player {
 
         // add items stats to player's stats
         updateStats(item.getBoostAmount());
+        backpack.remove(index);
 
         // subtract price from the player's stats because using an item can't change the money
         stats.setStatByIndex(StatType.MONEY, price);

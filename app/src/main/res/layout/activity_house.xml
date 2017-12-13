@@ -65,16 +65,14 @@
             android:text="Name"
             android:textSize="14sp" />
 
-        <ToggleButton
+        <Button
             android:id="@+id/backpackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/content"
             android:layout_marginStart="@dimen/ha_top_btw_margin"
             android:layout_toEndOf="@+id/playerButton"
-            android:text="Backpack"
-            android:textOff="Open Backpack"
-            android:textOn="Close Backpack"
+            android:text="Open backpack"
             android:textSize="8sp" />
 
         <ToggleButton

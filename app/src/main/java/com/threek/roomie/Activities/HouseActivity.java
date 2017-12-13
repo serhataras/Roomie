@@ -1,6 +1,7 @@
 package com.threek.roomie.Activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +25,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 import src.Game;
+import src.Item;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
+import src.Stats;
 
 public class HouseActivity extends AppCompatActivity implements Observer
 {
@@ -35,12 +38,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private BathroomFragment bathroomFragment;
     private BedroomFragment bedroomFragment;
     private LivingRoomFragment livingRoomFragment;
-    private BackpackFragment backpackFragment;
+    //private BackpackFragment backpackFragment;
 
     // ui elements
     private ImageButton playerButton;
     private TextView playerNameText;
-    private ToggleButton backpackButton;
+    private Button backpackButton;
     private ToggleButton muteButton;
 
     private Button changeButton;
@@ -61,7 +64,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         setContentView(R.layout.activity_house);
 
         game = Game.getInstance();
-
+        game.getPlayer().getBackpack().addItem(new Item("xd", null, new Stats(new int[]{1, 2, 3, 4})));
+        game.getPlayer().getBackpack().addItem(new Item("xc", null, new Stats(new int[]{-1, -2, -3, 4})));
         kitchenFragment = new KitchenFragment();
 
         bathroomFragment = new BathroomFragment();
@@ -70,7 +74,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         livingRoomFragment = new LivingRoomFragment();
 
-        backpackFragment = new BackpackFragment();
+        //backpackFragment = new BackpackFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
 
@@ -81,9 +85,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
             }
         });
         playerNameText = (TextView) findViewById(R.id.playerNameText);
-        playerNameText.setText(MemoryManager.loadName(this.getApplicationContext()));
+        playerNameText.setText(game.getPlayer().getName());
 
-        backpackButton = (ToggleButton) findViewById(R.id.backpackButton);
+        backpackButton = (Button) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
 
         muteButton = (ToggleButton) findViewById(R.id.muteBox);
@@ -116,8 +120,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         currentFragment = livingRoomFragment;
         thisRoomText.setText(livingRoomFragment.getName());
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
-        getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
+        //getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
+        //getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
 
         id = new ObservableId(-1);
         id.addObserver(this);
@@ -193,24 +197,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         @Override
         public void onClick(View view)
         {
-            if ((backpackButton.isChecked()))
-            {
-                // hides current fragment
-                getSupportFragmentManager().beginTransaction().hide(currentFragment).commitNow();
-                changeButton.setClickable(false);
-
-                // shows the fragment
-                getSupportFragmentManager().beginTransaction().show(backpackFragment).commitNow();
-            }
-            else
-            {
-                // hides current fragment
-                getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
-                changeButton.setClickable(true);
-
-                // shows the fragment
-                getSupportFragmentManager().beginTransaction().show(currentFragment).commitNow();
-            }
+            Intent intent = new Intent(HouseActivity.this, BackpackActivity.class);
+            startActivity(intent);
         }
     }
 
