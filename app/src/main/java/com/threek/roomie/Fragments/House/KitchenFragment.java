@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.KitchenItems;
+
 
 public class KitchenFragment extends Fragment {
 
@@ -35,10 +37,10 @@ public class KitchenFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_kitchen, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.fridge);
-        buttons[1] = (ImageButton) root.findViewById(R.id.stall);
-        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.table);
+        buttons[KitchenItems.FRIDGE.ordinal()] = (ImageButton) root.findViewById(R.id.fridge);
+        buttons[KitchenItems.STALL.ordinal()] = (ImageButton) root.findViewById(R.id.stall);
+        buttons[KitchenItems.CUPBOARD.ordinal()] = (ImageButton) root.findViewById(R.id.cupboard);
+        buttons[KitchenItems.TABLE.ordinal()] = (ImageButton) root.findViewById(R.id.table);
 
         return root;
     }

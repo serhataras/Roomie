@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.LivingRoomItems;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -40,10 +42,10 @@ public class LivingRoomFragment extends Fragment
 
         View root = inflater.inflate(R.layout.fragment_living_room, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.fridge);
-        buttons[1] = (ImageButton) root.findViewById(R.id.stall);
-        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.table);
+        buttons[LivingRoomItems.TV.ordinal()] = (ImageButton) root.findViewById(R.id.tv);
+        buttons[LivingRoomItems.SOFA.ordinal()] = (ImageButton) root.findViewById(R.id.sofa);
+        buttons[LivingRoomItems.PLANTS.ordinal()] = (ImageButton) root.findViewById(R.id.plants);
+        buttons[LivingRoomItems.BIGTABLE.ordinal()] = (ImageButton) root.findViewById(R.id.bigtable);
 
         return root;
     }

@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.BathroomItems;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -28,7 +30,7 @@ public class BathroomFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        buttons = new ImageButton[4];
+        buttons = new ImageButton[2];
         name = "Bathroom";
     }
 
@@ -40,10 +42,8 @@ public class BathroomFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_bathroom, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.fridge);
-        buttons[1] = (ImageButton) root.findViewById(R.id.stall);
-        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.table);
+        buttons[BathroomItems.TOILET.ordinal()] = (ImageButton) root.findViewById(R.id.toilet);
+        buttons[BathroomItems.BATH.ordinal()] = (ImageButton) root.findViewById(R.id.bath);
 
         return root;
     }
@@ -54,7 +54,7 @@ public class BathroomFragment extends Fragment {
 
     public void addListeners(View.OnClickListener listener)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             buttons[i].setOnClickListener(listener);
         }
@@ -62,7 +62,7 @@ public class BathroomFragment extends Fragment {
 
     public boolean activateButton(int id)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             if (buttons[i].getId() == id)
             {
@@ -75,7 +75,7 @@ public class BathroomFragment extends Fragment {
 
     public void deactivateAllButtons()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             buttons[i].setActivated(false);
         }
