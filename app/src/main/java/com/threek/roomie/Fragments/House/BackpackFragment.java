@@ -53,7 +53,8 @@ public class BackpackFragment extends Fragment {
         useAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO use all the items
+                game.getPlayer().useAllItems();
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -61,7 +62,8 @@ public class BackpackFragment extends Fragment {
         sellAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO sell all the items
+                game.getPlayer().sellAllItems();
+                adapter.notifyDataSetChanged();
             }
         });
         return root;
@@ -111,7 +113,8 @@ public class BackpackFragment extends Fragment {
             useButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    game.getPlayer().sellAnItem(currentItem);
+                    game.getPlayer().useAnItem(position);
+                    adapter.notifyDataSetChanged();
                 }
             });
 
@@ -119,7 +122,8 @@ public class BackpackFragment extends Fragment {
             sellButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO sell the item
+                    game.getPlayer().sellAnItem(position);
+                    adapter.notifyDataSetChanged();
                 }
             });
 

@@ -48,6 +48,29 @@ public class Player {
         stats.setStatByIndex(StatType.MONEY, price);
     }
 
+    public void sellAnItem(int index)
+    {
+        Item item = backpack.getItemByIndex(index);
+
+        if (backpack.hasAnItem(item))
+        {
+            backpack.remove(item);
+            this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
+        }
+    }
+
+    public void useAnItem(int index)
+    {
+        Item item = backpack.getItemByIndex(index);
+        int price = -1 * item.getPrice();
+
+        // add items stats to player's stats
+        updateStats(item.getBoostAmount());
+
+        // subtract price from the player's stats because using an item can't change the money
+        stats.setStatByIndex(StatType.MONEY, price);
+    }
+
     public void sellAllItems()
     {
         int i = backpack.getItemCount();

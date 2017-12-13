@@ -39,7 +39,6 @@ public class Stats {
         {
             this.stats[i] += statsToAdd[i];
         }
-        this.stats = stats.getStat();
     }
 
     public void setStatByIndex(StatType index, int change){
