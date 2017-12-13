@@ -7,4 +7,6 @@ package src;
 public enum LivingRoomItems {
     TV,
     SOFA,
+    PLANTS,
+    BIGTABLE
 }
