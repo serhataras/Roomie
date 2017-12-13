@@ -1,9 +1,8 @@
 package src;
-
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * Created by eliztekcan on 30.10.2017.
@@ -51,21 +50,14 @@ public class Events
 
                 if(sCurrentLine.substring(qInd+2, qInd+3).equals("H") )
                 {
-                    if(sCurrentLine.substring(aInd+1, aInd+2).equals("1")){
-                        opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), true, effect);
-                    }
-                    else if (sCurrentLine.substring(aInd+1, aInd+2).equals("0")) {
-                        opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), false, effect);
-                    }
+                    opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+
                 }
                 else if(sCurrentLine.substring(qInd+2, qInd+3).equals("O") )
                 {
-                    if(sCurrentLine.substring(aInd+1, aInd+2).equals("1")){
-                        opt1 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(starInd, lineInd), true, effect);
-                    }
-                    else if (sCurrentLine.substring(aInd+1, aInd+2).equals("0")){
-                        opt1 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(starInd, lineInd), false, effect);
-                    }
+
+                    opt1 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+
                 }
 
 
@@ -78,20 +70,13 @@ public class Events
 
                 if(sCurrentLine.substring(qInd+3, qInd+4).equals("H"))
                 {
-                    if(sCurrentLine.substring(aInd+3, aInd+4).equals("1"))
-                        opt2 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(lineInd, qInd), true, effect);
-                    else if (sCurrentLine.substring(aInd+3, aInd+4).equals("0"))
-                        opt2 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(lineInd, qInd), false, effect);
+                    opt2 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("O") )
                 {
-                    if(sCurrentLine.substring(aInd+3, aInd+4).equals("1")) {
-                        System.out.print(sCurrentLine.substring(aInd + 3, aInd + 4));
-                        opt2 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(lineInd, qInd), true, effect);
-                    }
-                    else if (sCurrentLine.substring(aInd+3, aInd+4).equals("0")) {
-                        opt2 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(lineInd, qInd), false, effect);
-                    }
+                    opt2 = new Option(OptionType.OUTDOOR_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+
                 }
                 Option[] arr = new Option[Event.getMaxOption()];
                 arr[0] = opt1;
@@ -100,13 +85,6 @@ public class Events
                 index++;
 
             }
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        } finally {
-
             try {
 
                 if (br != null)
@@ -121,6 +99,10 @@ public class Events
 
             }
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return allEvents;
@@ -145,9 +127,9 @@ public class Events
     }
 
     //test
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         Events e = new Events();
         System.out.println(e);
-    }*/
+    }
 
 }

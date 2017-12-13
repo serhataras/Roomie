@@ -1,5 +1,4 @@
 package src;
-
 import java.util.ArrayList;
 
 /**
@@ -23,6 +22,10 @@ public class Backpack {
         return itemList.remove(index);
     }
 
+    public void insert(Item item){
+        itemList.add(item);
+    }
+
     public ArrayList<Item> getItemList()
     {
         return itemList;
@@ -40,6 +43,25 @@ public class Backpack {
 
     public boolean hasAnItem(Item item){
         //checks if the given item is in the backpack
-       return itemList.contains(item) == true;
+        return itemList.contains(item) == true;
+    }
+
+    public boolean isEmpty(){
+        return itemList.isEmpty();
+    }
+
+    public int getItemCount(){
+        return itemList.size();
+    }
+
+    public Item getItemByIndex(int i){
+        return itemList.get(i);
+    }
+
+    @Override
+    public String toString() {
+        return "Backpack{" +
+                "itemList=" + itemList +
+                '}';
     }
 }

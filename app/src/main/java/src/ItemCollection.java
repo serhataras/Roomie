@@ -1,9 +1,6 @@
 package src;
 
-import android.content.ClipData;
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 

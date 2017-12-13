@@ -15,8 +15,7 @@ public class Randomizer {
 
     public Item throwItem(){
         Random rand = new Random();
-        Item[] items = new Item[itemCollection.getMaxItem()];
-        items = itemCollection.getItems();
+        Item[] items = itemCollection.getItems();
         return items[rand.nextInt(itemCollection.getMaxItem())];
     }
 
@@ -29,9 +28,9 @@ public class Randomizer {
     }
 
     //for testing
-    /*public static void main(String[] args){
-       Randomizer r = new Randomizer();
+    public static void main(String[] args){
+        Randomizer r = new Randomizer();
         for(int k = 0; k< 12; k++)
             System.out.println(r.throwItem());
-    }*/
+    }
 }

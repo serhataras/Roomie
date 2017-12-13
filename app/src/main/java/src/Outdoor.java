@@ -9,19 +9,16 @@ public class Outdoor
 {
     private String name;
     private Drawable background;
-    private boolean challengeSuccess;
 
     Outdoor()
     {
         name             = "";
         background       = null;
-        challengeSuccess = false;
     }
 
-    Outdoor(String name, Drawable background, boolean challengeSuccess){
+    Outdoor(String name, Drawable background){
         this.name               = name;
         this.background         = background;
-        this.challengeSuccess   = challengeSuccess;
     }
 
     public String getName()
@@ -39,18 +36,7 @@ public class Outdoor
         return background;
     }
 
-    public void setBackground(Drawable background)
-    {
+    public void setBackground(Drawable background) {
         this.background = background;
-    }
-
-    public boolean isChallengeSuccess()
-    {
-        return challengeSuccess;
-    }
-
-    public void setChallengeSuccess(boolean challengeSuccess)
-    {
-        this.challengeSuccess = challengeSuccess;
     }
 }

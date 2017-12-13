@@ -1,7 +1,4 @@
 package src;
-
-import android.text.style.TtsSpan;
-
 /**
  * Created by eliztekcan on 2.11.2017.
  */
@@ -40,17 +37,17 @@ public class Game {
         //TO DO
     }
 
-    public void restoreStats(){
+    /*public void restoreStats(){
         //initialize all stats to max stat
         for(int i = 0; i < 4; i++)
-        (player.getStats())[i].setStat(Stats.MAX_STAT);
+            (player.getStats())[i].setStat(Stats.getMaxStat());
     }
 
     public void refreshStats(Option option){
         //refreshes the stats with respect to the given option
         for(int i = 0; i < 4; i++)
             (player.getStats())[i].setStat((player.getStats()[i].getStat() + option.getEffect()[i]));
-    }
+    }*/
 
     public void changeCurrentEvent(){
         //TO DO
@@ -61,7 +58,7 @@ public class Game {
     }
 
     public Item generateRandomItem(){
-       return random.throwItem();
+        return random.throwItem();
     }
 
 
