@@ -11,9 +11,10 @@ public class Room
     private HouseItem[] items;
     private Drawable background;
 
+    public static final int NUMBER_OF_ITEMS = 4;
     Room()
     {
-        items       = new HouseItem[3];
+        items       = new HouseItem[NUMBER_OF_ITEMS];
         background  = null;
     }
 

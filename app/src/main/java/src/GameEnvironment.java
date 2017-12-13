@@ -8,9 +8,11 @@ public class GameEnvironment
     private Outdoor[] outdoor;
     private House house;
 
+    public static final int OUTDOOR_NUMBER = 4;
+
     public GameEnvironment()
     {
-        outdoor     = new Outdoor[4];
+        outdoor     = new Outdoor[OUTDOOR_NUMBER];
         house       = new House();
     }
 
@@ -21,9 +23,9 @@ public class GameEnvironment
         this.outdoor    = outdoor;
     }
 
-    public Outdoor[] getOutdoor()
+    public Outdoor getOutdoorEnvironment(OutdoorEnvironment environment)
     {
-        return outdoor;
+        return outdoor[environment.ordinal()];
     }
 
     public void setOutdoor(Outdoor[] outdoor)
