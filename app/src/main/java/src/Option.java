@@ -1,7 +1,5 @@
 package src;
-
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Created by eliztekcan on 26.10.2017.

@@ -1,5 +1,4 @@
 package src;
-
 import android.graphics.drawable.Drawable;
 
 import java.util.Arrays;
@@ -9,18 +8,6 @@ import java.util.Arrays;
  */
 public class Item {
     private String name;
-
-    @Override
-    public String toString()
-    {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", image=" + image +
-                ", price=" + price +
-                ", boostAmount=" + Arrays.toString(boostAmount) +
-                '}';
-    }
-
     Drawable image;
     int price;
     int[] boostAmount;
@@ -82,4 +69,16 @@ public class Item {
     {
         return price;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", image=" + image +
+                ", price=" + price +
+                ", boostAmount=" + Arrays.toString(boostAmount) +
+                '}';
+    }
+
 }

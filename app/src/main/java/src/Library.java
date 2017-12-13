@@ -3,6 +3,7 @@ package src;
 /**
  * Created by eliztekcan on 27.10.2017.
  */
+
 public class Library extends Outdoor
 {
     /*
@@ -16,10 +17,6 @@ public class Library extends Outdoor
     private final int HIGHEST_DB = 30;
     private int currentDb;
 
-    @Override
-    public boolean isChallengeSuccess() {
-        return super.isChallengeSuccess();
-    }
 
     public int getHIGHEST_DB() {
         return HIGHEST_DB;

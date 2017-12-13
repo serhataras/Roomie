@@ -79,10 +79,10 @@ public class Cafe extends Outdoor
 
 
     //for testing
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         Cafe cafe = new Cafe();
         for(int k = 0; k< 10; k++)
             System.out.println(cafe.menu[k]);
-    }*/
+    }
 
 }
