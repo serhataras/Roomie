@@ -1,5 +1,7 @@
 package src;
 
+import src.Enums.OptionType;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */

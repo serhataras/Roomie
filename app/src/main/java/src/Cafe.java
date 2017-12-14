@@ -13,13 +13,13 @@ public class Cafe extends Outdoor
     private final int MAX_FOOD = 10;
     private final String FILE_NAME = "src/Other/Menu.txt";
 
-    Cafe()
+    public Cafe()
     {
         menu = new FoodItem[MAX_FOOD];
         createMenu();
     }
 
-    Cafe(FoodItem[] menu)
+    public Cafe(FoodItem[] menu)
     {
         this.menu = menu;
     }

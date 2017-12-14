@@ -31,7 +31,7 @@ public class Library extends Outdoor
 
     @Override
     public boolean isChallengeSuccess(){
-        if(getCurrentDb()>HIGHEST_DB)
+        if(getCurrentDb() > HIGHEST_DB)
             return false;
         else
             return true;

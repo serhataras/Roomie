@@ -1,5 +1,8 @@
 package src;
 
+import src.Enums.Gender;
+import src.Enums.StatType;
+
 /**
  * Created by eliztekcan on 26.10.2017.
  */

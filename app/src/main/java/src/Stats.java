@@ -5,6 +5,8 @@ package src;
  */
 import java.util.Arrays;
 
+import src.Enums.StatType;
+
 public class Stats
 {
     private static final int MAX_STAT = 10;

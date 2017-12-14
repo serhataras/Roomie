@@ -10,10 +10,9 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
-import src.BedroomItems;
+import src.Enums.BedroomItems;
 import src.Game;
 import src.House;
-import src.RoomType;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -11,8 +11,7 @@ import com.threek.roomie.R;
 
 import src.Game;
 import src.House;
-import src.KitchenItems;
-import src.RoomType;
+import src.Enums.KitchenItems;
 
 
 public class KitchenFragment extends Fragment {

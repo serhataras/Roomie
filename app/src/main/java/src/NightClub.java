@@ -6,11 +6,9 @@ package src;
 
 public class NightClub extends Outdoor
 {
-
     //TO DO
     private final int HIGHEST_SHAKE = 100;
     private int shakeAmount;
-
 
 
     public int getHIGHEST_SHAKE()
@@ -30,7 +28,7 @@ public class NightClub extends Outdoor
 
     @Override
     public boolean isChallengeSuccess() {
-       if(getShakeAmount()>getHIGHEST_SHAKE()){
+       if(getShakeAmount() > getHIGHEST_SHAKE()){
            return true;
        }
        else

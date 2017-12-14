@@ -1,6 +1,11 @@
 package src;
 
-import com.threek.roomie.R;
+import src.Enums.BathroomItems;
+import src.Enums.BedroomItems;
+import src.Enums.KitchenItems;
+import src.Enums.LivingRoomItems;
+import src.Enums.OptionType;
+import src.Enums.RoomType;
 
 /**
  * Created by eliztekcan on 27.10.2017.

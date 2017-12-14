@@ -10,14 +10,15 @@ public class Outdoor
     private String name;
     private Drawable background;
     private boolean challengeSuccess;
-    Outdoor()
+
+    public Outdoor()
     {
         name             = "";
         background       = null;
         challengeSuccess = false;
     }
 
-    Outdoor(String name, Drawable background){
+    public Outdoor(String name, Drawable background){
         this.name               = name;
         this.background         = background;
     }

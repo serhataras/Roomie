@@ -1,7 +1,7 @@
 package src;
 import android.graphics.drawable.Drawable;
 
-import java.util.Arrays;
+import src.Enums.StatType;
 
 /**
  * Created by eliztekcan on 26.10.2017.

@@ -1,10 +1,12 @@
 package src;
-import java.util.Arrays;
+
+import src.Enums.OptionType;
 
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Option {
+public class Option
+{
     private OptionType optionType;
     private String optionStr;
     private int id;

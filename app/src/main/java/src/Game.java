@@ -2,6 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
+import src.Enums.OptionType;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 
@@ -43,18 +44,22 @@ public class Game
         return instance;
     }
 
-    public void activateButton(int buttonId)
+    public void activateButton()
     {
+        int[] options = currentEvent.getValue().getOptionsId();
+
         House houseToSearch = gameEnvironment.getHouse();
         for (int i = 0; i < House.NUMBER_OF_ROOMS; i++)
         {
             for (int j = 0; j < Room.NUMBER_OF_ITEMS; j++)
             {
-                int itemId = houseToSearch.getRooms()[i].getItems()[j].getId();
-                if (itemId == buttonId)
+                if (houseToSearch.getRooms()[i] != null && houseToSearch.getRooms()[i].getItems()[j] != null)
                 {
-                    houseToSearch.getRooms()[i].getItems()[j].setClickable(true);
-                    return;
+                    int itemId = houseToSearch.getRooms()[i].getItems()[j].getId();
+                    if (itemId == options[0] || itemId == options[1])
+                    {
+                        houseToSearch.getRooms()[i].getItems()[j].setClickable(true);
+                    }
                 }
             }
         }
@@ -63,11 +68,15 @@ public class Game
     public void deactivateAllButtons()
     {
         House houseToSearch = gameEnvironment.getHouse();
+
         for (int i = 0; i < House.NUMBER_OF_ROOMS; i++)
         {
             for (int j = 0; j < Room.NUMBER_OF_ITEMS; j++)
             {
-                houseToSearch.getRooms()[i].getItems()[j].setClickable(false);
+                if (houseToSearch.getRooms()[i] != null && houseToSearch.getRooms()[i].getItems()[j] != null)
+                {
+                    houseToSearch.getRooms()[i].getItems()[j].setClickable(false);
+                }
             }
         }
     }
@@ -77,14 +86,14 @@ public class Game
         player.updateStats(stats);
     }
 
-    public void changeCurrentEvent(int pressedButtonId)
+    public void changeCurrentEvent()
     {
-        // TODO
+        // TODO pressedButtonId to change the event
     }
 
-    public boolean checkExtremeOption(int buttonId)
+    public boolean checkExtremeOption()
     {
-        return currentEvent.getValue().isOptionExtreme(buttonId);
+        return currentEvent.getValue().isOptionExtreme(pressedButtonId.getValue());
     }
 
     public Item addRandomItemToBackPack()
@@ -99,23 +108,25 @@ public class Game
         return currentEvent.getValue().getQuestion();
     }
 
-    public Stats chooseHouseOption(int buttonId)
+    public Stats chooseHouseOption()
     {
-        Stats stats = currentEvent.getValue().chooseAnOption(buttonId).getEffect();
+        Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
         refreshStats(stats);
         return stats;
     }
 
-    public Stats chooseOutdoorOption(int buttonId, boolean success)
+    public Stats chooseOutdoorOption(boolean success)
     {
-        Stats stats = currentEvent.getValue().chooseAnOption(buttonId).getEffect();
+        Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
         if (success)
         {
             refreshStats(stats);
             addRandomItemToBackPack();
             return stats;
         }
-        return null;
+
+        stats.makeStatsZero();
+        return stats;
     }
 
     public ArrayList<Item> getBackPackItems()
@@ -128,9 +139,9 @@ public class Game
         return currentEvent.getValue().getOptionsId();
     }
 
-    public OptionType whichOption(int buttonId)
+    public OptionType whichOption()
     {
-        return currentEvent.getValue().whichOption(buttonId);
+        return currentEvent.getValue().whichOption(pressedButtonId.getValue());
     }
 
     public QuizQuestion sendQuizQuestion()

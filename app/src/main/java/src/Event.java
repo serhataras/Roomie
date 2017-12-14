@@ -1,11 +1,13 @@
 package src;
-import java.util.Arrays;
+
+import src.Enums.OptionType;
 
 /**
  * Created by eliztekcan on 30.10.2017.
  */
 
-public class Event {
+public class Event
+{
     private String question;
     private Option[] optionArray;
     private  static final int MAX_OPTION = 2;

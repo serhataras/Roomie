@@ -1,4 +1,4 @@
-package src;
+package src.Enums;
 
 /**
  * Created by alkislar on 13.12.2017.

@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import src.Enums.StatType;
+
 /**
  * Created by eliztekcan on 26.10.2017.
  */

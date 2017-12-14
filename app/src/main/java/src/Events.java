@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import src.Enums.OptionType;
+import src.Enums.StatType;
+
 /**
  * Created by eliztekcan on 30.10.2017.
  */
