@@ -17,7 +17,6 @@ public class Library extends Outdoor
     private final int HIGHEST_DB = 30;
     private int currentDb;
 
-
     public int getHIGHEST_DB() {
         return HIGHEST_DB;
     }
@@ -28,5 +27,13 @@ public class Library extends Outdoor
 
     public int getCurrentDb() {
         return currentDb;
+    }
+
+    @Override
+    public boolean isChallengeSuccess(){
+        if(getCurrentDb()>HIGHEST_DB)
+            return false;
+        else
+            return true;
     }
 }

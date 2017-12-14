@@ -5,14 +5,14 @@ package src;
  */
 public class GameEnvironment
 {
-    private Outdoor[] outdoor;
+    private Outdoor[] outdoors;
     private House house;
 
     public static final int OUTDOOR_NUMBER = 4;
 
     public GameEnvironment()
     {
-        outdoor     = new Outdoor[OUTDOOR_NUMBER];
+        outdoors     = new Outdoor[OUTDOOR_NUMBER];
         house       = new House();
     }
 
@@ -20,19 +20,22 @@ public class GameEnvironment
     public GameEnvironment(Outdoor[] outdoor, House house)
     {
         this.house      = house;
-        this.outdoor    = outdoor;
+        this.outdoors    = outdoor;
     }
+
+
 
     public Outdoor getOutdoorEnvironment(OptionType environment)
     {
         if (environment != OptionType.HOUSE_OPTION)
-            return outdoor[environment.ordinal()];
-        return null;
+            return outdoors[environment.ordinal()];
+        else
+            return null;//Creates bugs
     }
 
     public void setOutdoor(Outdoor[] outdoor)
     {
-        this.outdoor = outdoor;
+        this.outdoors = outdoor;
     }
 
     public House getHouse()

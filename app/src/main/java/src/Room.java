@@ -10,6 +10,7 @@ public class Room
 {
     private HouseItem[] items;
     private Drawable background;
+    private String name;
 
     public static final int NUMBER_OF_ITEMS = 4;
 
@@ -19,12 +20,14 @@ public class Room
         for (int i = 0; i < NUMBER_OF_ITEMS; i++)
             items[i] = new HouseItem();
         background  = null;
+        name="";
     }
 
-    public Room(HouseItem[] items, Drawable background)
+    public Room(HouseItem[] items, Drawable background, String Name)
     {
         this.items      = items;
         this.background = background;
+        this.name=name;
     }
 
 

@@ -8,6 +8,7 @@ public class QuizQuestion {
     private String[] options;
     private int correctAnswerIndex;
     private String question;
+    private int grades;
 
     QuizQuestion()
     {
@@ -45,6 +46,14 @@ public class QuizQuestion {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public int getGrades() {
+        return grades;
+    }
+
+    public void setGrades(int grades) {
+        this.grades = grades;
     }
 
     @Override

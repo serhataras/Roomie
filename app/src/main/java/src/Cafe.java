@@ -19,6 +19,11 @@ public class Cafe extends Outdoor
         createMenu();
     }
 
+    Cafe(FoodItem[] menu)
+    {
+        this.menu = menu;
+    }
+
     private void createMenu() {
         BufferedReader br = null;
         FileReader fr = null;
@@ -60,11 +65,6 @@ public class Cafe extends Outdoor
 
     }
 
-    Cafe(FoodItem[] menu)
-    {
-        this.menu = menu;
-    }
-
     public FoodItem[] getMenu() {
         return menu;
     }
@@ -76,7 +76,6 @@ public class Cafe extends Outdoor
     public int getMAX_FOOD() {
         return MAX_FOOD;
     }
-
 
     //for testing
     public static void main(String[] args){
