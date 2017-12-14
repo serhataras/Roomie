@@ -5,43 +5,50 @@ package src;
  */
 import java.util.Arrays;
 
-/**
- * Created by eliztekcan on 26.10.2017.
- */
-public class Stats {
-    private  int[] stats;
-
+public class Stats
+{
     private static final int MAX_STAT = 10;
     private static final int MIN_STAT = 0;
     public static final int NUMBER_OF_STATS = 4;
 
-    public Stats(int[] stats){
+    private  int[] stats;
+
+    public Stats(int[] stats)
+    {
         //set all stats to given int array
         this.stats = stats;
     }
 
-    public Stats(){
+    public Stats()
+    {
         //set all stats to maximum
         stats = new int[NUMBER_OF_STATS];
         makeStatsZero();
     }
 
-    public int[] getStat() {
+    public int[] getStat()
+    {
         return stats;
     }
 
-    // this method adds new values to stats
+    // this method adds new values to the stats
     public void updateStat(Stats stats)
     {
-        int[] statsToAdd = stats.getStat();
-
-        for (int i = 0; i < NUMBER_OF_STATS; i++)
+        if (stats != null)
         {
-            this.stats[i] += statsToAdd[i];
+            int[] statsToAdd = stats.getStat();
+
+            for (int i = 0; i < NUMBER_OF_STATS; i++)
+            {
+                this.stats[i] += statsToAdd[i];
+                checkBoundaries(i);
+            }
         }
     }
 
-    public void setStatByIndex(StatType index, int change){
+    // this method adds new value to a specific stat
+    public void setStatByIndex(StatType index, int change)
+    {
         stats[index.ordinal()] += change;
         checkBoundaries(index.ordinal());
     }
@@ -52,24 +59,23 @@ public class Stats {
             this.stats[i] = MIN_STAT;
     }
 
-    public void checkBoundaries(int index) {
+    public void checkBoundaries(int index)
+    {
         if (stats[index] > MAX_STAT)
             stats[index] = MAX_STAT;
+
         if (stats[index] < 0)
             stats[index] = 0;
     }
 
-    public int getStatByIndex(StatType index){
+    public int getStatByIndex(StatType index)
+    {
         return stats[index.ordinal()];
     }
 
-    public static int getMaxStat() {
-        return MAX_STAT;
-    }
-
-
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Stats{" +
                 "stats=" + Arrays.toString(stats) +
                 '}';

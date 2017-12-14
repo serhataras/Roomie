@@ -4,20 +4,25 @@ import java.util.Arrays;
 /**
  * Created by eliztekcan on 28.10.2017.
  */
-public class QuizQuestion {
+public class QuizQuestion
+{
     private String[] options;
     private int correctAnswerIndex;
     private String question;
     private int grades;
 
-    QuizQuestion()
+    public QuizQuestion()
     {
-        options             = new String[4];
-        correctAnswerIndex  = 0;
-        question            = "";
+        options = new String[4];
+        for (int i = 0; i < 4; i++)
+            options[i] = "";
+
+        correctAnswerIndex = 0;
+        question = "";
+        grades = 0;
     }
 
-    QuizQuestion(String[] options, int correctAnswerIndex, String question)
+    public QuizQuestion(String[] options, int correctAnswerIndex, String question)
     {
         this.options            = options;
         this.correctAnswerIndex = correctAnswerIndex;

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Backpack {
+public class Backpack
+{
     private ArrayList<Item> itemList;
 
     Backpack()
@@ -41,7 +42,8 @@ public class Backpack {
         itemList.add(item);
     }
 
-    public boolean hasAnItem(Item item){
+    public boolean hasAnItem(Item item)
+    {
         //checks if the given item is in the backpack
         return itemList.contains(item) == true;
     }

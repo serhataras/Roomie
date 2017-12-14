@@ -7,16 +7,18 @@ import java.io.IOException;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class ItemCollection {
-
+public class ItemCollection
+{
     private static final int MAX_ITEM = 12;
     private Item[] items;
     private Stats boost;
     private static final String FILE_NAME= "/src/Other/Backpack.txt";
 
-    public ItemCollection(){
+    public ItemCollection()
+    {
         items = new Item[MAX_ITEM];
         boost = new Stats();
+
         //Add items to collection
         createCollection();
     }
@@ -45,7 +47,8 @@ public class ItemCollection {
         return boost;
     }
 
-    public void createCollection(){
+    public void createCollection()
+    {
         BufferedReader br = null;
         FileReader fr = null;
 
@@ -55,7 +58,8 @@ public class ItemCollection {
 
             String sCurrentLine;
             int index = 0;
-            while ((sCurrentLine = br.readLine()) != null && index < MAX_ITEM) {
+            while ((sCurrentLine = br.readLine()) != null && index < MAX_ITEM)
+            {
                 int starInd = sCurrentLine.indexOf('*');
 
                 setBoostArray(Integer.parseInt(sCurrentLine.substring(starInd+1,starInd+3).replaceAll("\\s+","")),

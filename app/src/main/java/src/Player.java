@@ -3,7 +3,8 @@ package src;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Player {
+public class Player
+{
     private String name;
     private Gender gender;
     private Stats stats;
@@ -39,14 +40,17 @@ public class Player {
 
     public void useAnItem(Item item)
     {
-        int price = -1 * item.getPrice();
+        if (backpack.hasAnItem(item))
+        {
+            int price = -1 * item.getPrice();
 
-        // add items stats to player's stats
-        updateStats(item.getBoostAmount());
-        backpack.remove(item);
+            // add items stats to player's stats
+            updateStats(item.getBoostAmount());
+            backpack.remove(item);
 
-        // subtract price from the player's stats because using an item can't change the money
-        stats.setStatByIndex(StatType.MONEY, price);
+            // subtract price from the player's stats because using an item can't change the money
+            stats.setStatByIndex(StatType.MONEY, price);
+        }
     }
 
     public void sellAnItem(int index)
@@ -55,7 +59,7 @@ public class Player {
 
         if (backpack.hasAnItem(item))
         {
-            backpack.remove(item);
+            backpack.remove(index);
             this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
         }
     }
@@ -63,20 +67,24 @@ public class Player {
     public void useAnItem(int index)
     {
         Item item = backpack.getItemByIndex(index);
-        int price = -1 * item.getPrice();
+        if (backpack.hasAnItem(item))
+        {
+            int price = -1 * item.getPrice();
 
-        // add items stats to player's stats
-        updateStats(item.getBoostAmount());
-        backpack.remove(index);
+            // add items stats to player's stats
+            updateStats(item.getBoostAmount());
+            backpack.remove(index);
 
-        // subtract price from the player's stats because using an item can't change the money
-        stats.setStatByIndex(StatType.MONEY, price);
+            // subtract price from the player's stats because using an item can't change the money
+            stats.setStatByIndex(StatType.MONEY, price);
+        }
     }
 
     public void sellAllItems()
     {
         int i = backpack.getItemCount();
-        while(i > 0){
+        while (i > 0)
+        {
             i--;
             sellAnItem(backpack.getItemByIndex(0));
         }
@@ -84,7 +92,8 @@ public class Player {
 
     public void useAllItems(){
         int i = backpack.getItemCount();
-        while(i > 0){
+        while (i > 0)
+        {
             i--;
             useAnItem(backpack.getItemByIndex(0));
         }

@@ -15,12 +15,13 @@ public class HouseItem
     public HouseItem()
     {
         name        = "";
-        id          = 0;
+        id          = -1;
         image       = null;
         clickable   = false;
     }
 
-    public HouseItem(String name, int id, Drawable image, boolean clickable){
+    public HouseItem(String name, int id, Drawable image, boolean clickable)
+    {
         this.name       = name;
         this.id         = id;
         this.image      = image;

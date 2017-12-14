@@ -5,15 +5,17 @@ import java.util.Random;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Randomizer {
+public class Randomizer
+{
     private ItemCollection itemCollection;
 
-    Randomizer(){
+    public Randomizer()
+    {
         itemCollection = new ItemCollection();
-        Random rand = new Random();
     }
 
-    public Item throwItem(){
+    public Item throwItem()
+    {
         Random rand = new Random();
         Item[] items = itemCollection.getItems();
         return items[rand.nextInt(itemCollection.getMaxItem())];

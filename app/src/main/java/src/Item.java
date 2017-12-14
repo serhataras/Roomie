@@ -6,7 +6,8 @@ import java.util.Arrays;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Item {
+public class Item
+{
     private String name;
     private Drawable image;
     private Stats boostAmount;
@@ -17,7 +18,7 @@ public class Item {
         name = "";
         image = null;
         boostAmount = new Stats();
-        price = 0;
+        price = boostAmount.getStatByIndex(StatType.MONEY);
     }
 
     public Item(String name, Drawable image, Stats boostAmount)
