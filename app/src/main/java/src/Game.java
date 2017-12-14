@@ -2,17 +2,19 @@ package src;
 
 import java.util.ArrayList;
 
+import src.Observable.ObservableEvent;
+
 /**
  * Created by eliztekcan on 2.11.2017.
  */
 
-public class Game {
-
+public class Game
+{
     private Player player;
     private GameEnvironment gameEnvironment;
     private Randomizer random;
     private Events events;
-    private Event currentEvent;
+    private ObservableEvent currentEvent;
     private int pressedButtonId;
     private boolean gameHasStarted;
 
@@ -26,7 +28,7 @@ public class Game {
         gameEnvironment = new GameEnvironment();
         random = new Randomizer();
         events = new Events();
-        currentEvent = null;
+        currentEvent = new ObservableEvent(null);
         pressedButtonId = -1;
         gameHasStarted = true;
     }
@@ -81,7 +83,7 @@ public class Game {
 
     public boolean checkExtremeOption(int buttonId)
     {
-        return currentEvent.isOptionExtreme(buttonId);
+        return currentEvent.getValue().isOptionExtreme(buttonId);
     }
 
     public Item addRandomItemToBackPack()
@@ -93,19 +95,19 @@ public class Game {
 
     public String sendEventQuestion()
     {
-        return currentEvent.getQuestion();
+        return currentEvent.getValue().getQuestion();
     }
 
     public Stats chooseHouseOption(int buttonId)
     {
-        Stats stats = currentEvent.chooseAnOption(buttonId).getEffect();
+        Stats stats = currentEvent.getValue().chooseAnOption(buttonId).getEffect();
         refreshStats(stats);
         return stats;
     }
 
     public Stats chooseOutdoorOption(int buttonId, boolean success)
     {
-        Stats stats = currentEvent.chooseAnOption(buttonId).getEffect();
+        Stats stats = currentEvent.getValue().chooseAnOption(buttonId).getEffect();
         if (success)
         {
             refreshStats(stats);
@@ -122,22 +124,22 @@ public class Game {
 
     public int[] getActivatedButtons()
     {
-        return currentEvent.getOptionsId();
+        return currentEvent.getValue().getOptionsId();
     }
 
     public OptionType whichOption(int buttonId)
     {
-        return currentEvent.whichOption(buttonId);
+        return currentEvent.getValue().whichOption(buttonId);
     }
 
     public QuizQuestion sendQuizQuestion()
     {
-        return ((School) gameEnvironment.getOutdoorEnvironment(OutdoorEnvironment.SCHOOL_ENVIRONEMENT)).getRandomQuestion();
+        return ((School) gameEnvironment.getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getRandomQuestion();
     }
 
     public FoodItem[] getFoodMenu()
     {
-        return ((Cafe) gameEnvironment.getOutdoorEnvironment(OutdoorEnvironment.CAFE_ENVIRONMENT)).getMenu();
+        return ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu();
     }
 
     public Player getPlayer() {
@@ -156,7 +158,7 @@ public class Game {
         return events;
     }
 
-    public Event getCurrentEvent() {
+    public ObservableEvent getCurrentEvent() {
         return currentEvent;
     }
 

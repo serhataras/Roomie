@@ -56,7 +56,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
     private Game game;
     private ObservableId id;
-    private ObservableEvent currentEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,9 +122,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
         //getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
         //getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
 
+        // add observers
         id = new ObservableId(-1);
         id.addObserver(this);
-        currentEvent = null;
+        game.getCurrentEvent().addObserver(this);
     }
 
     @Override
@@ -256,7 +256,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
                 // finish the game
         }
-        else if (observable == currentEvent)
+        else if (observable == game.getCurrentEvent())
         {
             // deactivate all buttons in the house fragments
 

@@ -23,9 +23,11 @@ public class GameEnvironment
         this.outdoor    = outdoor;
     }
 
-    public Outdoor getOutdoorEnvironment(OutdoorEnvironment environment)
+    public Outdoor getOutdoorEnvironment(OptionType environment)
     {
-        return outdoor[environment.ordinal()];
+        if (environment != OptionType.HOUSE_OPTION)
+            return outdoor[environment.ordinal()];
+        return null;
     }
 
     public void setOutdoor(Outdoor[] outdoor)
