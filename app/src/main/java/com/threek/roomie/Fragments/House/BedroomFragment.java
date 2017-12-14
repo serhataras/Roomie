@@ -81,7 +81,8 @@ public class BedroomFragment extends Fragment {
         {
             if (buttons[i].getId() == id)
             {
-                buttons[i].setActivated(true);
+                buttons[i].setEnabled(true);
+                buttons[i].setAlpha(1f);
                 return true;
             }
         }
@@ -92,7 +93,8 @@ public class BedroomFragment extends Fragment {
     {
         for (int i = 0; i < 4; i++)
         {
-            buttons[i].setActivated(false);
+            buttons[i].setEnabled(false);
+            buttons[i].setAlpha(0.3f);
         }
     }
 }

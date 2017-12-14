@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -219,6 +220,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         if (observable == game.getPressedButtonId())
         {
+            game.changeCurrentEvent(1);
             // if the option is not extreme
                 // get the option type from the current event
 
@@ -248,11 +250,28 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
         else if (observable == game.getCurrentEvent())
         {
-            // deactivate all buttons in the house fragments
+            int id1 = game.getActivatedButtons()[0];
+            int id2 = game.getActivatedButtons()[1];
+
+            // deactivate all buttons in the house fragment
+            livingRoomFragment.deactivateAllButtons();
+            bedroomFragment.deactivateAllButtons();
+            bathroomFragment.deactivateAllButtons();
+            kitchenFragment.deactivateAllButtons();
 
             // activate only the event related buttons
+            livingRoomFragment.activateButton(id1);
+            bedroomFragment.activateButton(id1);
+            bathroomFragment.activateButton(id1);
+            kitchenFragment.activateButton(id1);
+
+            livingRoomFragment.activateButton(id2);
+            bedroomFragment.activateButton(id2);
+            bathroomFragment.activateButton(id2);
+            kitchenFragment.activateButton(id2);
 
             // show the question
+            showEventDialog(game.getCurrentEvent().getValue().getQuestion());
         }
     }
 }

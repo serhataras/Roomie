@@ -94,9 +94,8 @@ public class LoginFragment extends Fragment {
     private void saveProperties()
     {
         // saving user inputs
-        //MemoryManager.saveGender(getActivity().getApplicationContext(), gender);
-        //MemoryManager.saveName(getActivity().getApplicationContext(), nameInput.getText().toString());
         game.getPlayer().setGender(gender);
         game.getPlayer().setName(nameInput.getText().toString());
+        game.setGameHasStarted(true);
     }
 }

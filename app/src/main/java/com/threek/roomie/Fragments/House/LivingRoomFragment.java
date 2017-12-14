@@ -3,6 +3,7 @@ package com.threek.roomie.Fragments.House;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class LivingRoomFragment extends Fragment
         buttons[LivingRoomItems.SOFA.ordinal()].setId(House.SOFA_ID);
         buttons[LivingRoomItems.PLANTS.ordinal()].setId(House.PLANTS_ID);
         buttons[LivingRoomItems.BIGTABLE.ordinal()].setId(House.BIGTABLE_ID);
+
         return root;
     }
 
@@ -79,7 +81,8 @@ public class LivingRoomFragment extends Fragment
         {
             if (buttons[i].getId() == id)
             {
-                buttons[i].setActivated(true);
+                buttons[i].setEnabled(true);
+                buttons[i].setAlpha(1f);
                 return true;
             }
         }
@@ -90,7 +93,8 @@ public class LivingRoomFragment extends Fragment
     {
         for (int i = 0; i < 4; i++)
         {
-            buttons[i].setActivated(false);
+            buttons[i].setEnabled(false);
+            buttons[i].setAlpha(0.3f);
         }
     }
 }
