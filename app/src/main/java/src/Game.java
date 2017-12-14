@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Observer;
 
 import src.Enums.OptionType;
 import src.Observable.ObservableEvent;
@@ -190,5 +191,16 @@ public class Game
     public void setId(int id)
     {
         pressedButtonId.setValue(id);
+    }
+
+    public void addObservers(Observer observer)
+    {
+        pressedButtonId.addObserver(observer);
+        currentEvent.addObserver(observer);
+    }
+
+    public String getEventQuestion()
+    {
+        return currentEvent.getValue().getQuestion();
     }
 }

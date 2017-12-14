@@ -25,10 +25,12 @@ import com.threek.roomie.R;
 import java.util.Observable;
 import java.util.Observer;
 
+import src.Enums.OptionType;
 import src.Game;
 import src.Item;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
+import src.Option;
 import src.Stats;
 
 public class HouseActivity extends AppCompatActivity implements Observer
@@ -113,8 +115,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         thisRoomText.setText(livingRoomFragment.getName());
 
         // add observers
-        game.getPressedButtonId().addObserver(this);
-        game.getCurrentEvent().addObserver(this);
+        game.addObservers(this);
     }
 
     @Override
@@ -220,33 +221,70 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         if (observable == game.getPressedButtonId())
         {
-            game.changeCurrentEvent(1);
             // if the option is not extreme
+            if (!game.checkExtremeOption())
+            {
                 // get the option type from the current event
+                OptionType type = game.whichOption();
 
                 // if the option type is house
+                if (type == OptionType.HOUSE_OPTION)
+                {
                     // refresh player's stats & change the current event
+                    game.chooseHouseOption();
+                    // TODO update bars
+                }
 
                 // if the option type is night club
-                    // start the night club activity, return the shakeAmount as the result
-                    // refresh player's stats & change the current event
-                    // add a random item
+                else if (type == OptionType.NIGHT_CLUB_OPTION)
+                {
+                    // TODO start the night club activity, return the shakeAmount as the result
+
+                    // TODO refresh player's stats & change the current event
+                    // TODO change game methods
+
+                    // TODO add a random item
+                    // TODO if successful
+                    game.addRandomItemToBackPack();
+                }
 
                 // if the option type is cafe
-                    // start the cafe activity, return the food choice
-                    // refresh player's stats & change the current event
+                else if (type == OptionType.CAFE_OPTION)
+                {
+                    // TODO start the cafe activity, return the food choice
+
+                    // TODO refresh player's stats & change the current event
+                }
 
                 // if the option type is library
-                    // start the library activity, return dB as the result
-                    // refresh player's stats & change the current event
-                    // add a random item
+                else if (type == OptionType.LIBRARY_OPTION)
+                {
+                    // TODO start the library activity, return dB as the result
 
-                // if the option type is school
-                    // start the school activity, return the answer choice as the result
-                    // refresh player's stats & change the current event
+                    // TODO refresh player's stats & change the current event
+
+                    // TODO if successful
+                    game.addRandomItemToBackPack();
+                }
+
+                else if (type == OptionType.SCHOOL_OPTION)
+                {
+                    // TODO if the option type is school
+
+                    // TODO start the school activity, return the answer choice as the result
+
+                    // TODO refresh player's stats & change the current event
+                }
+
+                // changes the current event
+                game.changeCurrentEvent();
+            }
 
             // if the option is extreme
-                // finish the game
+            else
+            {
+                // TODO finish the game
+            }
         }
         else if (observable == game.getCurrentEvent())
         {
@@ -271,7 +309,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             kitchenFragment.activateButton(id2);
 
             // show the question
-            showEventDialog(game.getCurrentEvent().getValue().getQuestion());
+            showEventDialog(game.getEventQuestion());
         }
     }
 }
