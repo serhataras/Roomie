@@ -7,12 +7,14 @@ public class House
 {
     private Room[] rooms;
 
-    House()
+    public static final int NUMBER_OF_ROOMS = 4;
+
+    public House()
     {
-        rooms = new Room[4];
+        rooms = new Room[NUMBER_OF_ROOMS];
     }
 
-    House(Room[] rooms)
+    public House(Room[] rooms)
     {
         this.rooms = rooms;
     }

@@ -8,19 +8,19 @@ import android.graphics.drawable.Drawable;
 public class HouseItem
 {
     private String name;
-    private String id;
+    private int id;
     private Drawable image;
     private boolean clickable;
 
     HouseItem()
     {
         name        = "";
-        id          = "";
+        id          = 0;
         image       = null;
         clickable   = false;
     }
 
-    HouseItem(String name, String id, Drawable image, boolean clickable){
+    HouseItem(String name, int id, Drawable image, boolean clickable){
         this.name       = name;
         this.id         = id;
         this.image      = image;
@@ -36,11 +36,11 @@ public class HouseItem
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -5,5 +5,9 @@ package src;
  */
 public enum OptionType {
     HOUSE_OPTION,
-    OUTDOOR_OPTION
+    SCHOOL_OPTION,
+    LIBRARY_OPTION,
+    NIGHT_CLUB_OPTION,
+    CAFE_OPTION
 }
+

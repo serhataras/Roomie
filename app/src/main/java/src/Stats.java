@@ -1,5 +1,4 @@
 package src;
-
 /**
  * Created by eliztekcan on 26.10.2017.
  */
@@ -12,32 +11,46 @@ public class Stats {
     private  int[] stats;
 
     private static final int MAX_STAT = 10;
+    private static final int MIN_STAT = 0;
+    public static final int NUMBER_OF_STATS = 4;
 
-    Stats(int[] stats){
+    public Stats(int[] stats){
         //set all stats to given int array
         this.stats = stats;
     }
 
-    Stats(){
+    public Stats(){
         //set all stats to maximum
-        stats = new int[4];
-        for(int i = 0; i < 4; i++)
-            this.stats[i] = MAX_STAT;
+        stats = new int[NUMBER_OF_STATS];
+        makeStatsZero();
     }
 
     public int[] getStat() {
         return stats;
     }
 
-    public void setStat(int[] stats) {
-        this.stats = stats;
+    // this method adds new values to stats
+    public void updateStat(Stats stats)
+    {
+        int[] statsToAdd = stats.getStat();
+
+        for (int i = 0; i < NUMBER_OF_STATS; i++)
+        {
+            this.stats[i] += statsToAdd[i];
+        }
     }
 
-    public void setStatByIndex(int index, int change){
-        stats[index] += change;
-        checkBoundaries(index);
-
+    public void setStatByIndex(StatType index, int change){
+        stats[index.ordinal()] += change;
+        checkBoundaries(index.ordinal());
     }
+
+    public void makeStatsZero()
+    {
+        for(int i = 0; i < NUMBER_OF_STATS; i++)
+            this.stats[i] = MIN_STAT;
+    }
+
     public void checkBoundaries(int index) {
         if (stats[index] > MAX_STAT)
             stats[index] = MAX_STAT;
@@ -45,13 +58,14 @@ public class Stats {
             stats[index] = 0;
     }
 
-    public int getStatByIndex(int index){
-        return stats[index];
+    public int getStatByIndex(StatType index){
+        return stats[index.ordinal()];
     }
 
     public static int getMaxStat() {
         return MAX_STAT;
     }
+
 
     @Override
     public String toString() {

@@ -1,5 +1,4 @@
 package src;
-
 /**
  * Created by eliztekcan on 27.10.2017.
  */
@@ -8,22 +7,24 @@ public class GameEnvironment
     private Outdoor[] outdoor;
     private House house;
 
-    GameEnvironment()
+    public static final int OUTDOOR_NUMBER = 4;
+
+    public GameEnvironment()
     {
-        outdoor     = new Outdoor[4];
+        outdoor     = new Outdoor[OUTDOOR_NUMBER];
         house       = new House();
     }
 
 
-    GameEnvironment(Outdoor[] outdoor, House house)
+    public GameEnvironment(Outdoor[] outdoor, House house)
     {
         this.house      = house;
         this.outdoor    = outdoor;
     }
 
-    public Outdoor[] getOutdoor()
+    public Outdoor getOutdoorEnvironment(OutdoorEnvironment environment)
     {
-        return outdoor;
+        return outdoor[environment.ordinal()];
     }
 
     public void setOutdoor(Outdoor[] outdoor)

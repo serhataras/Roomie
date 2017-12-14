@@ -1,5 +1,4 @@
 package src;
-
 /**
  * Created by eliztekcan on 26.10.2017.
  */
@@ -9,44 +8,66 @@ public class Player {
     private Stats stats;
     private Backpack backpack;
 
-    Player(){
+    public Player(){
         name = "";
         gender = Gender.FEMALE;
         stats = new Stats();
         backpack = new Backpack();
     }
 
-    Player(String name, Gender gender) {
+    public Player(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
         stats = new Stats();
         backpack = new Backpack();
     }
 
-    public void updateStats(int[] stats){
-        for(int i = 0; i < 4; i++){
-            this.stats.setStatByIndex(i,stats[i]);
-        }
+    public void updateStats(Stats stats)
+    {
+        this.stats.updateStat(stats);
     }
 
-
-    public void sellAnItem(Item item){
+    public void sellAnItem(Item item)
+    {
         if (backpack.hasAnItem(item))
         {
             backpack.remove(item);
-            this.stats.setStatByIndex(3, item.getPrice());
+            this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
         }
-
     }
 
-    public void useAnItem(Item item){
+    public void useAnItem(Item item)
+    {
+        int price = -1 * item.getPrice();
+
+        // add items stats to player's stats
+        updateStats(item.getBoostAmount());
+
+        // subtract price from the player's stats because using an item can't change the money
+        stats.setStatByIndex(StatType.MONEY, price);
+    }
+
+    public void sellAnItem(int index)
+    {
+        Item item = backpack.getItemByIndex(index);
+
         if (backpack.hasAnItem(item))
         {
             backpack.remove(item);
-            for(int i = 0; i < 4; i++){
-                stats.setStatByIndex(i, item.getBoostAmount()[i]);
-            }
+            this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
         }
+    }
+
+    public void useAnItem(int index)
+    {
+        Item item = backpack.getItemByIndex(index);
+        int price = -1 * item.getPrice();
+
+        // add items stats to player's stats
+        updateStats(item.getBoostAmount());
+
+        // subtract price from the player's stats because using an item can't change the money
+        stats.setStatByIndex(StatType.MONEY, price);
     }
 
     public void sellAllItems()
@@ -119,7 +140,8 @@ public class Player {
         p.sellAllItems();
         System.out.print(p);*/
         int[] s = {-11, -2, 5, 1000};
-        p.updateStats(s);
+        Stats stats = new Stats(s);
+        p.updateStats(stats);
         System.out.print(p);
     }
 }

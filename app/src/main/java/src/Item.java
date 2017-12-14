@@ -8,24 +8,23 @@ import java.util.Arrays;
  */
 public class Item {
     private String name;
-    Drawable image;
-    int price;
-    int[] boostAmount;
+    private Drawable image;
+    private Stats boostAmount;
+    private int price;
 
-    Item()
+    public Item()
     {
         name = "";
-        price = 0;
-        //Health, Sociality, Grades and Money
-        boostAmount = new int[4];
         image = null;
+        boostAmount = new Stats();
+        price = 0;
     }
 
-    Item(String name, Drawable image, int price, int[] boostAmount)
+    public Item(String name, Drawable image, Stats boostAmount)
     {
         this.name           = name;
         this.boostAmount    = boostAmount;
-        this.price          = price;
+        this.price          = boostAmount.getStatByIndex(StatType.MONEY);
         this.image          = image;
 
     }
@@ -50,12 +49,12 @@ public class Item {
         return image;
     }
 
-    public void setBoostAmount(int[] boostAmount)
+    public void setBoostAmount(Stats boostAmount)
     {
         this.boostAmount = boostAmount;
     }
 
-    public int[] getBoostAmount()
+    public Stats getBoostAmount()
     {
         return boostAmount;
     }
@@ -77,7 +76,7 @@ public class Item {
                 "name='" + name + '\'' +
                 ", image=" + image +
                 ", price=" + price +
-                ", boostAmount=" + Arrays.toString(boostAmount) +
+                ", boostAmount=" + boostAmount.toString() +
                 '}';
     }
 

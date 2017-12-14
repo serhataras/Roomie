@@ -10,17 +10,52 @@ public class Event {
     private Option[] optionArray;
     private  static final int MAX_OPTION = 2;
 
-    Event(){
+    public Event(){
         optionArray = new Option[MAX_OPTION];
     }
 
-    Event(String question, Option[] optionArray){
+    public Event(String question, Option[] optionArray){
         this.optionArray = optionArray;
         this.question = question;
     }
 
-    public Option[] getOptionArray() {
-        return optionArray;
+    public Option chooseAnOption(int id)
+    {
+        Option optionToReturn = null;
+
+        for (int i = 0; i < MAX_OPTION; i++)
+        {
+            if (optionArray[i].getId() == id)
+            {
+                optionToReturn = optionArray[i];
+                break;
+            }
+        }
+        return optionToReturn;
+    }
+
+    public boolean isOptionExtreme(int id)
+    {
+        if (chooseAnOption(id) != null)
+            return chooseAnOption(id).isExtreme();
+        return false;
+    }
+
+    public OptionType whichOption(int id)
+    {
+        if (chooseAnOption(id) != null)
+            return chooseAnOption(id).getOptionType();
+        return OptionType.HOUSE_OPTION;
+    }
+
+    public int[] getOptionsId()
+    {
+        int[] ids = new int[MAX_OPTION];
+        for (int i = 0; i < MAX_OPTION; i++)
+        {
+            ids[i] = optionArray[i].getId();
+        }
+        return ids;
     }
 
     public void setOptionArray(Option[] optionArray) {
@@ -37,6 +72,10 @@ public class Event {
 
     public static int getMaxOption() {
         return MAX_OPTION;
+    }
+
+    public Option[] getOptionArray() {
+        return optionArray;
     }
 
     @Override

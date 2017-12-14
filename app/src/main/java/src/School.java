@@ -1,5 +1,4 @@
 package src;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,9 +15,9 @@ public class School extends Outdoor
     private static final String FILE_NAME= "/src/Other/Quiz.txt";
 
 
-    School()
+    public School()
     {
-        int random  = 0;
+        int random = (int) (Math.random() * MAX_QUESTION);
         options = new String[4];
         questions   = new QuizQuestion[MAX_QUESTION];
         initializeQuestions();
@@ -76,6 +75,10 @@ public class School extends Outdoor
         options[3] = i3;
     }
 
+    public QuizQuestion getRandomQuestion()
+    {
+        return questions[random];
+    }
     //test
 
     public static void main(String[] args){
