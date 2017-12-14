@@ -62,16 +62,14 @@ public class HouseActivity extends AppCompatActivity implements Observer
         setContentView(R.layout.activity_house);
 
         game = Game.getInstance();
+
         game.getPlayer().getBackpack().addItem(new Item("xd", null, new Stats(new int[]{1, 2, 3, 4})));
         game.getPlayer().getBackpack().addItem(new Item("xc", null, new Stats(new int[]{-1, -2, -3, 4})));
+
         kitchenFragment = new KitchenFragment();
-
         bathroomFragment = new BathroomFragment();
-
         bedroomFragment = new BedroomFragment();
-
         livingRoomFragment = new LivingRoomFragment();
-
         //backpackFragment = new BackpackFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
@@ -99,8 +97,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
         moneyBar = (ProgressBar) findViewById(R.id.moneyBar);
         socialityBar = (ProgressBar) findViewById(R.id.socialityBar);
         gradesBar = (ProgressBar) findViewById(R.id.gradesBar);
-
-        //game = new Game();
 
         // adds all fragments to the activity and shows only the living room fragment
         getSupportFragmentManager().beginTransaction().add(R.id.content, kitchenFragment).commitNow();

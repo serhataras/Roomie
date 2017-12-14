@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import com.threek.roomie.R;
 
 import src.Game;
+import src.House;
 import src.LivingRoomItems;
 import src.RoomType;
 
@@ -51,11 +52,10 @@ public class LivingRoomFragment extends Fragment
         buttons[LivingRoomItems.PLANTS.ordinal()] = (ImageButton) root.findViewById(R.id.plants);
         buttons[LivingRoomItems.BIGTABLE.ordinal()] = (ImageButton) root.findViewById(R.id.bigtable);
 
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.LIVINGROOM.ordinal()].getItems()[LivingRoomItems.TV.ordinal()].setId(R.id.tv);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.LIVINGROOM.ordinal()].getItems()[LivingRoomItems.SOFA.ordinal()].setId(R.id.sofa);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.LIVINGROOM.ordinal()].getItems()[LivingRoomItems.PLANTS.ordinal()].setId(R.id.plants);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.LIVINGROOM.ordinal()].getItems()[LivingRoomItems.BIGTABLE.ordinal()].setId(R.id.bigtable);
-
+        buttons[LivingRoomItems.TV.ordinal()].setId(House.TV_ID);
+        buttons[LivingRoomItems.SOFA.ordinal()].setId(House.SOFA_ID);
+        buttons[LivingRoomItems.PLANTS.ordinal()].setId(House.PLANTS_ID);
+        buttons[LivingRoomItems.BIGTABLE.ordinal()].setId(House.BIGTABLE_ID);
         return root;
     }
 

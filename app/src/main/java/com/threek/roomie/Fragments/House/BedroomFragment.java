@@ -12,6 +12,7 @@ import com.threek.roomie.R;
 
 import src.BedroomItems;
 import src.Game;
+import src.House;
 import src.RoomType;
 
 /**
@@ -51,10 +52,11 @@ public class BedroomFragment extends Fragment {
         buttons[BedroomItems.DESK.ordinal()] = (ImageButton) root.findViewById(R.id.desk);
         buttons[BedroomItems.BOOKSHELF.ordinal()] = (ImageButton) root.findViewById(R.id.bookshelf);
 
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.BED.ordinal()].setId(R.id.bed);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.WARDROBE.ordinal()].setId(R.id.wardrobe);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.DESK.ordinal()].setId(R.id.desk);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BEDROOM.ordinal()].getItems()[BedroomItems.BOOKSHELF.ordinal()].setId(R.id.bookshelf);
+        buttons[BedroomItems.BED.ordinal()].setId(House.BED_ID);
+        buttons[BedroomItems.WARDROBE.ordinal()].setId(House.WARDROBE_ID);
+        buttons[BedroomItems.DESK.ordinal()].setId(House.DESK_ID);
+        buttons[BedroomItems.BOOKSHELF.ordinal()].setId(House.BOOKSHELF_ID);
+
 
         return root;
     }

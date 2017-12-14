@@ -12,6 +12,7 @@ import com.threek.roomie.R;
 
 import src.BathroomItems;
 import src.Game;
+import src.House;
 import src.RoomType;
 
 /**
@@ -49,8 +50,8 @@ public class BathroomFragment extends Fragment {
         buttons[BathroomItems.TOILET.ordinal()] = (ImageButton) root.findViewById(R.id.toilet);
         buttons[BathroomItems.BATH.ordinal()] = (ImageButton) root.findViewById(R.id.bath);
 
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BATHROOM.ordinal()].getItems()[BathroomItems.TOILET.ordinal()].setId(R.id.toilet);
-        game.getGameEnvironment().getHouse().getRooms()[RoomType.BATHROOM.ordinal()].getItems()[BathroomItems.BATH.ordinal()].setId(R.id.bath);
+        buttons[BathroomItems.TOILET.ordinal()].setId(House.TOILET_ID);
+        buttons[BathroomItems.BATH.ordinal()].setId(House.BATH_ID);
 
         return root;
     }
