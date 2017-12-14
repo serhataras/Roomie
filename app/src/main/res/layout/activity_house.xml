@@ -20,8 +20,9 @@
             android:id="@+id/changeRoomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/content"
+            android:layout_alignStart="@+id/textView1"
             android:layout_below="@+id/thisRoomText"
-            android:layout_centerHorizontal="true"
             android:text="Change Room"
             android:textSize="12sp" />
 
@@ -48,9 +49,9 @@
             android:id="@+id/thisRoomText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="28dp"
+            android:layout_marginStart="23dp"
             android:text="This Room"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -75,16 +76,14 @@
             android:text="Open backpack"
             android:textSize="8sp" />
 
-        <ToggleButton
+        <Button
             android:id="@+id/muteBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/content"
             android:layout_alignStart="@+id/backpackButton"
             android:layout_marginStart="140dp"
-            android:text="ToggleButton"
-            android:textOff="Volume Off"
-            android:textOn="Volume On"
+            android:text="Outside"
             android:textSize="12sp" />
 
         <TextView

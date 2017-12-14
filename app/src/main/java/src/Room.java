@@ -16,6 +16,8 @@ public class Room
     public Room()
     {
         items       = new HouseItem[NUMBER_OF_ITEMS];
+        for (int i = 0; i < NUMBER_OF_ITEMS; i++)
+            items[i] = new HouseItem();
         background  = null;
     }
 

@@ -30,7 +30,7 @@ public class Game
         random = new Randomizer();
         events = new Events();
         currentEvent = new ObservableEvent(null);
-        pressedButtonId.setValue(-1);
+        pressedButtonId = new ObservableId(-1);
         gameHasStarted = true;
     }
 

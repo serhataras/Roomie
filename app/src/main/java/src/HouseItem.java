@@ -12,7 +12,7 @@ public class HouseItem
     private Drawable image;
     private boolean clickable;
 
-    HouseItem()
+    public HouseItem()
     {
         name        = "";
         id          = 0;
@@ -20,7 +20,7 @@ public class HouseItem
         clickable   = false;
     }
 
-    HouseItem(String name, int id, Drawable image, boolean clickable){
+    public HouseItem(String name, int id, Drawable image, boolean clickable){
         this.name       = name;
         this.id         = id;
         this.image      = image;

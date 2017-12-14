@@ -37,6 +37,10 @@ public class House
     public House()
     {
         rooms = new Room[NUMBER_OF_ROOMS];
+        for (int i = 0; i < NUMBER_OF_ROOMS; i++)
+        {
+            rooms[i] = new Room();
+        }
         createRooms();
     }
 

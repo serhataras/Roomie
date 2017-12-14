@@ -38,13 +38,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private BathroomFragment bathroomFragment;
     private BedroomFragment bedroomFragment;
     private LivingRoomFragment livingRoomFragment;
-    //private BackpackFragment backpackFragment;
 
     // ui elements
     private ImageButton playerButton;
     private TextView playerNameText;
     private Button backpackButton;
-    private ToggleButton muteButton;
+    private Button outsideButton;
 
     private Button changeButton;
     private TextView thisRoomText;
@@ -70,7 +69,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
         bathroomFragment = new BathroomFragment();
         bedroomFragment = new BedroomFragment();
         livingRoomFragment = new LivingRoomFragment();
-        //backpackFragment = new BackpackFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
 
@@ -86,7 +84,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         backpackButton = (Button) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
 
-        muteButton = (ToggleButton) findViewById(R.id.muteBox);
+        outsideButton = (Button) findViewById(R.id.muteBox);
 
         changeButton = (Button) findViewById(R.id.changeRoomButton);
         changeButton.setOnClickListener(new ChangeRoomListener());
@@ -110,12 +108,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         // living room fragment is shown
         getSupportFragmentManager().beginTransaction().add(R.id.content, livingRoomFragment).commitNow();
-        //getSupportFragmentManager().beginTransaction().hide(livingRoomFragment).commitNow();
         currentFragment = livingRoomFragment;
         thisRoomText.setText(livingRoomFragment.getName());
-
-        //getSupportFragmentManager().beginTransaction().add(R.id.content, backpackFragment).commitNow();
-        //getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
 
         // add observers
         game.getPressedButtonId().addObserver(this);
@@ -200,7 +194,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         @Override
         public void onClick(View view) {
+
             game.setId(view.getId());
+            playerNameText.setText(view.getId() + "");
         }
     }
 
