@@ -55,7 +55,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private ProgressBar gradesBar;
 
     private Game game;
-    private ObservableId id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +122,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         //getSupportFragmentManager().beginTransaction().hide(backpackFragment).commitNow();
 
         // add observers
-        id = new ObservableId(-1);
-        id.addObserver(this);
+        game.getPressedButtonId().addObserver(this);
         game.getCurrentEvent().addObserver(this);
     }
 
@@ -206,7 +204,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         @Override
         public void onClick(View view) {
-            id.setValue(view.getId());
+            game.setId(view.getId());
         }
     }
 
@@ -227,7 +225,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
     @Override
     public void update(Observable observable, Object o)
     {
-        if (observable == id)
+        if (observable == game.getPressedButtonId())
         {
             // if the option is not extreme
                 // get the option type from the current event

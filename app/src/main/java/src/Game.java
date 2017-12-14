@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 import src.Observable.ObservableEvent;
+import src.Observable.ObservableId;
 
 /**
  * Created by eliztekcan on 2.11.2017.
@@ -15,7 +16,7 @@ public class Game
     private Randomizer random;
     private Events events;
     private ObservableEvent currentEvent;
-    private int pressedButtonId;
+    private ObservableId pressedButtonId;
     private boolean gameHasStarted;
 
     // singleton object
@@ -29,7 +30,7 @@ public class Game
         random = new Randomizer();
         events = new Events();
         currentEvent = new ObservableEvent(null);
-        pressedButtonId = -1;
+        pressedButtonId.setValue(-1);
         gameHasStarted = true;
     }
 
@@ -158,11 +159,12 @@ public class Game
         return events;
     }
 
-    public ObservableEvent getCurrentEvent() {
+    public ObservableEvent getCurrentEvent()
+    {
         return currentEvent;
     }
 
-    public int getPressedButtonId() {
+    public ObservableId getPressedButtonId() {
         return pressedButtonId;
     }
 
@@ -172,5 +174,10 @@ public class Game
 
     public void setGameHasStarted(boolean gameHasStarted) {
         this.gameHasStarted = gameHasStarted;
+    }
+
+    public void setId(int id)
+    {
+        pressedButtonId.setValue(id);
     }
 }
