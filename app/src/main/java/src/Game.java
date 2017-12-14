@@ -76,7 +76,7 @@ public class Game
         player.updateStats(stats);
     }
 
-    public void changeCurrentEvent()
+    public void changeCurrentEvent(int pressedButtonId)
     {
         // TODO
     }
