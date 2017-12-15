@@ -78,8 +78,10 @@ public class NightClubActivity extends AppCompatActivity {
                     public void onTick(long millisUntilFinished) {
                         timerDisplay.setText("seconds remaining: " + millisUntilFinished / 1000 + " dance on!");
                         countDisplay.setText(count);
+                        //if threshold passed, dont need to dance anymore
                         if(mShakeDetector.handleShakeEvent()){
-
+                            ((NightClub) game.getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION)).setShakeAmount(count);
+                            finish();
                         }
                     }
                     public void onFinish() {

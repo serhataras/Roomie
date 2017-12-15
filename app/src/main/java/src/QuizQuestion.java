@@ -10,7 +10,7 @@ public class QuizQuestion
     private int correctAnswerIndex;
     private String question;
     private int grades;
-
+    private String currentAnswer;
     public QuizQuestion()
     {
         options = new String[4];
