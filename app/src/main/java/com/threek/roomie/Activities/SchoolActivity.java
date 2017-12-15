@@ -9,9 +9,12 @@ import android.widget.TextView;
 
 import com.threek.roomie.R;
 
+import org.w3c.dom.Text;
+
 import src.Enums.OptionType;
 import src.FoodItem;
 import src.Game;
+import src.QuizQuestion;
 import src.School;
 
 /**
@@ -24,6 +27,7 @@ public class SchoolActivity extends AppCompatActivity{
     private TextView question;
     private Button ans1,ans2,ans3,ans4;
     private String answer;
+    private QuizQuestion quizQuestion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +35,16 @@ public class SchoolActivity extends AppCompatActivity{
 
         game=game.getInstance();
 
+        question = (TextView) findViewById(R.id.question_TextView);
+
         ans1 = (Button) findViewById(R.id.answerButton1);
         ans2 = (Button) findViewById(R.id.answerButton2);
         ans3 = (Button) findViewById(R.id.answerButton3);
         ans4 = (Button) findViewById(R.id.answerButton4);
 
         //TODO QUESTION AND ANSWERWS WRITE
+
+
 
         ans1.setOnClickListener(new View.OnClickListener() {
             @Override
