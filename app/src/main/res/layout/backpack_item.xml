@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            app:srcCompat="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/itemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/itemImage"
+            android:layout_alignTop="@+id/itemImage"
+            android:layout_toEndOf="@+id/itemImage"
+            android:layout_toStartOf="@+id/useButton"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/useButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/itemText"
+            android:layout_alignTop="@+id/itemImage"
+            android:layout_toStartOf="@+id/sellButton"
+            android:text="Use" />
+
+        <Button
+            android:id="@+id/sellButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/useButton"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/useButton"
+            android:text="Sell" />
+
+
+    </RelativeLayout>
+</LinearLayout>

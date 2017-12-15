@@ -1,44 +1,31 @@
 package src;
-
 import android.graphics.drawable.Drawable;
 
-import java.util.Arrays;
+import src.Enums.StatType;
 
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Item {
-    String name;
+public class Item
+{
+    private String name;
+    private Drawable image;
+    private Stats boostAmount;
+    private int price;
 
-    @Override
-    public String toString()
-    {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", image=" + image +
-                ", price=" + price +
-                ", boostAmount=" + Arrays.toString(boostAmount) +
-                '}';
-    }
-
-    Drawable image;
-    int price;
-    int[] boostAmount;
-
-    Item()
+    public Item()
     {
         name = "";
-        price = 0;
-        //Health, Sociality, Grades and Money
-        boostAmount = new int[4];
         image = null;
+        boostAmount = new Stats();
+        price = boostAmount.getStatByIndex(StatType.MONEY);
     }
 
-    Item(String name, Drawable image, int price, int[] boostAmount)
+    public Item(String name, Drawable image, Stats boostAmount)
     {
         this.name           = name;
         this.boostAmount    = boostAmount;
-        this.price          = price;
+        this.price          = boostAmount.getStatByIndex(StatType.MONEY);
         this.image          = image;
 
     }
@@ -63,12 +50,12 @@ public class Item {
         return image;
     }
 
-    public void setBoostAmount(int[] boostAmount)
+    public void setBoostAmount(Stats boostAmount)
     {
         this.boostAmount = boostAmount;
     }
 
-    public int[] getBoostAmount()
+    public Stats getBoostAmount()
     {
         return boostAmount;
     }
@@ -82,4 +69,16 @@ public class Item {
     {
         return price;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", image=" + image +
+                ", price=" + price +
+                ", boostAmount=" + boostAmount.toString() +
+                '}';
+    }
+
 }

@@ -1,0 +1,6 @@
+Question1 *Option1 -Option2 ? HL +1 0 =5  4  0  0 :3  4  9  0
+Question2 *Option1 -Option2 ? NH +1 1 =5  6  0  0 :-5 -5 -5 9
+Question3 *Option1 -Option2 ? CH +0 0 =5  6  9  0 :0  -7 8  8
+Question4 *Option1 -Option2 ? HS +1 0 =5  6  9  0 :0  -7 8  8
+Question5 *Option1 -Option2 ? SN +1 1 =5  6  9  0 :0  -7 8  8
+Question6 *Option1 -Option2 ? HH +1 0 =5  6  9  0 :0  -7 8  -9

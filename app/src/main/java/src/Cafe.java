@@ -9,14 +9,19 @@ import java.io.IOException;
  */
 public class Cafe extends Outdoor
 {
-    FoodItem[] menu;
-    public final int MAX_FOOD = 10;
-    public final String FILE_NAME = "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Menu.txt";
-
-    Cafe()
+    private FoodItem[] menu;
+    private final int MAX_FOOD = 10;
+    private final String FILE_NAME = "raw/menu.txt";
+    public FoodItem selectedFood;
+    public Cafe()
     {
         menu = new FoodItem[MAX_FOOD];
         createMenu();
+    }
+
+    public Cafe(FoodItem[] menu)
+    {
+        this.menu = menu;
     }
 
     private void createMenu() {
@@ -60,11 +65,6 @@ public class Cafe extends Outdoor
 
     }
 
-    Cafe(FoodItem[] menu)
-    {
-        this.menu = menu;
-    }
-
     public FoodItem[] getMenu() {
         return menu;
     }
@@ -77,7 +77,15 @@ public class Cafe extends Outdoor
         return MAX_FOOD;
     }
 
+    public FoodItem getSelectedFood() {
+        return selectedFood;
+    }
 
+    public void setSelectedFood(FoodItem selectedFood) {
+        this.selectedFood = selectedFood;
+    }
+
+    //for testing
     public static void main(String[] args){
         Cafe cafe = new Cafe();
         for(int k = 0; k< 10; k++)

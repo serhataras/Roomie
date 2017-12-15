@@ -5,24 +5,28 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by eliztekcan on 28.10.2017.
+ * Created by eliztekcan on 28.10.2017 edited by serhat
  */
+
+//TODO for the isChallengeSuccess method, we must hold the correct answer and check the correct one with the input
 public class School extends Outdoor
 {
-    QuizQuestion[] questions;
-    String[] options;
-    int random;
-    public static final int MAX_QUESTION = 4;
-    static final String FILE_NAME= "/src/Other/Quiz.txt";
+    private QuizQuestion[] questions;
+    private String[] options;
+    private int random;
+    private static final int MAX_QUESTION = 4;
+    private static final String FILE_NAME= "/raw/quiz.txt";
+    private String selectedAnswer;
 
-
-    School()
+    public School()
     {
-        int random  = 0;
+        int random = (int) (Math.random() * MAX_QUESTION);
         options = new String[4];
         questions   = new QuizQuestion[MAX_QUESTION];
         initializeQuestions();
+
     }
+
 
     private void initializeQuestions()
     {
@@ -76,12 +80,32 @@ public class School extends Outdoor
         options[3] = i3;
     }
 
+    public QuizQuestion getRandomQuestion()
+    {
+        return questions[random];
+    }
     //test
+
+
+    //Slightly modified version of the isChallengeSuccess of the Outdoor class
+    public boolean isChallengeSuccess(String answerOfUser) {
+        if(options[getRandomQuestion().getCorrectAnswerIndex()].equalsIgnoreCase(answerOfUser))
+            return true;
+        else
+            return false;
+    }
+
+    public String getSelectedAnswer() {
+        return selectedAnswer;
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
+    }
 
     public static void main(String[] args){
         School s = new School();
         for(int k = 0; k< MAX_QUESTION; k++)
             System.out.println(s.questions[k]);
     }
-
 }

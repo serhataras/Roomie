@@ -1,115 +1,218 @@
 package src;
 
-import android.text.style.TtsSpan;
+import java.util.ArrayList;
+import java.util.Observer;
+
+import src.Enums.OptionType;
+import src.Observable.ObservableEvent;
+import src.Observable.ObservableId;
 
 /**
  * Created by eliztekcan on 2.11.2017.
  */
 
-public class Game {
+public class Game
+{
+    private Player player;
+    private GameEnvironment gameEnvironment;
+    private Randomizer random;
+    private Events events;
+    private ObservableEvent currentEvent;
+    private ObservableId pressedButtonId;
+    private boolean gameHasStarted;
 
-    Player player;
-    GameEnvironment gameEnvironment;
-    Randomizer random;
-    Events events;
-    Event currentEvent;
-    String pressedButtonId;
+    // singleton object
+    private static Game instance = null;
 
-    Game(){
+    // singleton constructor
+    private Game()
+    {
         player = new Player();
         gameEnvironment = new GameEnvironment();
         random = new Randomizer();
         events = new Events();
-        currentEvent = null;
-        pressedButtonId = "";
+        currentEvent = new ObservableEvent(null);
+        pressedButtonId = new ObservableId(-1);
+        gameHasStarted = true;
     }
 
-    public void startGame(){
-        //TO DO
+    // method for getting singleton game instance
+    public static Game getInstance()
+    {
+        if (instance == null) {
+            instance = new Game();
+        }
+        return instance;
     }
 
-    public void terminateGame(){
-        //TO DO
+    public void activateButton()
+    {
+        int[] options = currentEvent.getValue().getOptionsId();
+
+        House houseToSearch = gameEnvironment.getHouse();
+        for (int i = 0; i < House.NUMBER_OF_ROOMS; i++)
+        {
+            for (int j = 0; j < Room.NUMBER_OF_ITEMS; j++)
+            {
+                if (houseToSearch.getRooms()[i] != null && houseToSearch.getRooms()[i].getItems()[j] != null)
+                {
+                    int itemId = houseToSearch.getRooms()[i].getItems()[j].getId();
+                    if (itemId == options[0] || itemId == options[1])
+                    {
+                        houseToSearch.getRooms()[i].getItems()[j].setClickable(true);
+                    }
+                }
+            }
+        }
     }
 
-    public void activateButton(String buttonId){
-        //TO DO
+    public void deactivateAllButtons()
+    {
+        House houseToSearch = gameEnvironment.getHouse();
+
+        for (int i = 0; i < House.NUMBER_OF_ROOMS; i++)
+        {
+            for (int j = 0; j < Room.NUMBER_OF_ITEMS; j++)
+            {
+                if (houseToSearch.getRooms()[i] != null && houseToSearch.getRooms()[i].getItems()[j] != null)
+                {
+                    houseToSearch.getRooms()[i].getItems()[j].setClickable(false);
+                }
+            }
+        }
     }
 
-    public void deactivateButton(String buttonId){
-        //TO DO
+    public void refreshStats(Stats stats)
+    {
+        player.updateStats(stats);
     }
 
-    public void restoreStats(){
-        //initialize all stats to max stat
-        for(int i = 0; i < 4; i++)
-        (player.getStats())[i].setStat(Stats.MAX_STAT);
+    public void changeCurrentEvent()
+    {
+        Option[] options = (currentEvent.getValue()).getOptionArray();
+        //option 1
+        if(pressedButtonId.getValue() == options[0].getId()){
+            if(!options[0].isExtreme())
+                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+        }
+        //option 2
+        else if (pressedButtonId.getValue() == options[1].getId())
+        {
+            if(!options[1].isExtreme())
+                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+        }
     }
 
-    public void refreshStats(Option option){
-        //refreshes the stats with respect to the given option
-        for(int i = 0; i < 4; i++)
-            (player.getStats())[i].setStat((player.getStats()[i].getStat() + option.getEffect()[i]));
+    public boolean checkExtremeOption()
+    {
+        return currentEvent.getValue().isOptionExtreme(pressedButtonId.getValue());
     }
 
-    public void changeCurrentEvent(){
-        //TO DO
+    public Item addRandomItemToBackPack()
+    {
+        Item item = random.throwItem();
+        player.getBackpack().addItem(item);
+        return item;
     }
 
-    public boolean checkExtremeOption(Option opt){
-        return opt.isExtreme();
+    public String sendEventQuestion()
+    {
+        return currentEvent.getValue().getQuestion();
     }
 
-    public Item generateRandomItem(){
-       return random.throwItem();
+    public void chooseHouseOption()
+    {
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+
+        if (option != null)
+        {
+            Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
+            refreshStats(stats);
+        }
     }
 
+    public void chooseOutdoorOption(boolean success)
+    {
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+        if (option != null && success)
+        {
+            Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
+            refreshStats(stats);
+            addRandomItemToBackPack();
+        }
+    }
+
+    public ArrayList<Item> getBackPackItems()
+    {
+        return player.getBackpack().getItemList();
+    }
+
+    public int[] getActivatedButtons()
+    {
+        return currentEvent.getValue().getOptionsId();
+    }
+
+    public OptionType whichOption()
+    {
+        return currentEvent.getValue().whichOption(pressedButtonId.getValue());
+    }
+
+    public QuizQuestion sendQuizQuestion()
+    {
+        return ((School) gameEnvironment.getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getRandomQuestion();
+    }
+
+    public FoodItem[] getFoodMenu()
+    {
+        return ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu();
+    }
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public GameEnvironment getGameEnvironment() {
         return gameEnvironment;
     }
 
-    public void setGameEnvironment(GameEnvironment gameEnvironment) {
-        this.gameEnvironment = gameEnvironment;
-    }
-
     public Randomizer getRandom() {
         return random;
-    }
-
-    public void setRandom(Randomizer random) {
-        this.random = random;
     }
 
     public Events getEvents() {
         return events;
     }
 
-    public void setEvents(Events events) {
-        this.events = events;
-    }
-
-    public Event getCurrentEvent() {
+    public ObservableEvent getCurrentEvent()
+    {
         return currentEvent;
     }
 
-    public void setCurrentEvent(Event currentEvent) {
-        this.currentEvent = currentEvent;
-    }
-
-    public String getPressedButtonId() {
+    public ObservableId getPressedButtonId() {
         return pressedButtonId;
     }
 
-    public void setPressedButtonId(String pressedButtonId) {
-        this.pressedButtonId = pressedButtonId;
+    public boolean isGameHasStarted() {
+        return gameHasStarted;
+    }
+
+    public void setGameHasStarted(boolean gameHasStarted) {
+        this.gameHasStarted = gameHasStarted;
+    }
+
+    public void setId(int id)
+    {
+        pressedButtonId.setValue(id);
+    }
+
+    public void addObservers(Observer observer)
+    {
+        pressedButtonId.addObserver(observer);
+        currentEvent.addObserver(observer);
+    }
+
+    public String getEventQuestion()
+    {
+        return currentEvent.getValue().getQuestion();
     }
 }

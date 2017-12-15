@@ -5,47 +5,46 @@
     android:layout_height="match_parent"
     tools:context="com.threek.roomie.Fragments.House.LivingRoomFragment">
 
-    <RelativeLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@android:color/holo_red_dark">
+        android:background="?attr/colorButtonNormal">
 
         <ImageButton
-            android:id="@+id/item3"
+            android:id="@+id/bigtable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toEndOf="@+id/item2"
+            android:layout_marginTop="5dp"
             android:background="@null"
-            />
+            android:src="@drawable/bigtable" />
 
         <ImageButton
-            android:id="@+id/item1"
+            android:id="@+id/plants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toStartOf="@+id/item2"
-            android:background="@null"
-            />
-
-        <ImageButton
-            android:id="@+id/item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/item4"
+            android:layout_below="@+id/bigtable"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
+            android:layout_marginTop="8dp"
             android:background="@null"
-          />
+            android:src="@drawable/plants" />
 
         <ImageButton
-            android:id="@+id/item4"
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/plants"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
             android:background="@null"
-           />
-    </RelativeLayout>
+            android:src="@drawable/tv" />
+
+        <ImageButton
+            android:id="@+id/sofa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:src="@drawable/sofa" />
+    </TableLayout>
 </FrameLayout>

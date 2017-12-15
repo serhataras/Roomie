@@ -8,4 +8,10 @@
     <string name="lf_gameStart">Start Game</string>
     <string name="ha_question">Question</string>
     <string name="ha_ok">OK</string>
+    <string name="backpack_Sell_All">Sell All</string>
+    <string name="Backpack_Use_All">Use All</string>
+    <string name="Backpack_Use_Item">Use</string>
+    <string name="Backpack_Sell_Item">Sell</string>
+    <string name="zzz">zZZ</string>
+
 </resources>

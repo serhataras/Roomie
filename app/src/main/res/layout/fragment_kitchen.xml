@@ -5,47 +5,43 @@
     android:layout_height="match_parent"
     tools:context="com.threek.roomie.Fragments.House.KitchenFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="?attr/colorButtonNormal">
 
         <ImageButton
-            android:id="@+id/item3"
+            android:id="@+id/fridge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toEndOf="@+id/item2"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="70dp"
             android:background="@null"
-             />
+            android:src="@drawable/kitchen_fridge" />
 
         <ImageButton
-            android:id="@+id/item1"
+            android:id="@+id/stall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toStartOf="@+id/item2"
+            android:layout_marginTop="70dp"
             android:background="@null"
-           />
+            android:src="@drawable/kitchen_stall" />
 
         <ImageButton
-            android:id="@+id/item2"
+            android:id="@+id/cupboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/item4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
+            android:layout_marginTop="65dp"
             android:background="@null"
-            />
+            android:src="@drawable/kitchen_cupboard" />
 
         <ImageButton
-            android:id="@+id/item4"
+            android:id="@+id/table"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="70dp"
             android:background="@null"
-            />
-    </RelativeLayout>
+            android:src="@drawable/kitchen_table" />
+    </LinearLayout>
 </FrameLayout>

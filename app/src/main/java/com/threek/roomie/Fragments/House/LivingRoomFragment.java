@@ -10,12 +10,17 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.Game;
+import src.House;
+import src.Enums.LivingRoomItems;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LivingRoomFragment extends Fragment
 {
     private String name;
+    private Game game;
 
     // attributes
     private ImageButton[] buttons;
@@ -30,6 +35,7 @@ public class LivingRoomFragment extends Fragment
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
         name = "Living room";
+        game = Game.getInstance();
     }
 
 
@@ -40,10 +46,15 @@ public class LivingRoomFragment extends Fragment
 
         View root = inflater.inflate(R.layout.fragment_living_room, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.item1);
-        buttons[1] = (ImageButton) root.findViewById(R.id.item2);
-        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.item4);
+        buttons[LivingRoomItems.TV.ordinal()] = (ImageButton) root.findViewById(R.id.tv);
+        buttons[LivingRoomItems.SOFA.ordinal()] = (ImageButton) root.findViewById(R.id.sofa);
+        buttons[LivingRoomItems.PLANTS.ordinal()] = (ImageButton) root.findViewById(R.id.plants);
+        buttons[LivingRoomItems.BIGTABLE.ordinal()] = (ImageButton) root.findViewById(R.id.bigtable);
+
+        buttons[LivingRoomItems.TV.ordinal()].setId(House.TV_ID);
+        buttons[LivingRoomItems.SOFA.ordinal()].setId(House.SOFA_ID);
+        buttons[LivingRoomItems.PLANTS.ordinal()].setId(House.PLANTS_ID);
+        buttons[LivingRoomItems.BIGTABLE.ordinal()].setId(House.BIGTABLE_ID);
 
         return root;
     }
@@ -56,9 +67,32 @@ public class LivingRoomFragment extends Fragment
         this.name = name;
     }
 
-    public void setListeners(View.OnClickListener listener)
+    public void addListeners(View.OnClickListener listener)
     {
         for (int i = 0; i < 4; i++)
             buttons[i].setOnClickListener(listener);
+    }
+
+    public boolean activateButton(int id)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (buttons[i].getId() == id)
+            {
+                buttons[i].setEnabled(true);
+                buttons[i].setAlpha(1f);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deactivateAllButtons()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].setEnabled(false);
+            buttons[i].setAlpha(0.3f);
+        }
     }
 }

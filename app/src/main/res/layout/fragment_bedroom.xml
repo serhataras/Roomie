@@ -5,47 +5,45 @@
     android:layout_height="match_parent"
     tools:context="com.threek.roomie.Fragments.House.BedroomFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@android:color/holo_green_light">
+        android:background="?attr/colorButtonNormal">
 
         <ImageButton
-            android:id="@+id/item3"
+            android:id="@+id/bookshelf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toEndOf="@+id/item2"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="40dp"
             android:background="@null"
-             />
+            android:src="@drawable/bookshelf" />
 
         <ImageButton
-            android:id="@+id/item1"
+            android:id="@+id/bed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/item2"
-            android:layout_toStartOf="@+id/item2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="80dp"
             android:background="@null"
-            />
+            android:src="@drawable/bed" />
 
         <ImageButton
-            android:id="@+id/item2"
+            android:id="@+id/desk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/item4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="11dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="80dp"
             android:background="@null"
-            />
+            android:src="@drawable/desk" />
 
         <ImageButton
-            android:id="@+id/item4"
+            android:id="@+id/wardrobe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="40dp"
             android:background="@null"
-             />
-    </RelativeLayout>
+            android:src="@drawable/wardrobe" />
+
+    </LinearLayout>
 </FrameLayout>

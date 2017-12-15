@@ -3,6 +3,7 @@ package src;
 /**
  * Created by eliztekcan on 27.10.2017.
  */
+
 public class Library extends Outdoor
 {
     /*
@@ -13,16 +14,11 @@ public class Library extends Outdoor
         70db is heavy traffic
    */
 
-    public final int HIGHEST_DB = 30;
-    int currentDb;
-
-    @Override
-    public boolean isChallengeSuccess() {
-        return super.isChallengeSuccess();
-    }
-
-    public int getHIGHEST_DB() {
-        return HIGHEST_DB;
+    private final int MAX_DB = 30;
+    private int currentDb;
+    private boolean threshold=false;
+    public int getMAX_DB() {
+        return MAX_DB;
     }
 
     public void setCurrentDb(int currentDb) {
@@ -31,5 +27,28 @@ public class Library extends Outdoor
 
     public int getCurrentDb() {
         return currentDb;
+    }
+
+    public boolean isThresholdExceeded() {
+        if(getCurrentDb()>getMAX_DB()){
+            threshold=true;
+            return threshold;
+        }
+        else{
+            threshold=false;
+            return threshold;
+        }
+
+    }
+    public void setThreshold(boolean threshold) {
+        this.threshold = threshold;
+    }
+
+    @Override
+    public boolean isChallengeSuccess(){
+        if(isThresholdExceeded())
+            return false;
+        else
+            return true;
     }
 }

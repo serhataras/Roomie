@@ -1,34 +1,43 @@
 package src;
 
+import src.Enums.OptionType;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
 public class GameEnvironment
 {
-    Outdoor[] outdoor;
-    House house;
+    private Outdoor[] outdoors;
+    private House house;
 
-    GameEnvironment()
+    public static final int OUTDOOR_NUMBER = 4;
+
+    public GameEnvironment()
     {
-        outdoor     = new Outdoor[4];
+        outdoors     = new Outdoor[OUTDOOR_NUMBER];
         house       = new House();
     }
 
 
-    GameEnvironment(Outdoor[] outdoor, House house)
+    public GameEnvironment(Outdoor[] outdoor, House house)
     {
         this.house      = house;
-        this.outdoor    = outdoor;
+        this.outdoors    = outdoor;
     }
 
-    public Outdoor[] getOutdoor()
+
+
+    public Outdoor getOutdoorEnvironment(OptionType environment)
     {
-        return outdoor;
+        if (environment != OptionType.HOUSE_OPTION)
+            return outdoors[environment.ordinal()];
+        else
+            return null;//Creates bugs
     }
 
     public void setOutdoor(Outdoor[] outdoor)
     {
-        this.outdoor = outdoor;
+        this.outdoors = outdoor;
     }
 
     public House getHouse()

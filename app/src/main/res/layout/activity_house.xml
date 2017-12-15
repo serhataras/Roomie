@@ -11,165 +11,278 @@
 
 
     <RelativeLayout
-        android:layout_width="383dp"
-        android:layout_height="496dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <Button
-            android:id="@+id/changeRoomButton"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/playerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="6dp"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <Button
+                android:id="@+id/backpackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/playerNameText"
+                android:layout_marginEnd="17dp"
+                android:text="Open backpack"
+                android:textSize="8sp" />
+
+            <FrameLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/playerButton"
+                android:layout_marginTop="7dp">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/playerNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/playerButton"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/playerButton"
+                android:text="Name"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thisRoomText"
+            android:layout_above="@+id/linearLayout"
             android:layout_centerHorizontal="true"
-            android:text="Change Room"
-            android:textSize="12sp" />
+            android:layout_marginBottom="6dp"
+            android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/content"
-            android:layout_width="500dp"
-            android:layout_height="150dp"
-            android:layout_alignEnd="@+id/muteBox"
-            android:layout_alignStart="@+id/playerButton"
-            android:layout_below="@+id/playerButton"
-            android:layout_marginTop="49dp"></FrameLayout>
+            <TextView
+                android:id="@+id/thisRoomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content"
+                android:layout_centerHorizontal="true"
+                android:text="This Room"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/playerButton"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/changeRoomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/thisRoomText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Change Room"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="@dimen/ha_side_margin"
-            android:layout_marginTop="27dp"
-            app:srcCompat="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/thisRoomText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="28dp"
-            android:text="This Room"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="18dp">
 
-        <TextView
-            android:id="@+id/playerNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/backpackButton"
-            android:layout_alignStart="@+id/backpackButton"
-            android:layout_marginStart="@dimen/ha_top_btw_margin"
-            android:text="Name"
-            android:textSize="14sp" />
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ToggleButton
-            android:id="@+id/backpackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/content"
-            android:layout_marginStart="@dimen/ha_top_btw_margin"
-            android:layout_toEndOf="@+id/playerButton"
-            android:text="Backpack"
-            android:textOff="Open Backpack"
-            android:textOn="Close Backpack"
-            android:textSize="8sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1">
 
-        <ToggleButton
-            android:id="@+id/muteBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/content"
-            android:layout_alignStart="@+id/backpackButton"
-            android:layout_marginStart="140dp"
-            android:text="ToggleButton"
-            android:textOff="Volume Off"
-            android:textOn="Volume On"
-            android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:text="Grades"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteX="313dp"
+                        tools:layout_editor_absoluteY="10dp" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/content"
-            android:layout_below="@+id/changeRoomButton"
-            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Health" />
+                    <ProgressBar
+                        android:id="@+id/gradesBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_below="@+id/textView1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_weight="1"
+                        android:max="10"
+                        android:progress="10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView1"
+                        tools:layout_editor_absoluteX="313dp" />
+                </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView1"
-            android:layout_below="@+id/changeRoomButton"
-            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
-            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Money" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:text="Sociality"
+                        tools:layout_editor_absoluteX="236dp"
+                        tools:layout_editor_absoluteY="10dp" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/changeRoomButton"
-            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
-            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Sociality" />
+                    <ProgressBar
+                        android:id="@+id/socialityBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_alignEnd="@+id/textView2"
+                        android:layout_alignStart="@+id/textView2"
+                        android:layout_below="@+id/textView2"
+                        android:layout_weight="1"
+                        android:max="10"
+                        android:progress="10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        tools:layout_editor_absoluteX="236dp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView3"
-            android:layout_below="@+id/changeRoomButton"
-            android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
-            android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Grades" />
 
-        <ProgressBar
-            android:id="@+id/healthBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView1"
-            android:layout_alignTop="@+id/moneyBar"
-            android:max="10"
-            android:progress="10" />
+                </RelativeLayout>
 
-        <ProgressBar
-            android:id="@+id/moneyBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_below="@+id/textView2"
-            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
-            android:max="10"
-            android:progress="10" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-        <ProgressBar
-            android:id="@+id/socialityBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView3"
-            android:layout_below="@+id/textView3"
-            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
-            android:max="10"
-            android:progress="10" />
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="49dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:text="Health"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteX="66dp"
+                        tools:layout_editor_absoluteY="10dp" />
 
-        <ProgressBar
-            android:id="@+id/gradesBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
+                    <ProgressBar
+                        android:id="@+id/healthBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_alignEnd="@+id/textView3"
+                        android:layout_alignStart="@+id/textView3"
+                        android:layout_below="@+id/textView3"
+                        android:layout_weight="1"
+                        android:max="10"
+                        android:progress="10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3"
+                        tools:layout_editor_absoluteX="58dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignEnd="@+id/linearLayout3"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:text="Money"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteX="140dp"
+                        tools:layout_editor_absoluteY="10dp" />
+
+                    <ProgressBar
+                        android:id="@+id/moneyBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:layout_alignEnd="@+id/textView4"
+                        android:layout_alignStart="@+id/textView4"
+                        android:layout_below="@+id/textView4"
+                        android:layout_weight="1"
+                        android:max="10"
+                        android:progress="10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        tools:layout_editor_absoluteX="140dp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_below="@+id/textView4"
-            android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
-            android:max="10"
-            android:progress="10" />
+            android:layout_above="@+id/relativeLayout2"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/schoolButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="School"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/libraryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lıbrary"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/nightClubButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dısco"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/cafeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/linearLayout"
+                android:layout_below="@+id/relativeLayout2"
+                android:layout_weight="1"
+                android:text="Cafe"
+                android:textSize="12sp" />
+        </LinearLayout>
 
     </RelativeLayout>
 </LinearLayout>
