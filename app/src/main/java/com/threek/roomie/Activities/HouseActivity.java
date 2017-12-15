@@ -2,6 +2,7 @@ package com.threek.roomie.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import java.util.Observer;
 import src.Enums.OptionType;
 import src.Enums.StatType;
 import src.Game;
+import src.House;
 import src.Item;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
@@ -47,7 +49,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private ImageButton playerButton;
     private TextView playerNameText;
     private Button backpackButton;
-    private Button outsideButton;
 
     private Button changeButton;
     private TextView thisRoomText;
@@ -57,6 +58,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private ProgressBar socialityBar;
     private ProgressBar gradesBar;
 
+    private Button schoolButton;
+    private Button libraryButton;
+    private Button nightClubButton;
+    private Button cafeButton;
+
+    // game instance
     private Game game;
 
     @Override
@@ -64,18 +71,21 @@ public class HouseActivity extends AppCompatActivity implements Observer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
 
+        // game instance to work on
         game = Game.getInstance();
 
+        // TODO delete them
         game.getPlayer().getBackpack().addItem(new Item("xd", null, new Stats(new int[]{1, 2, 3, 4})));
-        game.getPlayer().getBackpack().addItem(new Item("xc", null, new Stats(new int[]{-1, -2, -3, 4})));
+        game.getPlayer().getBackpack().addItem(new Item("xc", null, new Stats(new int[]{-1, -2, -3, -4})));
 
+        // house fragments
         kitchenFragment = new KitchenFragment();
         bathroomFragment = new BathroomFragment();
         bedroomFragment = new BedroomFragment();
         livingRoomFragment = new LivingRoomFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
-
+        // TODO change the listener
         playerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,10 +95,26 @@ public class HouseActivity extends AppCompatActivity implements Observer
         playerNameText = (TextView) findViewById(R.id.playerNameText);
         playerNameText.setText(game.getPlayer().getName());
 
+        // backpack button
         backpackButton = (Button) findViewById(R.id.backpackButton);
         backpackButton.setOnClickListener(new BackpackListener());
 
-        outsideButton = (Button) findViewById(R.id.muteBox);
+        // outside buttons
+        schoolButton = (Button) findViewById(R.id.schoolButton);
+        schoolButton.setOnClickListener(new ItemListener());
+        schoolButton.setId(House.idGenerator(OptionType.SCHOOL_OPTION, null, null));
+
+        libraryButton = (Button) findViewById(R.id.libraryButton);
+        libraryButton.setOnClickListener(new ItemListener());
+        libraryButton.setId(House.idGenerator(OptionType.LIBRARY_OPTION, null, null));
+
+        nightClubButton = (Button) findViewById(R.id.nightClubButton);
+        nightClubButton.setOnClickListener(new ItemListener());
+        nightClubButton.setId(House.idGenerator(OptionType.NIGHT_CLUB_OPTION, null, null));
+
+        cafeButton = (Button) findViewById(R.id.cafeButton);
+        cafeButton.setOnClickListener(new ItemListener());
+        cafeButton.setId(House.idGenerator(OptionType.CAFE_OPTION, null, null));
 
         changeButton = (Button) findViewById(R.id.changeRoomButton);
         changeButton.setOnClickListener(new ChangeRoomListener());
@@ -115,7 +141,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         currentFragment = livingRoomFragment;
         thisRoomText.setText(livingRoomFragment.getName());
 
-        // add observers
+        // add observers to the game
         game.addObservers(this);
     }
 
@@ -189,6 +215,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         {
             Intent intent = new Intent(HouseActivity.this, BackpackActivity.class);
             startActivity(intent);
+            updateStatBars(game.getPlayer().getStats());
         }
     }
 
@@ -292,22 +319,25 @@ public class HouseActivity extends AppCompatActivity implements Observer
             int id1 = game.getActivatedButtons()[0];
             int id2 = game.getActivatedButtons()[1];
 
-            // deactivate all buttons in the house fragment
+            // deactivate all buttons in the house fragment & outside buttons
             livingRoomFragment.deactivateAllButtons();
             bedroomFragment.deactivateAllButtons();
             bathroomFragment.deactivateAllButtons();
             kitchenFragment.deactivateAllButtons();
+            deactivateOutsideButtons();
 
             // activate only the event related buttons
             livingRoomFragment.activateButton(id1);
             bedroomFragment.activateButton(id1);
             bathroomFragment.activateButton(id1);
             kitchenFragment.activateButton(id1);
+            activateOutsideButtons(id1);
 
             livingRoomFragment.activateButton(id2);
             bedroomFragment.activateButton(id2);
             bathroomFragment.activateButton(id2);
             kitchenFragment.activateButton(id2);
+            activateOutsideButtons(id2);
 
             // show the question
             showEventDialog(game.getEventQuestion());
@@ -321,15 +351,43 @@ public class HouseActivity extends AppCompatActivity implements Observer
         healthBar.setProgress(stats.getStatByIndex(StatType.HEALTH));
     }
 
-    public void activateOutsideButton()
+    public void activateOutsideButtons(int id)
     {
-        outsideButton.setEnabled(true);
-        outsideButton.setAlpha(1f);
+        if (schoolButton.getId() == id)
+        {
+            schoolButton.setEnabled(true);
+            schoolButton.setAlpha(1f);
+        }
+        else if (libraryButton.getId() == id)
+        {
+            libraryButton.setEnabled(true);
+            libraryButton.setAlpha(1f);
+        }
+        else if (nightClubButton.getId() == id)
+        {
+            nightClubButton.setEnabled(true);
+            nightClubButton.setAlpha(1f);
+
+        }
+        else if (cafeButton.getId() == id)
+        {
+            cafeButton.setEnabled(true);
+            cafeButton.setAlpha(1f);
+        }
     }
 
-    public void deactivateOutsideButton()
+    public void deactivateOutsideButtons()
     {
-        outsideButton.setEnabled(false);
-        outsideButton.setAlpha(0.3f);
+        schoolButton.setEnabled(false);
+        schoolButton.setAlpha(0.3f);
+
+        libraryButton.setEnabled(false);
+        libraryButton.setAlpha(0.3f);
+
+        nightClubButton.setEnabled(false);
+        nightClubButton.setAlpha(0.3f);
+
+        cafeButton.setEnabled(false);
+        cafeButton.setAlpha(0.3f);
     }
 }

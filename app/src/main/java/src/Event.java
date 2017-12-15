@@ -46,7 +46,7 @@ public class Event {
     {
         if (chooseAnOption(id) != null)
             return chooseAnOption(id).getOptionType();
-        return OptionType.HOUSE_OPTION;
+        return null;
     }
 
     public int[] getOptionsId()

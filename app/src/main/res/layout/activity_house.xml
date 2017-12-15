@@ -11,8 +11,8 @@
 
 
     <RelativeLayout
-        android:layout_width="383dp"
-        android:layout_height="496dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -20,7 +20,7 @@
             android:id="@+id/changeRoomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/content"
+            android:layout_alignEnd="@+id/textView4"
             android:layout_alignStart="@+id/textView1"
             android:layout_below="@+id/thisRoomText"
             android:text="Change Room"
@@ -28,12 +28,11 @@
 
         <FrameLayout
             android:id="@+id/content"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="150dp"
-            android:layout_alignEnd="@+id/muteBox"
             android:layout_alignStart="@+id/playerButton"
             android:layout_below="@+id/playerButton"
-            android:layout_marginTop="49dp"></FrameLayout>
+            android:layout_marginTop="31dp"></FrameLayout>
 
         <ImageButton
             android:id="@+id/playerButton"
@@ -42,7 +41,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="@dimen/ha_side_margin"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="@dimen/ha_top_margin"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
@@ -76,16 +75,6 @@
             android:text="Open backpack"
             android:textSize="8sp" />
 
-        <Button
-            android:id="@+id/muteBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/content"
-            android:layout_alignStart="@+id/backpackButton"
-            android:layout_marginStart="140dp"
-            android:text="Outside"
-            android:textSize="12sp" />
-
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -93,7 +82,8 @@
             android:layout_alignStart="@+id/content"
             android:layout_below="@+id/changeRoomButton"
             android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Health" />
+            android:text="Health"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -103,7 +93,8 @@
             android:layout_below="@+id/changeRoomButton"
             android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
             android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Money" />
+            android:text="Money"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -123,13 +114,15 @@
             android:layout_below="@+id/changeRoomButton"
             android:layout_marginStart="@dimen/ha_stat_text_btw_bargin"
             android:layout_marginTop="@dimen/ha_stat_text_top_bargin"
-            android:text="Grades" />
+            android:text="Grades"
+            android:textSize="15sp" />
 
         <ProgressBar
             android:id="@+id/healthBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView1"
             android:layout_alignStart="@+id/textView1"
             android:layout_alignTop="@+id/moneyBar"
             android:max="10"
@@ -140,6 +133,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView2"
             android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/textView2"
             android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
@@ -151,6 +145,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView3"
             android:layout_alignStart="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
@@ -162,11 +157,53 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView4"
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/textView4"
             android:layout_marginTop="@dimen/ha_stat_bar_top_bargin"
             android:max="10"
             android:progress="10" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/healthBar"
+            android:layout_below="@+id/healthBar"
+            android:layout_marginTop="23dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/schoolButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="School"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/libraryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lıbrary"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/nightClubButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dısco"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/cafeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cafe"
+                android:textSize="12sp" />
+        </LinearLayout>
 
     </RelativeLayout>
 </LinearLayout>
