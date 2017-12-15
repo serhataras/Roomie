@@ -1,7 +1,4 @@
 package src;
-
-import android.util.Pair;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,13 +10,15 @@ import java.util.Map;
 
 class Graph {
     private Map<Event, List<Event>> adjacencyList;
+    private int vertices;
 
-    public Graph(int vertices, Event[] allEvents) {
+    public Graph(int vertices) {
+        this.vertices = vertices;
         adjacencyList = new HashMap<Event, List<Event>>();
 
-        for (int i = 0; i < vertices; ++i) {
+        /*for (int i = 0; i < vertices; ++i) {
             adjacencyList.put(allEvents[i], new LinkedList<Event>());
-        }
+        }*/
     }
 
     public void setEdge(Event to, Event from)
@@ -33,6 +32,15 @@ class Graph {
         return adjacencyList.get(to);
     }
 
+    public List<Event> getNeighbors(Event event){
+        return adjacencyList.get(event);
+    }
+
+    public void setNeighbors(Event event, List<Event> neighbors){
+        System.out.println(event + " " + neighbors);
+        adjacencyList.put(event, neighbors);
+    }
+
     @Override
     public String toString() {
         return "Graph{" +
@@ -42,7 +50,7 @@ class Graph {
 
     //test
 
-    /*public static void main(String args[])
+    public static void main(String args[])
     {
         Option[] arr = new Option[2];
 
@@ -54,9 +62,9 @@ class Graph {
         Event[] events = new Event[2];
         events[0] = a;
         events[1] = b;
-        Graph g = new Graph(2, events);
+        Graph g = new Graph(2);
         g.setEdge(a,b);
 
         System.out.print(g);
-    }*/
+    }
 }

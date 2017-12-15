@@ -6,8 +6,7 @@ import src.Enums.OptionType;
  * Created by eliztekcan on 30.10.2017.
  */
 
-public class Event
-{
+public class Event {
     private String question;
     private Option[] optionArray;
     private  static final int MAX_OPTION = 2;
@@ -74,6 +73,10 @@ public class Event
 
     public static int getMaxOption() {
         return MAX_OPTION;
+    }
+
+    public Option[] getOptionArray() {
+        return optionArray;
     }
 
     @Override

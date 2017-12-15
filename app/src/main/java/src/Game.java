@@ -89,7 +89,18 @@ public class Game
 
     public void changeCurrentEvent()
     {
-        // TODO pressedButtonId to change the event
+        Option[] options = (currentEvent.getValue()).getOptionArray();
+        //option 1
+        if(pressedButtonId.getValue() == options[0].getId()){
+            if(!options[0].isExtreme())
+                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+        }
+        //option 2
+        else if (pressedButtonId.getValue() == options[1].getId())
+        {
+            if(!options[1].isExtreme())
+                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+        }
     }
 
     public boolean checkExtremeOption()
