@@ -16,7 +16,7 @@ public class School extends Outdoor
     private int random;
     private static final int MAX_QUESTION = 4;
     private static final String FILE_NAME= "/raw/quiz.txt";
-    private int NUMBER_OF_QUESTIONS;
+    private String selectedAnswer;
 
     public School()
     {
@@ -93,6 +93,14 @@ public class School extends Outdoor
             return true;
         else
             return false;
+    }
+
+    public String getSelectedAnswer() {
+        return selectedAnswer;
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
     }
 
     public static void main(String[] args){
