@@ -28,13 +28,19 @@ public class SchoolActivity extends AppCompatActivity{
     private Button ans1,ans2,ans3,ans4;
     private String answer;
     private QuizQuestion quizQuestion;
+    private String[] answerOptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
 
+        //Singleton Attributes
         game=game.getInstance();
 
+        quizQuestion=game.sendQuizQuestion();
+        answerOptions=quizQuestion.getOptions();
+
+        //View Binding for Android
         question = (TextView) findViewById(R.id.question_TextView);
 
         ans1 = (Button) findViewById(R.id.answerButton1);
@@ -42,10 +48,15 @@ public class SchoolActivity extends AppCompatActivity{
         ans3 = (Button) findViewById(R.id.answerButton3);
         ans4 = (Button) findViewById(R.id.answerButton4);
 
-        //TODO QUESTION AND ANSWERWS WRITE
+        //TODO QUESTION AND ANSWERWS Text's Update
+        question.setText(quizQuestion.getQuestion());
 
+        ans1.setText(answerOptions[1]);
+        ans2.setText(answerOptions[2]);
+        ans3.setText(answerOptions[3]);
+        ans4.setText(answerOptions[4]);
 
-
+        //Listeners for each button
         ans1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
