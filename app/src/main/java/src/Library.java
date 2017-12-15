@@ -14,11 +14,11 @@ public class Library extends Outdoor
         70db is heavy traffic
    */
 
-    private final int HIGHEST_DB = 30;
+    private final int MAX_DB = 30;
     private int currentDb;
-
-    public int getHIGHEST_DB() {
-        return HIGHEST_DB;
+    private boolean threshold=false;
+    public int getMAX_DB() {
+        return MAX_DB;
     }
 
     public void setCurrentDb(int currentDb) {
@@ -29,9 +29,24 @@ public class Library extends Outdoor
         return currentDb;
     }
 
+    public boolean isThresholdExceeded() {
+        if(getCurrentDb()>getMAX_DB()){
+            threshold=true;
+            return threshold;
+        }
+        else{
+            threshold=false;
+            return threshold;
+        }
+
+    }
+    public void setThreshold(boolean threshold) {
+        this.threshold = threshold;
+    }
+
     @Override
     public boolean isChallengeSuccess(){
-        if(getCurrentDb() > HIGHEST_DB)
+        if(isThresholdExceeded())
             return false;
         else
             return true;
