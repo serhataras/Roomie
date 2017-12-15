@@ -88,6 +88,7 @@ public class NightClubActivity extends AppCompatActivity {
                         timerDisplay.setText("done!");
                         //the game instance updated
                         ((NightClub) game.getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION)).setShakeAmount(count);
+                        finish();
                     }
                 }.start();
 
