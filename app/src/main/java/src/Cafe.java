@@ -12,7 +12,7 @@ public class Cafe extends Outdoor
     private FoodItem[] menu;
     private final int MAX_FOOD = 10;
     private final String FILE_NAME = "raw/menu.txt";
-
+    public FoodItem selectedFood;
     public Cafe()
     {
         menu = new FoodItem[MAX_FOOD];
@@ -75,6 +75,14 @@ public class Cafe extends Outdoor
 
     public int getMAX_FOOD() {
         return MAX_FOOD;
+    }
+
+    public FoodItem getSelectedFood() {
+        return selectedFood;
+    }
+
+    public void setSelectedFood(FoodItem selectedFood) {
+        this.selectedFood = selectedFood;
     }
 
     //for testing
