@@ -26,6 +26,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import src.Enums.OptionType;
+import src.Enums.StatType;
 import src.Game;
 import src.Item;
 import src.Observable.ObservableEvent;
@@ -231,8 +232,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 if (type == OptionType.HOUSE_OPTION)
                 {
                     // refresh player's stats & change the current event
-                    game.chooseHouseOption();
-                    // TODO update bars
+                    Stats stats = game.chooseHouseOption();
+                    updateStatBars(stats);
                 }
 
                 // if the option type is night club
@@ -311,5 +312,24 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // show the question
             showEventDialog(game.getEventQuestion());
         }
+    }
+    public void updateStatBars(Stats stats)
+    {
+        moneyBar.setProgress(stats.getStatByIndex(StatType.MONEY));
+        gradesBar.setProgress(stats.getStatByIndex(StatType.GRADES));
+        socialityBar.setProgress(stats.getStatByIndex(StatType.SOCIALITY));
+        healthBar.setProgress(stats.getStatByIndex(StatType.HEALTH));
+    }
+
+    public void activateOutsideButton()
+    {
+        outsideButton.setEnabled(true);
+        outsideButton.setAlpha(1f);
+    }
+
+    public void deactivateOutsideButton()
+    {
+        outsideButton.setEnabled(false);
+        outsideButton.setAlpha(0.3f);
     }
 }

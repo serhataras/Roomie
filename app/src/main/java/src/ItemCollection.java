@@ -14,7 +14,7 @@ public class ItemCollection
     private static final int MAX_ITEM = 12;
     private Item[] items;
     private Stats boost;
-    private static final String FILE_NAME= "/raw/Backpack.txt";
+    private static final String FILE_NAME= "/raw/backpack";
 
     public ItemCollection()
     {

@@ -22,7 +22,7 @@ public class Events
     private Event start;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 6;
-    private static final String FILE_NAME = "raw/Events.txt";
+    private static final String FILE_NAME = "raw/events.txt";
 
 
     Events(){

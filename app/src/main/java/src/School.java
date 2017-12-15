@@ -15,7 +15,7 @@ public class School extends Outdoor
     private String[] options;
     private int random;
     private static final int MAX_QUESTION = 4;
-    private static final String FILE_NAME= "/raw/Quiz.txt";
+    private static final String FILE_NAME= "/raw/quiz.txt";
     private int NUMBER_OF_QUESTIONS;
 
     public School()
