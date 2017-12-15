@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class Events
     private Event start;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 6;
-    private static final String FILE_NAME = "/Users/eliztekcan/Desktop/RoomieLogic/src/Other/Events.txt";
+    private static final String FILE_NAME = "raw/Events.txt";
 
 
     Events(){
@@ -33,11 +35,11 @@ public class Events
     private Event[] setEvents()
     {
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME);
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             allEvents = new Event[MAX_EVENT_COUNT];
@@ -128,9 +130,8 @@ public class Events
 
                 if (br != null)
                     br.close();
-
-                if (fr != null)
-                    fr.close();
+                if( in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
@@ -178,11 +179,11 @@ public class Events
 
     public void connectEvents(){
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME);
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
@@ -202,8 +203,8 @@ public class Events
                 if (br != null)
                     br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
