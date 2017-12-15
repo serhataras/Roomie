@@ -15,8 +15,8 @@
             android:layout_height="100px"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
             app:srcCompat="@color/colorAccent" />
 
         <TextView
@@ -24,8 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/itemImage"
-            android:layout_marginStart="15dp"
+            android:layout_alignTop="@+id/itemImage"
             android:layout_toEndOf="@+id/itemImage"
+            android:layout_toStartOf="@+id/useButton"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -33,8 +34,8 @@
             android:id="@+id/useButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/itemText"
             android:layout_alignBottom="@+id/itemText"
+            android:layout_alignTop="@+id/itemImage"
             android:layout_toStartOf="@+id/sellButton"
             android:text="Use" />
 
@@ -42,10 +43,9 @@
             android:id="@+id/sellButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/useButton"
             android:layout_alignBottom="@+id/useButton"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="26dp"
+            android:layout_alignTop="@+id/useButton"
             android:text="Sell" />
 
 
