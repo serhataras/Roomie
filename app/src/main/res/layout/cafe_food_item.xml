@@ -11,9 +11,11 @@ android:descendantFocusability="blocksDescendants">
         android:layout_alignBottom="@+id/list_item_btn"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/list_item_btn"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="11dp"
         android:layout_toStartOf="@+id/list_item_btn"
-        android:text="Food" />
+        android:fontFamily="sans-serif"
+        android:text="Food"
+        android:textAlignment="viewStart" />
 
     <Button
         android:id="@+id/list_item_btn"
@@ -22,7 +24,8 @@ android:descendantFocusability="blocksDescendants">
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="11dp"
-        android:layout_marginTop="12dp"
-        android:text="Buy" />
+        android:layout_marginTop="13dp"
+        android:text="Buy"
+        android:textStyle="bold" />
 
 </RelativeLayout>
