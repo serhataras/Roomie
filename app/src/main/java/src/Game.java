@@ -120,25 +120,26 @@ public class Game
         return currentEvent.getValue().getQuestion();
     }
 
-    public Stats chooseHouseOption()
+    public void chooseHouseOption()
     {
-        Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
-        refreshStats(stats);
-        return stats;
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+
+        if (option != null)
+        {
+            Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
+            refreshStats(stats);
+        }
     }
 
-    public Stats chooseOutdoorOption(boolean success)
+    public void chooseOutdoorOption(boolean success)
     {
-        Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
-        if (success)
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+        if (option != null && success)
         {
+            Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
             refreshStats(stats);
             addRandomItemToBackPack();
-            return stats;
         }
-
-        stats.makeStatsZero();
-        return stats;
     }
 
     public ArrayList<Item> getBackPackItems()

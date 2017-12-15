@@ -125,6 +125,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         moneyBar = (ProgressBar) findViewById(R.id.moneyBar);
         socialityBar = (ProgressBar) findViewById(R.id.socialityBar);
         gradesBar = (ProgressBar) findViewById(R.id.gradesBar);
+        updateStatBars();
 
         // adds all fragments to the activity and shows only the living room fragment
         getSupportFragmentManager().beginTransaction().add(R.id.content, kitchenFragment).commitNow();
@@ -215,7 +216,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         {
             Intent intent = new Intent(HouseActivity.this, BackpackActivity.class);
             startActivity(intent);
-            updateStatBars(game.getPlayer().getStats());
+            updateStatBars();
         }
     }
 
@@ -259,8 +260,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 if (type == OptionType.HOUSE_OPTION)
                 {
                     // refresh player's stats & change the current event
-                    Stats stats = game.chooseHouseOption();
-                    updateStatBars(stats);
+                    game.chooseHouseOption();
+                    updateStatBars();
                 }
 
                 // if the option type is night club
@@ -343,12 +344,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
             showEventDialog(game.getEventQuestion());
         }
     }
-    public void updateStatBars(Stats stats)
+    public void updateStatBars()
     {
-        moneyBar.setProgress(stats.getStatByIndex(StatType.MONEY));
-        gradesBar.setProgress(stats.getStatByIndex(StatType.GRADES));
-        socialityBar.setProgress(stats.getStatByIndex(StatType.SOCIALITY));
-        healthBar.setProgress(stats.getStatByIndex(StatType.HEALTH));
+        moneyBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.MONEY));
+        gradesBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.GRADES));
+        socialityBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.SOCIALITY));
+        healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
     }
 
     public void activateOutsideButtons(int id)

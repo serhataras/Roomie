@@ -11,6 +11,7 @@ public class QuizQuestion
     private String question;
     private int grades;
     private String currentAnswer;
+
     public QuizQuestion()
     {
         options = new String[4];

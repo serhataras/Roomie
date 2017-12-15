@@ -3,18 +3,21 @@ package src;
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-import java.util.Arrays;
 
+import java.util.Arrays;
 import src.Enums.StatType;
 
 public class Stats
 {
-    private static final int MAX_STAT = 10;
-    private static final int MIN_STAT = 0;
-    public static final int NUMBER_OF_STATS = 4;
+    // constants
+    private final int MAX_STAT = 10;
+    private final int MIN_STAT = 0;
+    private final int NUMBER_OF_STATS = 4;
 
+    // stat array
     private  int[] stats;
 
+    // constructors
     public Stats(int[] stats)
     {
         //set all stats to given int array
@@ -66,8 +69,8 @@ public class Stats
         if (stats[index] > MAX_STAT)
             stats[index] = MAX_STAT;
 
-        if (stats[index] < 0)
-            stats[index] = 0;
+        if (stats[index] < MIN_STAT)
+            stats[index] = MIN_STAT;
     }
 
     public int getStatByIndex(StatType index)
