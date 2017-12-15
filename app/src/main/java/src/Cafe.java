@@ -11,7 +11,7 @@ public class Cafe extends Outdoor
 {
     private FoodItem[] menu;
     private final int MAX_FOOD = 10;
-    private final String FILE_NAME = "src/Other/Menu.txt";
+    private final String FILE_NAME = "raw/Menu.txt";
 
     public Cafe()
     {
