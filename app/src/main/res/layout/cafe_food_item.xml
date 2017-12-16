@@ -28,4 +28,12 @@ android:descendantFocusability="blocksDescendants">
         android:text="Buy"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/foodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/list_item_text"
+        android:layout_alignStart="@+id/list_item_text"
+        android:text="TextView" />
+
 </RelativeLayout>
