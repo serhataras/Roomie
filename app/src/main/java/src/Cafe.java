@@ -35,7 +35,7 @@ public class Cafe extends Outdoor
         InputStream in = null;
 
         try {
-            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
+            in = r.openRawResource(r.getIdentifier("menu", "raw", pn));
             br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
