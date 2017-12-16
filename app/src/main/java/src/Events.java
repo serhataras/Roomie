@@ -324,7 +324,6 @@ public class Events
                 if(index == 0)
                     start = allEvents[0];
                 index++;
-
             }
             try {
 
