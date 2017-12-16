@@ -23,6 +23,7 @@ public class Game
     private ObservableEvent currentEvent;
     private ObservableId pressedButtonId;
     private boolean gameHasStarted;
+    private boolean gameOver;
 
     // singleton object
     private static Game instance = null;
@@ -34,6 +35,7 @@ public class Game
         currentEvent = new ObservableEvent(null);
         pressedButtonId = new ObservableId(-1);
         gameHasStarted = true;
+        gameOver = false;
     }
 
     // method for getting singleton game instance
@@ -106,12 +108,24 @@ public class Game
         if(pressedButtonId.getValue() == options[0].getId()){
             if(!options[0].isExtreme())
                 currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+            else
+                gameOver = true;
         }
         //option 2
         else if (pressedButtonId.getValue() == options[1].getId())
         {
             if(!options[1].isExtreme())
                 currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+            else
+                gameOver = true;
+
+        }
+    }
+
+    public void endGame(){
+        if(currentEvent == null || gameOver == true )
+        {
+
         }
     }
 
