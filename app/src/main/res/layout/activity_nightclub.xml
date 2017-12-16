@@ -34,17 +34,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="99dp"
             android:text="time"
-            android:textSize="24sp" />
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/countView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/clubName"
+            android:layout_above="@+id/timeView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="72dp"
+            android:layout_marginBottom="113dp"
             android:text="count"
-            android:textSize="96sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="143sp" />
 
         <TextView
             android:id="@+id/clubName"
@@ -54,6 +55,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:text="Night Club"
-            android:textSize="30sp" />
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clubName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Dance Off"
+            android:textSize="30sp"
+            android:typeface="sans" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
