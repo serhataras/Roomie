@@ -345,18 +345,18 @@ public class HouseActivity extends AppCompatActivity implements Observer
             schoolButton.setEnabled(true);
             schoolButton.setAlpha(1f);
         }
-        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
+        else if (libraryButton.getId() == id1 || libraryButton.getId() == id2)
         {
             libraryButton.setEnabled(true);
             libraryButton.setAlpha(1f);
         }
-        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
+        else if (nightClubButton.getId() == id1 || nightClubButton.getId() == id2)
         {
             nightClubButton.setEnabled(true);
             nightClubButton.setAlpha(1f);
 
         }
-        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
+        else if (cafeButton.getId() == id1 || cafeButton.getId() == id2)
         {
             cafeButton.setEnabled(true);
             cafeButton.setAlpha(1f);
