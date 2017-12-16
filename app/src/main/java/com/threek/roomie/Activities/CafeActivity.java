@@ -30,34 +30,24 @@ import src.Game;
  * Created by serhat on 13.12.2017.
  */
 
-public class CafeActivity extends AppCompatActivity  {
-
+public class CafeActivity extends AppCompatActivity
+{
     private Game game;
     private TextView foodListTextView;
     private FoodItem[] menu;
-    private ArrayList<String> data = new ArrayList<String>();
+    private ArrayList<String> data = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        /*TODO list view of the fooditems
-        * TODO get the selected food item
-        * TODO throw it to the house activity
-        */
-        game=game.getInstance();
-
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cafe);
+        game = Game.getInstance();
 
         ListView lv = (ListView) findViewById(R.id.foodmenuview);
-        menu=game.getFoodMenu();
+        menu = game.getFoodMenu();
 
         lv.setAdapter(new MyListAdaper(this, R.layout.cafe_food_item, data));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //if want something on click on the tab
-            }
-        });
     }
 
     private void generateListContent() {

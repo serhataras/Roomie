@@ -236,8 +236,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
         public void onClick(View view) {
 
             game.setId(view.getId());
-            Log.e("School button id", game.getPressedButtonId().getValue() + "");
-            playerNameText.setText(view.getId() + "");
         }
     }
 
@@ -334,8 +332,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
         else if (observable == game.getCurrentEvent())
         {
-            // prepare buttons
-            prepareButtonsForTheCurrentEvent();
+
+                prepareButtonsForTheCurrentEvent();
+
         }
     }
     public void updateStatBars()

@@ -21,6 +21,7 @@ public class Cafe extends Outdoor
     {
         super();
         menu = new FoodItem[MAX_FOOD];
+        selectedFood = new FoodItem();
         createMenu(r, pn);
     }
 
