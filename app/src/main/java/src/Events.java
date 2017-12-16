@@ -1,11 +1,8 @@
 package src;
+
 import android.content.res.Resources;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +25,7 @@ public class Events
     private Event start;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 7;
+    private static final String FILE_NAME = "/Users/eliztekcan/Desktop/test/src/Events";
 
 
     Events(Resources r, String pn){
@@ -38,14 +36,15 @@ public class Events
         //Log.e("START!!!!", start.toString());
     }
 
-    public Event[] setEvents(Resources r, String pn)
+    private Event[] setEvents(Resources r, String pn)
     {
-        BufferedReader br = null;
-        InputStream in = null;
 
-        try {
-            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
-            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            BufferedReader br = null;
+            InputStream in = null;
+
+            try {
+                in = r.openRawResource(r.getIdentifier("events", "raw", pn));
+                br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             allEvents = new Event[MAX_EVENT_COUNT];
@@ -326,6 +325,7 @@ public class Events
                 if(index == 0)
                     start = allEvents[0];
                 index++;
+
             }
             try {
 
@@ -376,14 +376,14 @@ public class Events
         return null;
     }
 
-    public void connectEvents(Resources r, String pn){
-        BufferedReader br = null;
-        InputStream in = null;
+    private void connectEvents(Resources r, String pn)
+    {
+            BufferedReader br = null;
+            InputStream in = null;
 
-        try {
-            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
-            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-
+            try {
+                in = r.openRawResource(r.getIdentifier("events", "raw", pn));
+                br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             String sCurrentLine;
             int index = 0;
             while ((sCurrentLine = br.readLine()) != null && index < MAX_EVENT_COUNT) {
@@ -395,7 +395,7 @@ public class Events
                 if(left != -1)
                     neighbors.add(allEvents[left]);
                 if ( right != -1)
-                neighbors.add(allEvents[right]);
+                    neighbors.add(allEvents[right]);
                 eventCollection.setNeighbors(cur, neighbors);
                 index ++;
             }
