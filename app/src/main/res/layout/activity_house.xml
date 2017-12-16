@@ -155,7 +155,7 @@
                         tools:layout_editor_absoluteY="10dp" />
 
                     <ProgressBar
-                        android:id="@+id/socialityBar2"
+                        android:id="@+id/socialityBar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"

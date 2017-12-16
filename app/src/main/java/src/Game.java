@@ -57,7 +57,6 @@ public class Game
         random = new Randomizer(r, pn);
     }
 
-
     public void activateButton()
     {
         int[] options = currentEvent.getValue().getOptionsId();
