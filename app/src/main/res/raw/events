@@ -1,7 +1,7 @@
 It's the first day of school *Go to school -Have breakfast and be late ? SH +1  2  =0  4  2  0  :0  -1 -1 0  ~ 3 2 @S -<K F
-You can catch the second class *Go to school -Watch TV ? SH +3  4  =0  4  2  0 :0  0  -5 9 ~ 3 4 @S -\L T
+You can catch the second class *Go to school -Watch TV ? SH +3  4  =0  4  2  0 :0  0  -5 9 ~ 3 4 @S -<L T
 It was a tiring day at school *Go to sleep -Go to the night club ? HN +5  6  =5  0  0  0  :0  5  -1 -4  ~ 4 4 @E E<N -
-You are hungry *Eat at home -Go to the Cafe ? HC +7  8  =3  0  0  0 :3  5  0  0  ~ 5 6 @S -\L T
+You are hungry *Eat at home -Go to the Cafe ? HC +7  8  =3  0  0  0 :3  5  0  0  ~ 5 6 @K T<C -
 You have an assignment *Go to the library and complete assignment -Stay home and play card games with roomies ? LH +9  10 =0  2  5  0 :0  5  4  0  ~ 6 6 @L -<L B
 Its your best friends birthday but you have an assignment due *Go to the night club -Stay home and study ? NH +11 12 =0  6  -1 -1 :0  0  3  0 ~ 7 4 @N -<L B
 You are tired *Take a bath and relax - read for history class? NH +11 12 =1  0  0  0 :0  0  3  0 ~ 2 0 @A B<E O
