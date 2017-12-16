@@ -234,7 +234,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         @Override
         public void onClick(View view) {
-
             game.setId(view.getId());
         }
     }
