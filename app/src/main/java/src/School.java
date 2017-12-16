@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
 public class School extends Outdoor
 {
     private static final int MAX_QUESTION = 4;
-    private static final String FILE_NAME= "/raw/quiz";
 
     private QuizQuestion[] questions;
     private String[] options;
