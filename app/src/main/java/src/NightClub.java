@@ -1,5 +1,7 @@
 package src;
 
+import android.util.Log;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
@@ -35,6 +37,7 @@ public class NightClub extends Outdoor
     @Override
     public void updateChallengeSuccess()
     {
+        Log.e("SHAKE", getShakeAmount() + "");
        if(getShakeAmount() > getMAX_SHAKE())
        {
            super.setChallengeSuccess(true);

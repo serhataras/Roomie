@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -83,7 +84,8 @@ public class NightClubActivity extends AppCompatActivity {
                         timer=millisUntilFinished / 1000;
                         updateView();
                         //if threshold passed, dont need to dance anymore
-                        if(mShakeDetector.get_mShakeCount()>mShakeDetector.getShakeAmount()){
+                        if (mShakeDetector.get_mShakeCount()>mShakeDetector.getShakeAmount())
+                        {
                             ((NightClub) game.getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION)).setShakeAmount(mShakeDetector.get_mShakeCount());
                             finish();
                         }

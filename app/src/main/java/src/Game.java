@@ -174,6 +174,7 @@ public class Game
             // update challenge success
             getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).updateChallengeSuccess();
 
+            Log.e("SUCC", getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).isChallengeSuccess() + "");
             // if challenge is successful, update stats & add random item
             if (getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).isChallengeSuccess())
             {
@@ -284,7 +285,6 @@ public class Game
 
     public FoodItem[] getFoodMenu()
     {
-        Log.e("ZAAA", ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu()[0].toString());
         return ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu();
     }
 

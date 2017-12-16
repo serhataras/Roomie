@@ -1,6 +1,7 @@
 package src;
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -95,6 +96,9 @@ public class School extends Outdoor
     {
         QuizQuestion currentQuestion = questions[random];
         String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex()];
+
+        Log.e("SEL ANS", getSelectedAnswer());
+        Log.e("METH ANS", correctAnswer);
 
         if(correctAnswer.equalsIgnoreCase(getSelectedAnswer()))
         {

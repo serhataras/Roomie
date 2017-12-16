@@ -31,6 +31,7 @@ import src.Enums.StatType;
 import src.Game;
 import src.House;
 import src.Item;
+import src.NightClub;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 import src.Option;
@@ -321,14 +322,27 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                showEventDialog("Earthquake! You have died.","GAME OVER!");
+                showEventDialog("Earthquake! You have died.","Game over!");
+                finish();
             }
         }
         else if (observable == game.getCurrentEvent())
         {
+            if (game.isGameOver())
+            {
+                showEventDialog("Thanks for playing.","Game over!");
+                try
+                {
+                    Thread.sleep(2000);
+                }
+                catch (Exception e)
+                {
 
-                prepareButtonsForTheCurrentEvent();
+                }
 
+                finish();
+            }
+            prepareButtonsForTheCurrentEvent();
         }
     }
     public void updateStatBars()
