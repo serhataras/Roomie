@@ -83,7 +83,7 @@ public class Game
         }
     }
 
-    public void refreshStats(Stats stats)
+    private void refreshStats(Stats stats)
     {
         player.updateStats(stats);
     }
@@ -109,7 +109,7 @@ public class Game
         return currentEvent.getValue().isOptionExtreme(pressedButtonId.getValue());
     }
 
-    public Item addRandomItemToBackPack()
+    private Item addRandomItemToBackPack()
     {
         Item item = random.throwItem();
         player.getBackpack().addItem(item);

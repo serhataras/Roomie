@@ -74,10 +74,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // game instance to work on
         game = Game.getInstance();
 
-        // TODO delete them
-        game.getPlayer().getBackpack().addItem(new Item("xd", null, new Stats(new int[]{1, 2, 3, 4})));
-        game.getPlayer().getBackpack().addItem(new Item("xc", null, new Stats(new int[]{-1, -2, -3, -4})));
-
         // house fragments
         kitchenFragment = new KitchenFragment();
         bathroomFragment = new BathroomFragment();
@@ -85,13 +81,14 @@ public class HouseActivity extends AppCompatActivity implements Observer
         livingRoomFragment = new LivingRoomFragment();
 
         playerButton = (ImageButton) findViewById(R.id.playerButton);
-        // TODO change the listener
         playerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showEventDialog("Do you wanna go out or study at home?");
+            public void onClick(View view)
+            {
+                showEventDialog(game.sendEventQuestion());
             }
         });
+
         playerNameText = (TextView) findViewById(R.id.playerNameText);
         playerNameText.setText(game.getPlayer().getName());
 
@@ -144,6 +141,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         // add observers to the game
         game.addObservers(this);
+
+        // initialize the ui components
+        updateStatBars();
+        prepareButtonsForTheCurrentEvent();
     }
 
     @Override
@@ -319,28 +320,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
         else if (observable == game.getCurrentEvent())
         {
-            int id1 = game.getActivatedButtons()[0];
-            int id2 = game.getActivatedButtons()[1];
-
-            // deactivate all buttons in the house fragment & outside buttons
-            livingRoomFragment.deactivateAllButtons();
-            bedroomFragment.deactivateAllButtons();
-            bathroomFragment.deactivateAllButtons();
-            kitchenFragment.deactivateAllButtons();
-            deactivateOutsideButtons();
-
-            // activate only the event related buttons
-            livingRoomFragment.activateButton(id1);
-            bedroomFragment.activateButton(id1);
-            bathroomFragment.activateButton(id1);
-            kitchenFragment.activateButton(id1);
-            activateOutsideButtons(id1);
-
-            livingRoomFragment.activateButton(id2);
-            bedroomFragment.activateButton(id2);
-            bathroomFragment.activateButton(id2);
-            kitchenFragment.activateButton(id2);
-            activateOutsideButtons(id2);
+            // prepare buttons
+            prepareButtonsForTheCurrentEvent();
 
             // show the question
             showEventDialog(game.getEventQuestion());
@@ -354,25 +335,28 @@ public class HouseActivity extends AppCompatActivity implements Observer
         healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
     }
 
-    public void activateOutsideButtons(int id)
+    public void activateOutsideButtons()
     {
-        if (schoolButton.getId() == id)
+        int id1 = game.getActivatedButtons()[0];
+        int id2 = game.getActivatedButtons()[1];
+
+        if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
         {
             schoolButton.setEnabled(true);
             schoolButton.setAlpha(1f);
         }
-        else if (libraryButton.getId() == id)
+        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
         {
             libraryButton.setEnabled(true);
             libraryButton.setAlpha(1f);
         }
-        else if (nightClubButton.getId() == id)
+        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
         {
             nightClubButton.setEnabled(true);
             nightClubButton.setAlpha(1f);
 
         }
-        else if (cafeButton.getId() == id)
+        else if (schoolButton.getId() == id1 || schoolButton.getId() == id2)
         {
             cafeButton.setEnabled(true);
             cafeButton.setAlpha(1f);
@@ -392,5 +376,40 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         cafeButton.setEnabled(false);
         cafeButton.setAlpha(0.3f);
+    }
+
+    public void activateHouseButtons()
+    {
+        int id1 = game.getActivatedButtons()[0];
+        int id2 = game.getActivatedButtons()[1];
+
+        livingRoomFragment.activateButton(id1);
+        bedroomFragment.activateButton(id1);
+        bathroomFragment.activateButton(id1);
+        kitchenFragment.activateButton(id1);
+
+        livingRoomFragment.activateButton(id2);
+        bedroomFragment.activateButton(id2);
+        bathroomFragment.activateButton(id2);
+        kitchenFragment.activateButton(id2);
+    }
+
+    public void deactivateHouseButtons()
+    {
+        livingRoomFragment.deactivateAllButtons();
+        bedroomFragment.deactivateAllButtons();
+        bathroomFragment.deactivateAllButtons();
+        kitchenFragment.deactivateAllButtons();
+    }
+
+    public void prepareButtonsForTheCurrentEvent()
+    {
+        // first deactivate
+        deactivateHouseButtons();
+        deactivateOutsideButtons();
+
+        // then activate
+        activateHouseButtons();
+        activateOutsideButtons();
     }
 }
