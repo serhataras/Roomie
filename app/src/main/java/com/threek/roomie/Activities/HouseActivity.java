@@ -236,6 +236,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         public void onClick(View view) {
 
             game.setId(view.getId());
+            Log.e("School button id", game.getPressedButtonId().getValue() + "");
             playerNameText.setText(view.getId() + "");
         }
     }
@@ -259,14 +260,12 @@ public class HouseActivity extends AppCompatActivity implements Observer
     {
         if (observable == game.getPressedButtonId())
         {
-            Log.e("Obs", "AAAAAAAAAAA");
             // if the option is not extreme
-            if (!game.checkExtremeOption())
+            if (game.checkExtremeOption() == false)
             {
                 // get the option type from the current event
                 OptionType type = game.whichOption();
-                if (type == null)
-                    Log.e("Obs", "House");
+                Log.e("Type", type.toString());
 
                 // if the option type is house
                 if (type == OptionType.HOUSE_OPTION)
@@ -312,7 +311,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     game.chooseLibraryOption();
                 }
 
-                else if (type == OptionType.SCHOOL_OPTION || type == null)
+                else if (type == OptionType.SCHOOL_OPTION)
                 {
                     // start the school activity
                     Intent intent = new Intent(HouseActivity.this, SchoolActivity.class);
@@ -330,16 +329,13 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                // TODO finish the game
+                showEventDialog("GAME OVER!");
             }
         }
         else if (observable == game.getCurrentEvent())
         {
             // prepare buttons
             prepareButtonsForTheCurrentEvent();
-
-            // show the question
-            showEventDialog(game.getEventQuestion());
         }
     }
     public void updateStatBars()

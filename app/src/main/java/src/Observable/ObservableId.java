@@ -18,7 +18,7 @@ public class ObservableId extends Observable
     }
 
     // methods
-    public void setValue(int n)
+    public void setValue(int id)
     {
         this.id = id;
         setChanged();

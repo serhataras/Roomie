@@ -1,5 +1,7 @@
 package src;
 
+import android.util.Log;
+
 import src.Enums.OptionType;
 
 /**
@@ -22,6 +24,8 @@ public class Event {
 
     public Option chooseAnOption(int id)
     {
+        Log.e("ID1", id + optionArray[0].toString() + "");
+        Log.e("ID2", id + optionArray[1].toString() + "");
         Option optionToReturn = null;
 
         for (int i = 0; i < MAX_OPTION; i++)
@@ -84,6 +88,7 @@ public class Event {
         return "Event{" +
                 "question='" + question + '\'' +
                 //", optionArray=" + Arrays.toString(optionArray) +
-                '}';
+                '}'
+                + optionArray[0].toString() + optionArray[1].toString();
     }
 }

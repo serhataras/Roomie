@@ -1,6 +1,7 @@
 package src;
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -51,6 +52,7 @@ public class Game
     {
         events = new Events(r, pn);
         currentEvent.setValue(events.getStart());
+        Log.e("Event", events.getStart().toString());
     }
 
     public void initializeGameEnvironment(Resources r, String pn)
