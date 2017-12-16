@@ -16,7 +16,7 @@ public class SoundMeter {
 
     private MediaRecorder mRecorder = null;
     private double mEMA = 0.0;
-
+    public static final int RECORD_AUDIO = 0;
     //Initialize the recorder to collect sound data
     public void start()  {
         if (mRecorder == null) {
@@ -39,15 +39,24 @@ public class SoundMeter {
             mEMA = 0.0;
         }
     }
+
     //Stops listening the recorder
     public void stop() {
         if (mRecorder != null) {
-            mRecorder.stop();
+            stopRecording();
             mRecorder.release();
             mRecorder = null;
         }
     }
-    //Returns the amplitude of the captured signel which will be the converted,
+
+    private void stopRecording() {
+        try{
+            mRecorder.stop();
+        }catch(RuntimeException stopException){
+            //handle cleanup here
+        }
+    }
+    //Returns the amplitude of the captured signal which will be the converted,
     //using the amplitude value
     public double getTheAmplitude(){
         if(mRecorder != null)
@@ -56,7 +65,7 @@ public class SoundMeter {
             return 1;
     }
 
-    //Returns the amplitude of the captured signel which will be the converted,
+    //Returns the amplitude of the captured signal which will be the converted,
     //using the amplitude value
     public double getAmplitude() {
         if (mRecorder != null)
