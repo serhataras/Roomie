@@ -1,7 +1,6 @@
 package src;
 
 import android.content.res.Resources;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,7 +47,7 @@ public class School extends Outdoor
 
                 setOptionsArray(sCurrentLine.substring(starInd+1,starInd+3), sCurrentLine.substring(starInd+4,starInd+6),
                         sCurrentLine.substring(starInd+7,starInd+9), sCurrentLine.substring(starInd+10,starInd+12));
-                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+",""))-1, sCurrentLine.substring(0,starInd));
+                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")) -1, sCurrentLine.substring(0,starInd));
                 index++;
                 options = new String[4];
 
@@ -96,9 +95,6 @@ public class School extends Outdoor
     {
         QuizQuestion currentQuestion = questions[random];
         String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex()];
-
-        Log.e("SEL ANS", getSelectedAnswer());
-        Log.e("METH ANS", correctAnswer);
 
         if(correctAnswer.equalsIgnoreCase(getSelectedAnswer()))
         {
