@@ -27,7 +27,7 @@ public class Events
     private Graph eventCollection;
     private Event start;
     private Event[] allEvents;
-    private static final int MAX_EVENT_COUNT = 6;
+    private static final int MAX_EVENT_COUNT = 7;
     private static final String FILE_NAME = "raw/events";
 
 
