@@ -86,10 +86,9 @@ public class School extends Outdoor
     }
     //test
 
-
-    //Slightly modified version of the isChallengeSuccess of the Outdoor class
-    public boolean isChallengeSuccess(String answerOfUser) {
-        if(options[getRandomQuestion().getCorrectAnswerIndex()].equalsIgnoreCase(answerOfUser))
+    @Override
+    public boolean isChallengeSuccess() {
+        if(options[getRandomQuestion().getCorrectAnswerIndex()].equalsIgnoreCase(getSelectedAnswer()))
             return true;
         else
             return false;
