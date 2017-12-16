@@ -188,8 +188,6 @@ public class Events
                     opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
 
-
-                effect.makeStatsZero();
                 effect = new Stats();
 
                 effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(colInd+1, colInd+3).replaceAll("\\s+","")));
