@@ -32,6 +32,11 @@ public class Player
         this.stats.updateStat(stats);
     }
 
+    public void updateStatByIndex(StatType index, int change)
+    {
+        this.stats.setStatByIndex(index, change);
+    }
+
     public void sellAnItem(Item item)
     {
         if (backpack.hasAnItem(item))

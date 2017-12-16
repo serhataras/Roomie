@@ -1,5 +1,7 @@
 package src;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
@@ -16,7 +18,15 @@ public class Library extends Outdoor
 
     private final int MAX_DB = 30;
     private int currentDb;
-    private boolean threshold=false;
+    private boolean threshold;
+
+    public Library()
+    {
+        super();
+        currentDb = 0;
+        threshold = false;
+    }
+
     public int getMAX_DB() {
         return MAX_DB;
     }
@@ -29,13 +39,15 @@ public class Library extends Outdoor
         return currentDb;
     }
 
-    public boolean isThresholdExceeded() {
-        if(getCurrentDb()>getMAX_DB()){
-            threshold=true;
+    private boolean isThresholdExceeded()
+    {
+        if (getCurrentDb() > getMAX_DB())
+        {
+            threshold = true;
             return threshold;
         }
         else{
-            threshold=false;
+            threshold = false;
             return threshold;
         }
 
@@ -45,10 +57,15 @@ public class Library extends Outdoor
     }
 
     @Override
-    public boolean isChallengeSuccess(){
-        if(isThresholdExceeded())
-            return false;
+    public void updateChallengeSuccess()
+    {
+        if (isThresholdExceeded())
+        {
+            super.setChallengeSuccess(false);
+        }
         else
-            return true;
+        {
+            super.setChallengeSuccess(true);
+        }
     }
 }

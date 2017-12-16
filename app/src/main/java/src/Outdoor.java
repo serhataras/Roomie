@@ -18,7 +18,8 @@ public class Outdoor
         challengeSuccess = false;
     }
 
-    public Outdoor(String name, Drawable background){
+    public Outdoor(String name, Drawable background)
+    {
         this.name               = name;
         this.background         = background;
     }
@@ -42,11 +43,18 @@ public class Outdoor
         this.background = background;
     }
 
-    public boolean isChallengeSuccess() {
+    public boolean isChallengeSuccess()
+    {
         return challengeSuccess;
     }
 
-    public void setChallengeSuccess(boolean challengeSuccess) {
+    public void updateChallengeSuccess()
+    {
+
+    }
+
+    public void setChallengeSuccess(boolean challengeSuccess)
+    {
         this.challengeSuccess = challengeSuccess;
     }
 }

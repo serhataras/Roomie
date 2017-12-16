@@ -37,8 +37,8 @@ public class SchoolActivity extends AppCompatActivity{
         //Singleton Attributes
         game=game.getInstance();
 
-        quizQuestion=game.sendQuizQuestion();
-        answerOptions=quizQuestion.getOptions();
+        quizQuestion = game.sendQuizQuestion();
+        answerOptions = quizQuestion.getOptions();
 
         //View Binding for Android
         question = (TextView) findViewById(R.id.question_TextView);

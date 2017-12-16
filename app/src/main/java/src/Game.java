@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Observer;
 
 import src.Enums.OptionType;
+import src.Enums.StatType;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 
@@ -124,21 +125,86 @@ public class Game
     {
         Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
 
-        if (option != null)
+        if (option != null && option.getOptionType() == OptionType.HOUSE_OPTION)
         {
             Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
             refreshStats(stats);
         }
     }
 
-    public void chooseOutdoorOption(boolean success)
+    public void chooseNightClubOption()
+    {
+        // get the option from the event
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+
+        // if the option is night club option
+        if (option != null && option.getOptionType() == OptionType.NIGHT_CLUB_OPTION)
+        {
+            // update challenge success
+            getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).updateChallengeSuccess();
+
+            // if challenge is successful, update stats & add random item
+            if (getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION).isChallengeSuccess())
+            {
+                Stats stats = option.getEffect();
+                refreshStats(stats);
+                addRandomItemToBackPack();
+            }
+            else
+            {
+                // TODO what happens if challenge is not successful
+            }
+        }
+    }
+
+    public void chooseCafeOption()
     {
         Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
-        if (option != null && success)
+
+        if (option != null && option.getOptionType() == OptionType.CAFE_OPTION)
         {
-            Stats stats = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue()).getEffect();
+            // get the chosen food item
+            FoodItem food = ((Cafe) getGameEnvironment().getOutdoorEnvironment(OptionType.CAFE_OPTION)).getSelectedFood();
+
+            int priceOfTheFood = food.getPrice();
+            int healthOfTheFood = food.getHealth();
+
+            // update stats
+            getPlayer().updateStatByIndex(StatType.HEALTH, healthOfTheFood);
+            getPlayer().updateStatByIndex(StatType.MONEY, -1 * priceOfTheFood);
+
+            Stats stats = option.getEffect();
             refreshStats(stats);
             addRandomItemToBackPack();
+        }
+    }
+
+    public void chooseSchoolOption()
+    {
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+
+        if (option != null && option.getOptionType() == OptionType.SCHOOL_OPTION)
+        {
+            // update challenge success
+            getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION).updateChallengeSuccess();
+
+            // if challenge is successful, update stats & add random item
+            if (getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION).isChallengeSuccess())
+            {
+                // increase the grades
+                QuizQuestion question = ((School) getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getCurrentRandomQuestion();
+                player.updateStatByIndex(StatType.GRADES, question.getGrades());
+
+                Stats stats = option.getEffect();
+                refreshStats(stats);
+                addRandomItemToBackPack();
+            }
+            else
+            {
+                // if not successful decrease the grades
+                QuizQuestion question = ((School) getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getCurrentRandomQuestion();
+                player.updateStatByIndex(StatType.GRADES, -1 * question.getGrades());
+            }
         }
     }
 

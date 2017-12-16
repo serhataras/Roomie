@@ -8,25 +8,25 @@ import java.io.IOException;
  * Created by eliztekcan on 28.10.2017 edited by serhat
  */
 
-//TODO for the isChallengeSuccess method, we must hold the correct answer and check the correct one with the input
 public class School extends Outdoor
 {
+    private static final int MAX_QUESTION = 4;
+    private static final String FILE_NAME= "/raw/quiz.txt";
+
     private QuizQuestion[] questions;
     private String[] options;
     private int random;
-    private static final int MAX_QUESTION = 4;
-    private static final String FILE_NAME= "/raw/quiz.txt";
     private String selectedAnswer;
 
     public School()
     {
-        int random = (int) (Math.random() * MAX_QUESTION);
-        options = new String[4];
+        super();
         questions   = new QuizQuestion[MAX_QUESTION];
+        options = new String[4];
         initializeQuestions();
-
+        random = 0;
+        selectedAnswer = "";
     }
-
 
     private void initializeQuestions()
     {
@@ -46,7 +46,7 @@ public class School extends Outdoor
                         sCurrentLine.substring(starInd+7,starInd+9), sCurrentLine.substring(starInd+10,starInd+12));
                 questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")), sCurrentLine.substring(0,starInd));
                 index++;
-                options = new String[4];
+                options = new String[MAX_QUESTION];
 
             }
 
@@ -82,20 +82,36 @@ public class School extends Outdoor
 
     public QuizQuestion getRandomQuestion()
     {
+        random = (int) (Math.random() * MAX_QUESTION);
         return questions[random];
     }
-    //test
+
 
     @Override
-    public boolean isChallengeSuccess() {
-        if(options[getRandomQuestion().getCorrectAnswerIndex()].equalsIgnoreCase(getSelectedAnswer()))
-            return true;
+    public void updateChallengeSuccess()
+    {
+        QuizQuestion currentQuestion = questions[random];
+        String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex()];
+
+        if(correctAnswer.equalsIgnoreCase(getSelectedAnswer()))
+        {
+            super.setChallengeSuccess(true);
+        }
         else
-            return false;
+        {
+            super.setChallengeSuccess(false);
+        }
+
     }
 
-    public String getSelectedAnswer() {
+    public String getSelectedAnswer()
+    {
         return selectedAnswer;
+    }
+
+    public QuizQuestion getCurrentRandomQuestion()
+    {
+        return questions[random];
     }
 
     public void setSelectedAnswer(String selectedAnswer) {

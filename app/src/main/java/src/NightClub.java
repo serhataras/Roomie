@@ -10,6 +10,11 @@ public class NightClub extends Outdoor
     private final int MAX_SHAKE = 100;
     private int shakeAmount;
 
+    public NightClub()
+    {
+        super();
+        shakeAmount = 0;
+    }
 
     public int getMAX_SHAKE()
     {
@@ -24,14 +29,20 @@ public class NightClub extends Outdoor
     public void setShakeAmount(int shakeAmount)
     {
         this.shakeAmount = shakeAmount;
+
     }
 
     @Override
-    public boolean isChallengeSuccess() {
-       if(getShakeAmount() > getMAX_SHAKE()){
-           return true;
+    public void updateChallengeSuccess()
+    {
+       if(getShakeAmount() > getMAX_SHAKE())
+       {
+           super.setChallengeSuccess(true);
        }
        else
-           return false;
+       {
+           super.setChallengeSuccess(false);
+       }
+
     }
 }

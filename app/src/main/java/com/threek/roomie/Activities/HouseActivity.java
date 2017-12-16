@@ -259,7 +259,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is house
                 if (type == OptionType.HOUSE_OPTION)
                 {
-                    // refresh player's stats & change the current event
+                    // choose house option & refresh player's stats
                     game.chooseHouseOption();
                     updateStatBars();
                 }
@@ -267,42 +267,44 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is night club
                 else if (type == OptionType.NIGHT_CLUB_OPTION)
                 {
-                    // TODO start the night club activity, return the shakeAmount as the result
+                    // start the night club activity
+                    Intent intent = new Intent(HouseActivity.this, NightClubActivity.class);
+                    startActivity(intent);
 
-                    // TODO refresh player's stats & change the current event
-                    // TODO change game methods
-
-                    // TODO add a random item
-                    // TODO if successful
-                    game.addRandomItemToBackPack();
+                    // choose nightclub option
+                    game.chooseNightClubOption();
                 }
 
                 // if the option type is cafe
                 else if (type == OptionType.CAFE_OPTION)
                 {
-                    // TODO start the cafe activity, return the food choice
+                    // start the cafe activity
+                    Intent intent = new Intent(HouseActivity.this, CafeActivity.class);
+                    startActivity(intent);
 
-                    // TODO refresh player's stats & change the current event
+                    // choose cafe option
+                    game.chooseCafeOption();
                 }
 
                 // if the option type is library
                 else if (type == OptionType.LIBRARY_OPTION)
                 {
-                    // TODO start the library activity, return dB as the result
+                    // start the library activity
+                    Intent intent = new Intent(HouseActivity.this, LibraryActivity.class);
+                    startActivity(intent);
 
-                    // TODO refresh player's stats & change the current event
+                    // TODO choose library option
 
-                    // TODO if successful
-                    game.addRandomItemToBackPack();
                 }
 
                 else if (type == OptionType.SCHOOL_OPTION)
                 {
-                    // TODO if the option type is school
+                    // start the school activity
+                    Intent intent = new Intent(HouseActivity.this, SchoolActivity.class);
+                    startActivity(intent);
 
-                    // TODO start the school activity, return the answer choice as the result
-
-                    // TODO refresh player's stats & change the current event
+                    // choose house option
+                    game.chooseSchoolOption();
                 }
 
                 // changes the current event

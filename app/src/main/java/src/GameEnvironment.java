@@ -14,15 +14,20 @@ public class GameEnvironment
 
     public GameEnvironment()
     {
-        outdoors     = new Outdoor[OUTDOOR_NUMBER];
-        house       = new House();
+        outdoors = new Outdoor[OUTDOOR_NUMBER];
+        outdoors[OptionType.SCHOOL_OPTION.ordinal()] = new School();
+        outdoors[OptionType.NIGHT_CLUB_OPTION.ordinal()] = new NightClub();
+        outdoors[OptionType.LIBRARY_OPTION.ordinal()] = new Library();
+        outdoors[OptionType.CAFE_OPTION.ordinal()] = new Cafe();
+
+        house = new House();
     }
 
 
     public GameEnvironment(Outdoor[] outdoor, House house)
     {
-        this.house      = house;
-        this.outdoors    = outdoor;
+        this.house = house;
+        this.outdoors = outdoor;
     }
 
 

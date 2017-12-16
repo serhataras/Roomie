@@ -16,6 +16,7 @@ public class LibraryActivity extends AppCompatActivity {
 
     private Game game;
     private int currentDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +31,10 @@ public class LibraryActivity extends AppCompatActivity {
         ((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION)).setCurrentDb(currentDb);
 
         //1'st check the if currentDb(threshold) exceeds MaxDB
-        ((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION)).isThresholdExceeded();
+        //((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION)).isThresholdExceeded();
 
 
         //will be called at the home activity decide whether the currentDB ever gets higher than the MAX_DB
-        ((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION)).isChallengeSuccess();
+        //((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION)).isChallengeSuccess();
     }
 }

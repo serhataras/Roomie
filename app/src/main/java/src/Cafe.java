@@ -13,8 +13,10 @@ public class Cafe extends Outdoor
     private final int MAX_FOOD = 10;
     private final String FILE_NAME = "raw/menu.txt";
     public FoodItem selectedFood;
+
     public Cafe()
     {
+        super();
         menu = new FoodItem[MAX_FOOD];
         createMenu();
     }
