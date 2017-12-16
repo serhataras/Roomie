@@ -284,6 +284,7 @@ public class Game
 
     public FoodItem[] getFoodMenu()
     {
+        Log.e("ZAAA", ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu()[0].toString());
         return ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu();
     }
 
