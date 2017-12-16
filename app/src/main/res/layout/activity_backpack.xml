@@ -20,7 +20,7 @@
             <ListView
                 android:id="@+id/backpackList"
                 android:layout_width="match_parent"
-                android:layout_height="523dp"
+                android:layout_height="500dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 tools:layout_editor_absoluteX="8dp"

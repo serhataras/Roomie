@@ -81,9 +81,11 @@ public class CafeActivity extends AppCompatActivity
             final FoodItem currentItem = (FoodItem) getItem(position);
 
             // get the TextView for item name and item description
-            //TextView textView = (TextView) convertView.findViewById(R.id.trip_text);
             TextView itemText = (TextView) convertView.findViewById(R.id.list_item_text);
             itemText.setText(currentItem.getName());
+
+            TextView priceText = (TextView) convertView.findViewById(R.id.foodPrice);
+            priceText.setText("Price: " + currentItem.getPrice());
 
             Button useButton = (Button) convertView.findViewById(R.id.list_item_btn);
             useButton.setOnClickListener(new View.OnClickListener() {

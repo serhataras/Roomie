@@ -88,7 +88,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             @Override
             public void onClick(View view)
             {
-                showEventDialog(game.sendEventQuestion());
+                showEventDialog(game.sendEventQuestion(), "Question");
             }
         });
 
@@ -240,10 +240,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
     }
 
     // dialog for event question
-    private void showEventDialog(String question)
+    private void showEventDialog(String question, String title)
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(getString(R.string.ha_question));
+        dialog.setTitle(title);
         dialog.setMessage(question);
         dialog.setNeutralButton(getString(R.string.ha_ok), new DialogInterface.OnClickListener() {
             @Override
@@ -263,12 +263,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
             {
                 // get the option type from the current event
                 OptionType type = game.whichOption();
-                Log.e("Type", type.toString());
 
                 // if the option type is house
                 if (type == OptionType.HOUSE_OPTION)
                 {
-                    Log.e("Obs", "House");
                     // choose house option
                     game.chooseHouseOption();
                 }
@@ -276,7 +274,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is night club
                 else if (type == OptionType.NIGHT_CLUB_OPTION)
                 {
-                    Log.e("Obs", "Disco");
                     // start the night club activity
                     Intent intent = new Intent(HouseActivity.this, NightClubActivity.class);
                     startActivity(intent);
@@ -288,7 +285,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is cafe
                 else if (type == OptionType.CAFE_OPTION)
                 {
-                    Log.e("Obs", "Cafe");
                     // start the cafe activity
                     Intent intent = new Intent(HouseActivity.this, CafeActivity.class);
                     startActivity(intent);
@@ -300,7 +296,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is library
                 else if (type == OptionType.LIBRARY_OPTION)
                 {
-                    Log.e("Obs", "Library");
                     // start the library activity
                     Intent intent = new Intent(HouseActivity.this, LibraryActivity.class);
                     startActivity(intent);
@@ -327,7 +322,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                showEventDialog("GAME OVER!");
+                showEventDialog("Earthquake! You have died.","GAME OVER!");
             }
         }
         else if (observable == game.getCurrentEvent())
