@@ -42,10 +42,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/timeView"
-<<<<<<< HEAD
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="21dp"
-=======
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            android:text="count"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="143sp"
+            android:textStyle="bold" />
+
+        =======
             android:layout_alignParentStart="true"
             android:layout_marginBottom="16dp"
 >>>>>>> serhat-deniz-Activity-UI
