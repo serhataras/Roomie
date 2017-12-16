@@ -120,11 +120,10 @@ public class Events
                         {
                             k = KitchenItems.STALL;
                         }
-                        else if(sCurrentLine.substring(slashInd+3, slashInd+5).equals("T")) //table
+                        else if(sCurrentLine.substring(slashInd+3, slashInd+4).equals("T")) //table
                         {
                             k = KitchenItems.TABLE;
                         }
-                        System.out.println("Here:!!!!!" + k);
                         id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
                     }
 
