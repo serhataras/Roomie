@@ -45,11 +45,14 @@ public class Game
         return instance;
     }
 
-    public void initializeEvents(Resources r, String pn){
+    public void initializeEvents(Resources r, String pn)
+    {
         events = new Events(r, pn);
+        currentEvent.setValue(events.getStart());
     }
 
-    public void initializeGameEnvironment(Resources r, String pn){
+    public void initializeGameEnvironment(Resources r, String pn)
+    {
         gameEnvironment = new GameEnvironment(r, pn);
     }
 
