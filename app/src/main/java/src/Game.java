@@ -125,11 +125,12 @@ public class Game
         }
     }
 
-    public void endGame(){
+    public boolean isGameOver(){
         if(currentEvent == null || gameOver == true )
         {
-
+            gameOver = true;
         }
+        return gameOver;
     }
 
     public boolean checkExtremeOption()

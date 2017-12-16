@@ -28,7 +28,6 @@ public class Events
     private Event start;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 7;
-    private static final String FILE_NAME = "raw/events";
 
 
     Events(Resources r, String pn){
@@ -208,7 +207,7 @@ public class Events
                         rtype = RoomType.KITCHEN;
                     else if(sCurrentLine.substring(backslashInd, backslashInd+1).equals('E'))
                         rtype = RoomType.BEDROOM;
-                    else if(sCurrentLine.substring(slashInd, slashInd+1).equals('A'))
+                    else if(sCurrentLine.substring(backslashInd, backslashInd+1).equals('A'))
                         rtype = RoomType.BATHROOM;
 
                     if(rtype == RoomType.LIVINGROOM)
