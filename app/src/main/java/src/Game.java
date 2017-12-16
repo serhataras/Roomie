@@ -1,5 +1,7 @@
 package src;
 
+import android.content.res.Resources;
+
 import java.util.ArrayList;
 import java.util.Observer;
 
@@ -29,9 +31,6 @@ public class Game
     private Game()
     {
         player = new Player();
-        gameEnvironment = new GameEnvironment();
-        random = new Randomizer();
-        events = new Events();
         currentEvent = new ObservableEvent(null);
         pressedButtonId = new ObservableId(-1);
         gameHasStarted = true;
@@ -45,6 +44,19 @@ public class Game
         }
         return instance;
     }
+
+    public void initializeEvents(Resources r, String pn){
+        events = new Events(r, pn);
+    }
+
+    public void initializeGameEnvironment(Resources r, String pn){
+        gameEnvironment = new GameEnvironment(r, pn);
+    }
+
+    public void initializeRandomizer(Resources r, String pn){
+        random = new Randomizer(r, pn);
+    }
+
 
     public void activateButton()
     {

@@ -1,5 +1,7 @@
 package src;
 
+import android.content.res.Resources;
+
 import java.util.Random;
 
 /**
@@ -9,9 +11,9 @@ public class Randomizer
 {
     private ItemCollection itemCollection;
 
-    public Randomizer()
+    public Randomizer(Resources r, String pn)
     {
-        itemCollection = new ItemCollection();
+        itemCollection = new ItemCollection(r, pn);
     }
 
     public Item throwItem()
@@ -30,9 +32,9 @@ public class Randomizer
     }
 
     //for testing
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         Randomizer r = new Randomizer();
         for(int k = 0; k< 12; k++)
             System.out.println(r.throwItem());
-    }
+    }*/
 }

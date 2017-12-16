@@ -1,8 +1,12 @@
 package src;
 
+import android.content.res.Resources;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by eliztekcan on 27.10.2017.
@@ -11,14 +15,14 @@ public class Cafe extends Outdoor
 {
     private FoodItem[] menu;
     private final int MAX_FOOD = 10;
-    private final String FILE_NAME = "raw/menu.txt";
+    private final String FILE_NAME = "raw/menu";
     public FoodItem selectedFood;
 
-    public Cafe()
+    public Cafe(Resources r, String pn)
     {
         super();
         menu = new FoodItem[MAX_FOOD];
-        createMenu();
+        createMenu(r, pn);
     }
 
     public Cafe(FoodItem[] menu)
@@ -26,13 +30,13 @@ public class Cafe extends Outdoor
         this.menu = menu;
     }
 
-    private void createMenu() {
+    private void createMenu(Resources r, String pn) {
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
@@ -54,8 +58,8 @@ public class Cafe extends Outdoor
                 if (br != null)
                     br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
@@ -88,10 +92,10 @@ public class Cafe extends Outdoor
     }
 
     //for testing
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         Cafe cafe = new Cafe();
         for(int k = 0; k< 10; k++)
             System.out.println(cafe.menu[k]);
-    }
+    }*/
 
 }

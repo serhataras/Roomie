@@ -1,5 +1,7 @@
 package src;
 
+import android.content.res.Resources;
+
 import src.Enums.OptionType;
 
 /**
@@ -12,13 +14,13 @@ public class GameEnvironment
 
     public static final int OUTDOOR_NUMBER = 4;
 
-    public GameEnvironment()
+    public GameEnvironment(Resources r, String pn)
     {
         outdoors = new Outdoor[OUTDOOR_NUMBER];
-        outdoors[OptionType.SCHOOL_OPTION.ordinal()] = new School();
+        outdoors[OptionType.SCHOOL_OPTION.ordinal()] = new School(r, pn);
         outdoors[OptionType.NIGHT_CLUB_OPTION.ordinal()] = new NightClub();
         outdoors[OptionType.LIBRARY_OPTION.ordinal()] = new Library();
-        outdoors[OptionType.CAFE_OPTION.ordinal()] = new Cafe();
+        outdoors[OptionType.CAFE_OPTION.ordinal()] = new Cafe(r, pn);
 
         house = new House();
     }

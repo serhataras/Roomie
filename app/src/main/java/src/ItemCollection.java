@@ -1,8 +1,12 @@
 package src;
 
+import android.content.res.Resources;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import src.Enums.StatType;
 
@@ -16,13 +20,14 @@ public class ItemCollection
     private Stats boost;
     private static final String FILE_NAME= "/raw/backpack";
 
-    public ItemCollection()
+
+    public ItemCollection(Resources r, String pn)
     {
         items = new Item[MAX_ITEM];
         boost = new Stats();
 
         //Add items to collection
-        createCollection();
+        createCollection(r, pn);
     }
 
     private void setBoostArray(int health, int sociality, int grades, int money)
@@ -49,14 +54,14 @@ public class ItemCollection
         return boost;
     }
 
-    public void createCollection()
+    public void createCollection(Resources r, String pn)
     {
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = r.openRawResource(r.getIdentifier("backpack", "raw", pn));
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
@@ -84,8 +89,8 @@ public class ItemCollection
                 if (br != null)
                     br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
@@ -98,9 +103,9 @@ public class ItemCollection
     }
 
     //for testing
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         ItemCollection i = new ItemCollection();
         for(int k = 0; k< 12; k++)
             System.out.println(i.items[k]);
-    }
+    }*/
 }

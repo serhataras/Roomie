@@ -1,7 +1,8 @@
 package src;
+import android.content.res.Resources;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,7 +10,12 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import src.Enums.BathroomItems;
+import src.Enums.BedroomItems;
+import src.Enums.KitchenItems;
+import src.Enums.LivingRoomItems;
 import src.Enums.OptionType;
+import src.Enums.RoomType;
 import src.Enums.StatType;
 
 /**
@@ -22,23 +28,24 @@ public class Events
     private Event start;
     private Event[] allEvents;
     private static final int MAX_EVENT_COUNT = 6;
-    private static final String FILE_NAME = "raw/events.txt";
+    private static final String FILE_NAME = "raw/events";
 
 
-    Events(){
-        allEvents = setEvents();
+    Events(Resources r, String pn){
+        allEvents = setEvents(r, pn);
         start = allEvents[0];
         eventCollection = new Graph(MAX_EVENT_COUNT);
-        connectEvents();
+        connectEvents(r, pn);
+        //Log.e("START!!!!", start.toString());
     }
 
-    private Event[] setEvents()
+    public Event[] setEvents(Resources r, String pn)
     {
         BufferedReader br = null;
         InputStream in = null;
 
         try {
-            in = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME);
+            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
             br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
@@ -52,36 +59,133 @@ public class Events
                 int eqInd   = sCurrentLine.indexOf('=');
                 int colInd  = sCurrentLine.indexOf(':');
                 int lInd    = sCurrentLine.indexOf('~');
+                int slashInd    = sCurrentLine.indexOf('\\');
+                int backslashInd = sCurrentLine.indexOf('/');
+
                 Option opt1 = null, opt2 = null;
                 Stats effect = new Stats();
                 effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(eqInd+1, eqInd+3).replaceAll("\\s+","")));
                 effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(eqInd+4, eqInd+6).replaceAll("\\s+","")));
                 effect.setStatByIndex(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(eqInd+7, eqInd+9).replaceAll("\\s+","")));
                 effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(eqInd+10, eqInd+12).replaceAll("\\s+","")));
-                if(sCurrentLine.substring(qInd+2, qInd+3).equals("H") )
+                if(sCurrentLine.substring(qInd+2, qInd+3).equals("H") ) //house
                 {
-                    opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    RoomType rtype = null;
+
+                    int id = 0;
+                    if(sCurrentLine.substring(slashInd, slashInd+1).equals('L'))
+                        rtype = RoomType.LIVINGROOM;
+                    else if(sCurrentLine.substring(slashInd, slashInd+1).equals('K'))
+                        rtype = RoomType.KITCHEN;
+                    else if(sCurrentLine.substring(slashInd, slashInd+1).equals('E'))
+                        rtype = RoomType.BEDROOM;
+                    else if(sCurrentLine.substring(slashInd, slashInd+1).equals('A'))
+                        rtype = RoomType.BATHROOM;
+
+                    if(rtype == RoomType.LIVINGROOM)
+                    {
+                        LivingRoomItems lr = null;
+                        if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("T")) //tv
+                        {
+                            lr = LivingRoomItems.TV;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("S")) //sofa
+                        {
+                            lr = LivingRoomItems.SOFA;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("P")) //plants
+                        {
+                            lr = LivingRoomItems.PLANTS;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("B")) //bigtable
+                        {
+                            lr = LivingRoomItems.BIGTABLE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
+                    }
+
+                    if(rtype == RoomType.KITCHEN)
+                    {
+                        KitchenItems k = null;
+                        if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("F")) //fridge
+                        {
+                            k = KitchenItems.FRIDGE;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("C")) //cupboard
+                        {
+                            k = KitchenItems.CUPBOARD;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("S")) //stall
+                        {
+                            k = KitchenItems.STALL;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("T")) //table
+                        {
+                            k = KitchenItems.TABLE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
+                    }
+
+                    if(rtype == RoomType.BEDROOM)
+                    {
+                        BedroomItems bedr = null;
+                        if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("E")) //bed
+                        {
+                            bedr = BedroomItems.BED;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("O")) //bookshelf
+                        {
+                            bedr = BedroomItems.BOOKSHELF;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("D")) //desk
+                        {
+                            bedr = BedroomItems.DESK;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("W")) //wardrobe
+                        {
+                            bedr = BedroomItems.WARDROBE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
+                    }
+
+                    if(rtype == RoomType.BATHROOM)
+                    {
+                        BathroomItems bathr = null;
+                        if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("B")) //bath
+                        {
+                            bathr = BathroomItems.BATH;
+                        }
+                        else if(sCurrentLine.substring(slashInd+2, slashInd+4).equals("T")) //toilet
+                        {
+                            bathr = BathroomItems.TOILET;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
+                    }
+
+
+
+                    opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
 
                 }
-                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("S") )
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("S") ) //school
                 {
-
-                    opt1 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.SCHOOL_OPTION,null,null);
+                    opt1 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
-                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("L") )
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("L") ) //library
                 {
-
-                    opt1 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.LIBRARY_OPTION,null,null);
+                    opt1 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
-                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("N") )
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("N") ) //night club
                 {
-
-                    opt1 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    opt1 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(starInd, lineInd), effect,id);
                 }
-                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("C") )
+                else if(sCurrentLine.substring(qInd+2, qInd+3).equals("C") ) //cafe
                 {
-
-                    opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, Integer.parseInt(sCurrentLine.substring(aInd, aInd+2).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.CAFE_OPTION,null,null);
+                    opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
 
 
@@ -92,30 +196,127 @@ public class Events
                 effect.setStatByIndex(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(colInd+7, colInd+9).replaceAll("\\s+","")));
                 effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(colInd+10, colInd+12).replaceAll("\\s+","")));
 
+                //option 2
                 if(sCurrentLine.substring(qInd+3, qInd+4).equals("H"))
                 {
+                    RoomType rtype = null;
+                    int id = 0;
+
+                    if(sCurrentLine.substring(backslashInd, backslashInd+1).equals('L'))
+                        rtype = RoomType.LIVINGROOM;
+                    else if(sCurrentLine.substring(backslashInd, backslashInd+1).equals('K'))
+                        rtype = RoomType.KITCHEN;
+                    else if(sCurrentLine.substring(backslashInd, backslashInd+1).equals('E'))
+                        rtype = RoomType.BEDROOM;
+                    else if(sCurrentLine.substring(slashInd, slashInd+1).equals('A'))
+                        rtype = RoomType.BATHROOM;
+
+                    if(rtype == RoomType.LIVINGROOM)
+                    {
+                        LivingRoomItems lr = null;
+                        if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("T")) //tv
+                        {
+                            lr = LivingRoomItems.TV;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("S")) //sofa
+                        {
+                            lr = LivingRoomItems.SOFA;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("P")) //plants
+                        {
+                            lr = LivingRoomItems.PLANTS;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("B")) //bigtable
+                        {
+                            lr = LivingRoomItems.BIGTABLE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
+                    }
+
+                    if(rtype == RoomType.KITCHEN)
+                    {
+                        KitchenItems k = null;
+                        if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("F")) //fridge
+                        {
+                            k = KitchenItems.FRIDGE;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("C")) //cupboard
+                        {
+                            k = KitchenItems.CUPBOARD;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("S")) //stall
+                        {
+                            k = KitchenItems.STALL;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("T")) //table
+                        {
+                            k = KitchenItems.TABLE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
+                    }
+
+                    if(rtype == RoomType.BEDROOM)
+                    {
+                        BedroomItems bedr = null;
+                        if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("E")) //bed
+                        {
+                            bedr = BedroomItems.BED;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("O")) //bookshelf
+                        {
+                            bedr = BedroomItems.BOOKSHELF;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("D")) //desk
+                        {
+                            bedr = BedroomItems.DESK;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("W")) //wardrobe
+                        {
+                            bedr = BedroomItems.WARDROBE;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
+                    }
+
+                    if(rtype == RoomType.BATHROOM)
+                    {
+                        BathroomItems bathr = null;
+                        if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("B")) //bath
+                        {
+                            bathr = BathroomItems.BATH;
+                        }
+                        else if(sCurrentLine.substring(backslashInd+2, backslashInd+4).equals("T")) //toilet
+                        {
+                            bathr = BathroomItems.TOILET;
+                        }
+                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
+                    }
+
+
                     opt2 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("S") )
                 {
-                    opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.SCHOOL_OPTION,null,null);
+                    opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("L") )
                 {
-                    opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.LIBRARY_OPTION,null,null);
+                    opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("N") )
                 {
-                    opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
+                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("C") )
                 {
-                    opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, Integer.parseInt(sCurrentLine.substring(aInd+3, aInd+5).replaceAll("\\s+","")));
-
+                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
                 }
                 Option[] arr = new Option[Event.getMaxOption()];
                 arr[0] = opt1;
@@ -147,8 +348,6 @@ public class Events
 
         return allEvents;
     }
-
-
     public Graph getEventCollection() {
         return eventCollection;
     }
@@ -177,12 +376,12 @@ public class Events
         return null;
     }
 
-    public void connectEvents(){
+    public void connectEvents(Resources r, String pn){
         BufferedReader br = null;
         InputStream in = null;
 
         try {
-            in = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME);
+            in = r.openRawResource(r.getIdentifier("events", "raw", pn));
             br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
@@ -217,8 +416,6 @@ public class Events
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -230,12 +427,12 @@ public class Events
     }
 
     //test
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         Events e = new Events();
         //System.out.println(e.start);
         System.out.println(e.eventCollection.getNeighbors(e.start));
         System.out.println(e);
         System.out.println(e.eventCollection);
-    }
+    }*/
 
 }

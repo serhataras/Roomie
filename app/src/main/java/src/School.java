@@ -1,8 +1,12 @@
 package src;
 
+import android.content.res.Resources;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by eliztekcan on 28.10.2017 edited by serhat
@@ -11,31 +15,31 @@ import java.io.IOException;
 public class School extends Outdoor
 {
     private static final int MAX_QUESTION = 4;
-    private static final String FILE_NAME= "/raw/quiz.txt";
+    private static final String FILE_NAME= "/raw/quiz";
 
     private QuizQuestion[] questions;
     private String[] options;
     private int random;
     private String selectedAnswer;
 
-    public School()
+    public School(Resources r, String pn)
     {
         super();
         questions   = new QuizQuestion[MAX_QUESTION];
         options = new String[4];
-        initializeQuestions();
+        initializeQuestions(r, pn);
         random = 0;
         selectedAnswer = "";
     }
 
-    private void initializeQuestions()
+    private void initializeQuestions(Resources r, String pn)
     {
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = r.openRawResource(r.getIdentifier("quiz", "raw", pn));
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
@@ -46,7 +50,7 @@ public class School extends Outdoor
                         sCurrentLine.substring(starInd+7,starInd+9), sCurrentLine.substring(starInd+10,starInd+12));
                 questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")), sCurrentLine.substring(0,starInd));
                 index++;
-                options = new String[MAX_QUESTION];
+                options = new String[4];
 
             }
 
@@ -61,8 +65,8 @@ public class School extends Outdoor
                 if (br != null)
                     br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
@@ -118,9 +122,9 @@ public class School extends Outdoor
         this.selectedAnswer = selectedAnswer;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         School s = new School();
         for(int k = 0; k< MAX_QUESTION; k++)
             System.out.println(s.questions[k]);
-    }
+    }*/
 }
