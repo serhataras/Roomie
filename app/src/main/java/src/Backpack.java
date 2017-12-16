@@ -8,7 +8,7 @@ public class Backpack
 {
     private ArrayList<Item> itemList;
 
-    Backpack()
+    public Backpack()
     {
         itemList = new ArrayList<Item>();
     }

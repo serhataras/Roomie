@@ -35,7 +35,7 @@ public class SchoolActivity extends AppCompatActivity{
         setContentView(R.layout.activity_school);
 
         //Singleton Attributes
-        game=game.getInstance();
+        game = game.getInstance();
 
         quizQuestion = game.sendQuizQuestion();
         answerOptions = quizQuestion.getOptions();
@@ -51,10 +51,10 @@ public class SchoolActivity extends AppCompatActivity{
         //TODO QUESTION AND ANSWERWS Text's Update
         question.setText(quizQuestion.getQuestion());
 
-        ans1.setText(answerOptions[1]);
-        ans2.setText(answerOptions[2]);
-        ans3.setText(answerOptions[3]);
-        ans4.setText(answerOptions[4]);
+        ans1.setText(answerOptions[0]);
+        ans2.setText(answerOptions[1]);
+        ans3.setText(answerOptions[2]);
+        ans4.setText(answerOptions[3]);
 
         //Listeners for each button
         ans1.setOnClickListener(new View.OnClickListener() {

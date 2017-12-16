@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".Activities.OutsideActivity" />
         <activity android:name=".Activities.HouseActivity" />
-        <activity android:name=".Activities.BackpackActivity"></activity>
+        <activity android:name=".Activities.BackpackActivity"/>
+        <activity android:name=".Activities.SchoolActivity"/>
+        <activity android:name=".Activities.CafeActivity"/>
+        <activity android:name=".Activities.LibraryActivity"/>
+        <activity android:name=".Activities.NightClubActivity"></activity>
     </application>
 
 </manifest>
