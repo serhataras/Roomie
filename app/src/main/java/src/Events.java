@@ -314,7 +314,7 @@ public class Events
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("C") )
                 {
-                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    int id = House.idGenerator(OptionType.CAFE_OPTION,null,null);
                     opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
                 }
                 Option[] arr = new Option[Event.getMaxOption()];
