@@ -1,5 +1,4 @@
 package src;
-
 import android.content.res.Resources;
 
 import java.io.BufferedReader;
@@ -18,7 +17,6 @@ public class ItemCollection
     private static final int MAX_ITEM = 12;
     private Item[] items;
     private Stats boost;
-    private static final String FILE_NAME= "/raw/backpack";
 
 
     public ItemCollection(Resources r, String pn)
@@ -54,7 +52,7 @@ public class ItemCollection
         return boost;
     }
 
-    public void createCollection(Resources r, String pn)
+    private void createCollection(Resources r, String pn)
     {
         BufferedReader br = null;
         InputStream in = null;
@@ -68,14 +66,14 @@ public class ItemCollection
             while ((sCurrentLine = br.readLine()) != null && index < MAX_ITEM)
             {
                 int starInd = sCurrentLine.indexOf('*');
-
                 setBoostArray(Integer.parseInt(sCurrentLine.substring(starInd+1,starInd+3).replaceAll("\\s+","")),
                         Integer.parseInt(sCurrentLine.substring(starInd+4,starInd+6).replaceAll("\\s+","")),
                         Integer.parseInt(sCurrentLine.substring(starInd+7,starInd+9).replaceAll("\\s+","")),
                         Integer.parseInt(sCurrentLine.substring(starInd+10,starInd+12).replaceAll("\\s+","")));
+                System.out.println(boost);
                 items[index] = new Item(sCurrentLine.substring(0,starInd), null, boost);
                 index++;
-                boost.makeStatsZero();
+                boost = new Stats();
             }
 
         } catch (IOException e) {
