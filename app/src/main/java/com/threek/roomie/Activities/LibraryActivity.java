@@ -18,10 +18,11 @@ public class LibraryActivity extends AppCompatActivity {
     private int currentDb;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
-        game=game.getInstance();
+        game = game.getInstance();
 
         //Microphone implementation
         //TODO

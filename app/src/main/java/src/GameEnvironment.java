@@ -30,8 +30,6 @@ public class GameEnvironment
         this.outdoors = outdoor;
     }
 
-
-
     public Outdoor getOutdoorEnvironment(OptionType environment)
     {
         if (environment != OptionType.HOUSE_OPTION)

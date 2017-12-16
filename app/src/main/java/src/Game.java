@@ -144,7 +144,7 @@ public class Game
             getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).updateChallengeSuccess();
 
             // if challenge is successful, update stats & add random item
-            if (getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION).isChallengeSuccess())
+            if (getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION).isChallengeSuccess())
             {
                 Stats stats = option.getEffect();
                 refreshStats(stats);
@@ -204,6 +204,29 @@ public class Game
                 // if not successful decrease the grades
                 QuizQuestion question = ((School) getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getCurrentRandomQuestion();
                 player.updateStatByIndex(StatType.GRADES, -1 * question.getGrades());
+            }
+        }
+    }
+
+    public void chooseLibraryOption()
+    {
+        Option option = currentEvent.getValue().chooseAnOption(pressedButtonId.getValue());
+
+        if (option != null && option.getOptionType() == OptionType.LIBRARY_OPTION)
+        {
+            // update challenge success
+            getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION).updateChallengeSuccess();
+
+            // if challenge is successful, update stats & add random item
+            if (getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION).isChallengeSuccess())
+            {
+                Stats stats = option.getEffect();
+                refreshStats(stats);
+                addRandomItemToBackPack();
+            }
+            else
+            {
+                // TODO what happens if challenge is not successful
             }
         }
     }

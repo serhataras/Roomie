@@ -259,9 +259,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 // if the option type is house
                 if (type == OptionType.HOUSE_OPTION)
                 {
-                    // choose house option & refresh player's stats
+                    // choose house option
                     game.chooseHouseOption();
-                    updateStatBars();
                 }
 
                 // if the option type is night club
@@ -293,8 +292,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     Intent intent = new Intent(HouseActivity.this, LibraryActivity.class);
                     startActivity(intent);
 
-                    // TODO choose library option
-
+                    // choose library option
+                    game.chooseLibraryOption();
                 }
 
                 else if (type == OptionType.SCHOOL_OPTION)
@@ -307,7 +306,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     game.chooseSchoolOption();
                 }
 
-                // changes the current event
+                // update stat bars and change the current event
+                updateStatBars();
                 game.changeCurrentEvent();
             }
 
