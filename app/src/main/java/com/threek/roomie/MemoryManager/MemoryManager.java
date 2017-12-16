@@ -3,7 +3,8 @@ package com.threek.roomie.MemoryManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import src.*;
+import src.Enums.Gender;
+
 
 /**
  * Created by USER on 4.11.2017.

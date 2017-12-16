@@ -6,4 +6,5 @@
     <dimen name="ha_stat_text_top_bargin">20dp</dimen>
     <dimen name="ha_stat_text_btw_bargin">85dp</dimen>
     <dimen name="ha_stat_bar_top_bargin">0dp</dimen>
+    <dimen name="ha_top_margin">30dp</dimen>
 </resources>

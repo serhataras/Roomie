@@ -1,8 +1,11 @@
 package src;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
+
 public class Library extends Outdoor
 {
     /*
@@ -13,16 +16,19 @@ public class Library extends Outdoor
         70db is heavy traffic
    */
 
-    public final int HIGHEST_DB = 30;
-    int currentDb;
+    private final int MAX_DB = 30;
+    private int currentDb;
+    private boolean threshold;
 
-    @Override
-    public boolean isChallengeSuccess() {
-        return super.isChallengeSuccess();
+    public Library()
+    {
+        super();
+        currentDb = 0;
+        threshold = false;
     }
 
-    public int getHIGHEST_DB() {
-        return HIGHEST_DB;
+    public int getMAX_DB() {
+        return MAX_DB;
     }
 
     public void setCurrentDb(int currentDb) {
@@ -31,5 +37,35 @@ public class Library extends Outdoor
 
     public int getCurrentDb() {
         return currentDb;
+    }
+
+    private boolean isThresholdExceeded()
+    {
+        if (getCurrentDb() > getMAX_DB())
+        {
+            threshold = true;
+            return threshold;
+        }
+        else{
+            threshold = false;
+            return threshold;
+        }
+
+    }
+    public void setThreshold(boolean threshold) {
+        this.threshold = threshold;
+    }
+
+    @Override
+    public void updateChallengeSuccess()
+    {
+        if (isThresholdExceeded())
+        {
+            super.setChallengeSuccess(false);
+        }
+        else
+        {
+            super.setChallengeSuccess(true);
+        }
     }
 }

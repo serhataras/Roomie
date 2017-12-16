@@ -1,25 +1,28 @@
 package src;
 
-import java.util.Arrays;
+import src.Enums.OptionType;
 
 /**
  * Created by eliztekcan on 26.10.2017.
  */
-public class Option {
-    OptionType optionType;
-    String id;
-    boolean isExtreme;
-    int effect[];
+public class Option
+{
+    private OptionType optionType;
+    private String optionStr;
+    private int id;
+    private boolean isExtreme;
+    private Stats effect;
 
-    Option(){
-        effect = new int[4];
+    public Option(){
+        effect = new Stats();
     }
 
-    Option(OptionType optionType, String id, boolean isExtreme, int effect[]){
+    public Option(OptionType optionType,  String optionStr, Stats effect, int id){
         this.optionType = optionType;
+        this.optionStr  = optionStr;
         this.id         = id;
-        this.isExtreme  = isExtreme;
         this.effect     = effect;
+        assignExtremeCase();
     }
 
     public OptionType getOptionType() {
@@ -30,11 +33,11 @@ public class Option {
         this.optionType = optionType;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,12 +49,30 @@ public class Option {
         isExtreme = extreme;
     }
 
-    public int[] getEffect() {
+    public Stats getEffect() {
         return effect;
     }
 
-    public void setEffect(int[] effect) {
+    public void setEffect(Stats effect) {
         this.effect = effect;
+    }
+
+    public String getOptionStr() {
+        return optionStr;
+    }
+
+    public void setOptionStr(String optionStr) {
+        this.optionStr = optionStr;
+    }
+
+    public void assignExtremeCase(){
+        //assign rand to a random number in range [1,10]
+        int rand = 1 + (int) (Math.random() * 10);
+        //if the random number is 10, our option results in an extreme case
+        if(rand == 10)
+            isExtreme = true;
+        else
+            isExtreme = false;
     }
 
     @Override
@@ -60,7 +81,7 @@ public class Option {
                 "optionType=" + optionType +
                 ", id='" + id + '\'' +
                 ", isExtreme=" + isExtreme +
-                ", effect=" + Arrays.toString(effect) +
+                ", effect=" + effect.toString() +
                 '}';
     }
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.threek.roomie">
-
-
-
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.OutsideActivity" />
-        <activity android:name=".Activities.HouseActivity"></activity>
+        <activity android:name=".Activities.HouseActivity" />
+        <activity android:name=".Activities.BackpackActivity"/>
+        <activity android:name=".Activities.SchoolActivity"/>
+        <activity android:name=".Activities.CafeActivity"/>
+        <activity android:name=".Activities.LibraryActivity"/>
+        <activity android:name=".Activities.NightClubActivity"></activity>
     </application>
 
 </manifest>

@@ -1,37 +1,45 @@
 package src;
 
+import android.content.res.Resources;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
- * Created by eliztekcan on 28.10.2017.
+ * Created by eliztekcan on 28.10.2017 edited by serhat
  */
+
 public class School extends Outdoor
 {
-    QuizQuestion[] questions;
-    String[] options;
-    int random;
-    public static final int MAX_QUESTION = 4;
-    static final String FILE_NAME= "/src/Other/Quiz.txt";
+    private static final int MAX_QUESTION = 4;
 
+    private QuizQuestion[] questions;
+    private String[] options;
+    private int random;
+    private String selectedAnswer;
 
-    School()
+    public School(Resources r, String pn)
     {
-        int random  = 0;
-        options = new String[4];
+        super();
         questions   = new QuizQuestion[MAX_QUESTION];
-        initializeQuestions();
+        options = new String[4];
+        initializeQuestions(r, pn);
+        random = 0;
+        selectedAnswer = "";
     }
 
-    private void initializeQuestions()
+    private void initializeQuestions(Resources r, String pn)
     {
         BufferedReader br = null;
-        FileReader fr = null;
+        InputStream in = null;
 
         try {
-            fr = new FileReader(FILE_NAME);
-            br = new BufferedReader(fr);
+            in = r.openRawResource(r.getIdentifier("quiz", "raw", pn));
+            br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
@@ -40,7 +48,7 @@ public class School extends Outdoor
 
                 setOptionsArray(sCurrentLine.substring(starInd+1,starInd+3), sCurrentLine.substring(starInd+4,starInd+6),
                         sCurrentLine.substring(starInd+7,starInd+9), sCurrentLine.substring(starInd+10,starInd+12));
-                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")), sCurrentLine.substring(0,starInd));
+                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+",""))-1, sCurrentLine.substring(0,starInd));
                 index++;
                 options = new String[4];
 
@@ -57,8 +65,8 @@ public class School extends Outdoor
                 if (br != null)
                     br.close();
 
-                if (fr != null)
-                    fr.close();
+                if (in != null)
+                    in.close();
 
             } catch (IOException ex) {
 
@@ -76,12 +84,50 @@ public class School extends Outdoor
         options[3] = i3;
     }
 
-    //test
+    public QuizQuestion getRandomQuestion()
+    {
+        random = (int) (Math.random() * MAX_QUESTION);
+        return questions[random];
+    }
 
-    public static void main(String[] args){
+
+    @Override
+    public void updateChallengeSuccess()
+    {
+        QuizQuestion currentQuestion = questions[random];
+        String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex()];
+
+        Log.e("SEL ANS", getSelectedAnswer());
+        Log.e("METH ANS", correctAnswer);
+
+        if(correctAnswer.equalsIgnoreCase(getSelectedAnswer()))
+        {
+            super.setChallengeSuccess(true);
+        }
+        else
+        {
+            super.setChallengeSuccess(false);
+        }
+
+    }
+
+    public String getSelectedAnswer()
+    {
+        return selectedAnswer;
+    }
+
+    public QuizQuestion getCurrentRandomQuestion()
+    {
+        return questions[random];
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
+    }
+
+    /*public static void main(String[] args){
         School s = new School();
         for(int k = 0; k< MAX_QUESTION; k++)
             System.out.println(s.questions[k]);
-    }
-
+    }*/
 }

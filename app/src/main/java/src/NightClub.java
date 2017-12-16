@@ -1,24 +1,26 @@
 package src;
 
+import android.util.Log;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
+
 public class NightClub extends Outdoor
 {
-
     //TO DO
-    public final int HIGHEST_SHAKE = 100;
-    int shakeAmount;
+    private final int MAX_SHAKE = 100;
+    private int shakeAmount;
 
-    @Override
-    public boolean isChallengeSuccess()
+    public NightClub()
     {
-        return super.isChallengeSuccess();
+        super();
+        shakeAmount = 0;
     }
 
-    public int getHIGHEST_SHAKE()
+    public int getMAX_SHAKE()
     {
-        return HIGHEST_SHAKE;
+        return MAX_SHAKE;
     }
 
     public int getShakeAmount()
@@ -29,5 +31,21 @@ public class NightClub extends Outdoor
     public void setShakeAmount(int shakeAmount)
     {
         this.shakeAmount = shakeAmount;
+
+    }
+
+    @Override
+    public void updateChallengeSuccess()
+    {
+        Log.e("SHAKE", getShakeAmount() + "");
+       if(getShakeAmount() > getMAX_SHAKE())
+       {
+           super.setChallengeSuccess(true);
+       }
+       else
+       {
+           super.setChallengeSuccess(false);
+       }
+
     }
 }

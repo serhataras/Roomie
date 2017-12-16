@@ -5,18 +5,18 @@ package src;
  */
 public class FoodItem
 {
-    int price;
-    String name;
-    int health;
+    private int price;
+    private String name;
+    private int health;
 
-    FoodItem()
+    public FoodItem()
     {
         price   = 0;
         name    = "";
         health  = 0;
     }
 
-    FoodItem(String name, int health, int price)
+    public FoodItem(String name, int health, int price)
     {
         this.price   = price;
         this.name    = name;
