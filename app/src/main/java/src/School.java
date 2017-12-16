@@ -47,7 +47,7 @@ public class School extends Outdoor
 
                 setOptionsArray(sCurrentLine.substring(starInd+1,starInd+3), sCurrentLine.substring(starInd+4,starInd+6),
                         sCurrentLine.substring(starInd+7,starInd+9), sCurrentLine.substring(starInd+10,starInd+12));
-                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")), sCurrentLine.substring(0,starInd));
+                questions[index] = new QuizQuestion(options, Integer.parseInt(sCurrentLine.substring(starInd+12).replaceAll("\\s+","")) -1, sCurrentLine.substring(0,starInd));
                 index++;
                 options = new String[4];
 
