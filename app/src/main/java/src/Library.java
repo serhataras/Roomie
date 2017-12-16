@@ -17,7 +17,7 @@ public class Library extends Outdoor
    */
 
     private final int MAX_DB = 30;
-    private int currentDb;
+    private double currentDb;
     private boolean threshold;
 
     public Library()
@@ -31,15 +31,15 @@ public class Library extends Outdoor
         return MAX_DB;
     }
 
-    public void setCurrentDb(int currentDb) {
+    public void setCurrentDb(double currentDb) {
         this.currentDb = currentDb;
     }
 
-    public int getCurrentDb() {
+    public double getCurrentDb() {
         return currentDb;
     }
 
-    private boolean isThresholdExceeded()
+    public boolean isThresholdExceeded()
     {
         if (getCurrentDb() > getMAX_DB())
         {
