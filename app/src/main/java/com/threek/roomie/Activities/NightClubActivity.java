@@ -27,12 +27,9 @@ public class NightClubActivity extends AppCompatActivity {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
-    private NightClub club;
 
     private Game game;
-    private boolean success;
-    private int timer=0;
-    public final int MAX_TIME=20;
+    public final int MAX_TIME = 20;
 
     private final String TAG= NightClubActivity.class.getSimpleName();
 
@@ -43,7 +40,7 @@ public class NightClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nightclub);
 
-        game = game.getInstance();
+        game = Game.getInstance();
         final NightClub club = (NightClub) game.getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION);//Holds the temporary NightClub of the singleton Game object
 
         countDisplay = (TextView) findViewById(R.id.countView);
@@ -57,8 +54,7 @@ public class NightClubActivity extends AppCompatActivity {
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
         mShakeDetector.determineLevel(club.getMAX_SHAKE());
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
@@ -91,7 +87,6 @@ public class NightClubActivity extends AppCompatActivity {
                         finish();
                     }
                 }.start();
-
             }
         });
 
