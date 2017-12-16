@@ -145,9 +145,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // add observers to the game
         game.addObservers(this);
 
-        // initialize the ui components
+        // initialize the stat bars
         updateStatBars();
-        prepareButtonsForTheCurrentEvent();
     }
 
     @Override
@@ -159,6 +158,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             bathroomFragment.addListeners(new ItemListener());
             bedroomFragment.addListeners(new ItemListener());
             livingRoomFragment.addListeners(new ItemListener());
+            prepareButtonsForTheCurrentEvent();
             game.setGameHasStarted(false);
         }
     }
