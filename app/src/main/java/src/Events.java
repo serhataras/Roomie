@@ -63,10 +63,11 @@ public class Events
 
                 Option opt1 = null, opt2 = null;
                 Stats effect = new Stats();
-                effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(eqInd+1, eqInd+3).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(eqInd+4, eqInd+6).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(eqInd+7, eqInd+9).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(eqInd+10, eqInd+12).replaceAll("\\s+","")));
+                effect.setStatByIndexNeg(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(eqInd+1, eqInd+3).replaceAll("\\s+","")));
+                effect.setStatByIndexNeg(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(eqInd+4, eqInd+6).replaceAll("\\s+","")));
+                effect.setStatByIndexNeg(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(eqInd+7, eqInd+9).replaceAll("\\s+","")));
+                effect.setStatByIndexNeg(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(eqInd+10, eqInd+12).replaceAll("\\s+","")));
+                //System.out.println(effect);
                 if(sCurrentLine.substring(qInd+2, qInd+3).equals("H") ) //house
                 {
                     RoomType rtype = null;
@@ -187,13 +188,14 @@ public class Events
                     opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
 
-                effect = new Stats();
 
-                effect.setStatByIndex(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(colInd+1, colInd+3).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(colInd+4, colInd+6).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(colInd+7, colInd+9).replaceAll("\\s+","")));
-                effect.setStatByIndex(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(colInd+10, colInd+12).replaceAll("\\s+","")));
+                Stats effect2 = new Stats();
 
+                effect2.setStatByIndexNeg(StatType.HEALTH, Integer.parseInt(sCurrentLine.substring(colInd+1, colInd+3).replaceAll("\\s+","")));
+                effect2.setStatByIndexNeg(StatType.SOCIALITY, Integer.parseInt(sCurrentLine.substring(colInd+4, colInd+6).replaceAll("\\s+","")));
+                effect2.setStatByIndexNeg(StatType.GRADES, Integer.parseInt(sCurrentLine.substring(colInd+7, colInd+9).replaceAll("\\s+","")));
+                effect2.setStatByIndexNeg(StatType.MONEY, Integer.parseInt(sCurrentLine.substring(colInd+10, colInd+12).replaceAll("\\s+","")));
+                System.out.println("opt2:" + effect2);
                 //option 2
                 if(sCurrentLine.substring(qInd+3, qInd+4).equals("H"))
                 {
@@ -297,25 +299,25 @@ public class Events
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("S") )
                 {
                     int id = House.idGenerator(OptionType.SCHOOL_OPTION,null,null);
-                    opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
+                    opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("L") )
                 {
                     int id = House.idGenerator(OptionType.LIBRARY_OPTION,null,null);
-                    opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
+                    opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("N") )
                 {
                     int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
-                    opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
+                    opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("C") )
                 {
-                    int id = House.idGenerator(OptionType.CAFE_OPTION,null,null);
-                    opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect, id);
+                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
                 }
                 Option[] arr = new Option[Event.getMaxOption()];
                 arr[0] = opt1;

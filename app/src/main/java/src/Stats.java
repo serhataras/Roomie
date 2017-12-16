@@ -58,6 +58,11 @@ public class Stats
         checkBoundaries(index.ordinal());
     }
 
+    public void setStatByIndexNeg(StatType index, int change)
+    {
+        stats[index.ordinal()] += change;
+    }
+
     public void makeStatsZero()
     {
         for(int i = 0; i < NUMBER_OF_STATS; i++)
