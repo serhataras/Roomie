@@ -1,17 +1,12 @@
 package src.Hardwares;
-
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 /**
  * Created by serhat on 31.10.2017.
  */
-
-
-        import android.hardware.Sensor;
-        import android.hardware.SensorEvent;
-        import android.hardware.SensorEventListener;
-        import android.hardware.SensorManager;
-
-
-public class ShakeDetector implements SensorEventListener {
+public class ShakeDetector implements SensorEventListener  {
 
     /*
      * The gForce that is necessary to register as shake.
@@ -20,11 +15,10 @@ public class ShakeDetector implements SensorEventListener {
      * from the Google Play Store and run it to see how
      *  many G's it takes to register a shake
      */
-    private static final float SHAKE_THRESHOLD_GRAVITY = 2.85F;
-    private static final int SHAKE_SLOP_TIME_MS = 500;
+    private static final float SHAKE_THRESHOLD_GRAVITY = 2.9F;
+    private static final int SHAKE_SLOP_TIME_MS = 50;
     private static final int SHAKE_COUNT_RESET_TIME_MS = 3000;
 
-    private final int shakemultiplier=10;
 
     private int shakeAmount;
     private OnShakeListener mListener;
@@ -45,11 +39,7 @@ public class ShakeDetector implements SensorEventListener {
     }
 
     public void determineLevel(int level){
-        int temp= level%3;
-        temp+=3;
-        temp*=shakemultiplier;
-        shakeAmount=temp;
-
+        shakeAmount=level;
     }
 
     public int getShakeAmount(){
@@ -57,7 +47,7 @@ public class ShakeDetector implements SensorEventListener {
     }
 
     public boolean handleShakeEvent(){
-        if(getShakeAmount()>=get_mShakeCount()){
+        if(!(getShakeAmount()>get_mShakeCount())){
             //end the event
             return true;
         }

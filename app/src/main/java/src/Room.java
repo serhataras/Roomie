@@ -8,19 +8,28 @@ import android.graphics.drawable.Drawable;
  */
 public class Room
 {
-    HouseItem[] items;
-    Drawable background;
+    public static final int NUMBER_OF_ITEMS = 4;
 
-    Room()
+    private HouseItem[] items;
+    private Drawable background;
+    private String name;
+
+    public Room()
     {
-        items       = new HouseItem[3];
-        background  = null;
+        items = new HouseItem[NUMBER_OF_ITEMS];
+
+        for (int i = 0; i < NUMBER_OF_ITEMS; i++)
+            items[i] = new HouseItem();
+
+        background = null;
+        name = "";
     }
 
-    Room(HouseItem[] items, Drawable background)
+    public Room(HouseItem[] items, Drawable background, String name)
     {
-        this.items      = items;
+        this.items = items;
         this.background = background;
+        this.name = name;
     }
 
 

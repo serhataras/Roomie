@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.threek.roomie.Activities.BackpackActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/backpackList"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="466dp">
+
+            </ListView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="81dp">
+
+                <Button
+                    android:id="@+id/sellAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/useAll"
+                    android:layout_alignBottom="@+id/useAll"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="109dp"
+                    android:text="@string/backpack_Sell_All"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.168"
+                    app:layout_constraintStart_toEndOf="@+id/useAll" />
+
+                <Button
+                    android:id="@+id/useAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/sellAll"
+                    android:text="@string/Backpack_Use_All"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

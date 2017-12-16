@@ -1,27 +1,66 @@
 package src;
 
-import java.util.Arrays;
+import android.util.Log;
+
+import src.Enums.OptionType;
 
 /**
  * Created by eliztekcan on 30.10.2017.
  */
 
 public class Event {
-    String question;
-    Option[] optionArray;
-    public static final int MAX_OPTION = 2;
+    private String question;
+    private Option[] optionArray;
+    private  static final int MAX_OPTION = 2;
 
-    Event(){
+    public Event(){
         optionArray = new Option[MAX_OPTION];
     }
 
-    Event(String question, Option[] optionArray){
+    public Event(String question, Option[] optionArray){
         this.optionArray = optionArray;
         this.question = question;
     }
 
-    public Option[] getOptionArray() {
-        return optionArray;
+    public Option chooseAnOption(int id)
+    {
+        Log.e("ID1", id + optionArray[0].toString() + "");
+        Log.e("ID2", id + optionArray[1].toString() + "");
+        Option optionToReturn = null;
+
+        for (int i = 0; i < MAX_OPTION; i++)
+        {
+            if (optionArray[i].getId() == id)
+            {
+                optionToReturn = optionArray[i];
+                break;
+            }
+        }
+        return optionToReturn;
+    }
+
+    public boolean isOptionExtreme(int id)
+    {
+        if (chooseAnOption(id) != null)
+            return chooseAnOption(id).isExtreme();
+        return false;
+    }
+
+    public OptionType whichOption(int id)
+    {
+        if (chooseAnOption(id) != null)
+            return chooseAnOption(id).getOptionType();
+        return null;
+    }
+
+    public int[] getOptionsId()
+    {
+        int[] ids = new int[MAX_OPTION];
+        for (int i = 0; i < MAX_OPTION; i++)
+        {
+            ids[i] = optionArray[i].getId();
+        }
+        return ids;
     }
 
     public void setOptionArray(Option[] optionArray) {
@@ -40,11 +79,16 @@ public class Event {
         return MAX_OPTION;
     }
 
+    public Option[] getOptionArray() {
+        return optionArray;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
                 "question='" + question + '\'' +
                 //", optionArray=" + Arrays.toString(optionArray) +
-                '}';
+                '}'
+                + optionArray[0].toString() + optionArray[1].toString();
     }
 }

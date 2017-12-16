@@ -10,12 +10,17 @@ import android.widget.ImageButton;
 
 import com.threek.roomie.R;
 
+import src.Enums.BedroomItems;
+import src.Game;
+import src.House;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class BedroomFragment extends Fragment {
 
     private String name;
+    private Game game;
 
     // attributes
     private ImageButton[] buttons;
@@ -30,6 +35,7 @@ public class BedroomFragment extends Fragment {
         super.onCreate(savedInstanceState);
         buttons = new ImageButton[4];
         name = "Bedroom";
+        game = Game.getInstance();
     }
 
 
@@ -40,10 +46,16 @@ public class BedroomFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_bedroom, container, false);
 
-        buttons[0] = (ImageButton) root.findViewById(R.id.item1);
-        buttons[1] = (ImageButton) root.findViewById(R.id.item2);
-        buttons[2] = (ImageButton) root.findViewById(R.id.item3);
-        buttons[3] = (ImageButton) root.findViewById(R.id.item4);
+        buttons[BedroomItems.BED.ordinal()] = (ImageButton) root.findViewById(R.id.bed);
+        buttons[BedroomItems.WARDROBE.ordinal()] = (ImageButton) root.findViewById(R.id.wardrobe);
+        buttons[BedroomItems.DESK.ordinal()] = (ImageButton) root.findViewById(R.id.desk);
+        buttons[BedroomItems.BOOKSHELF.ordinal()] = (ImageButton) root.findViewById(R.id.bookshelf);
+
+        buttons[BedroomItems.BED.ordinal()].setId(House.BED_ID);
+        buttons[BedroomItems.WARDROBE.ordinal()].setId(House.WARDROBE_ID);
+        buttons[BedroomItems.DESK.ordinal()].setId(House.DESK_ID);
+        buttons[BedroomItems.BOOKSHELF.ordinal()].setId(House.BOOKSHELF_ID);
+
 
         return root;
     }
@@ -56,9 +68,32 @@ public class BedroomFragment extends Fragment {
         this.name = name;
     }
 
-    public void setListeners(View.OnClickListener listener)
+    public void addListeners(View.OnClickListener listener)
     {
         for (int i = 0; i < 4; i++)
             buttons[i].setOnClickListener(listener);
+    }
+
+    public boolean activateButton(int id)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (buttons[i].getId() == id)
+            {
+                buttons[i].setEnabled(true);
+                buttons[i].setAlpha(1f);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deactivateAllButtons()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].setEnabled(false);
+            buttons[i].setAlpha(0.3f);
+        }
     }
 }

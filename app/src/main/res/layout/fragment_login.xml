@@ -12,10 +12,10 @@
             android:id="@+id/maleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lf_male"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/nameInput"
-            android:layout_marginTop="169dp" />
+            android:layout_marginTop="169dp"
+            android:text="@string/lf_male" />
 
         <RadioButton
             android:id="@+id/femaleButton"
@@ -30,21 +30,21 @@
             android:id="@+id/nameInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/femaleButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="22dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/lf_name"
-            android:layout_marginBottom="22dp"
-            android:layout_above="@+id/femaleButton"
-            android:layout_centerHorizontal="true" />
+            android:text="@string/lf_name" />
 
         <Button
             android:id="@+id/startGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="120dp"
-            android:text="@string/lf_gameStart"
             android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/femaleButton" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="122dp"
+            android:text="@string/lf_gameStart" />
 
     </RelativeLayout>
 </FrameLayout>

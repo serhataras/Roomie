@@ -1,34 +1,48 @@
 package src;
 
+import android.content.res.Resources;
+
+import src.Enums.OptionType;
+
 /**
  * Created by eliztekcan on 27.10.2017.
  */
 public class GameEnvironment
 {
-    Outdoor[] outdoor;
-    House house;
+    private Outdoor[] outdoors;
+    private House house;
 
-    GameEnvironment()
+    public static final int OUTDOOR_NUMBER = 4;
+
+    public GameEnvironment(Resources r, String pn)
     {
-        outdoor     = new Outdoor[4];
-        house       = new House();
+        outdoors = new Outdoor[OUTDOOR_NUMBER];
+        outdoors[OptionType.SCHOOL_OPTION.ordinal()] = new School(r, pn);
+        outdoors[OptionType.NIGHT_CLUB_OPTION.ordinal()] = new NightClub();
+        outdoors[OptionType.LIBRARY_OPTION.ordinal()] = new Library();
+        outdoors[OptionType.CAFE_OPTION.ordinal()] = new Cafe(r, pn);
+
+        house = new House();
     }
 
 
-    GameEnvironment(Outdoor[] outdoor, House house)
+    public GameEnvironment(Outdoor[] outdoor, House house)
     {
-        this.house      = house;
-        this.outdoor    = outdoor;
+        this.house = house;
+        this.outdoors = outdoor;
     }
 
-    public Outdoor[] getOutdoor()
+    public Outdoor getOutdoorEnvironment(OptionType environment)
     {
-        return outdoor;
+        if (environment != OptionType.HOUSE_OPTION)
+            return outdoors[environment.ordinal()];
+        else
+            return null;//Creates bugs
     }
 
     public void setOutdoor(Outdoor[] outdoor)
     {
-        this.outdoor = outdoor;
+        this.outdoors = outdoor;
     }
 
     public House getHouse()
