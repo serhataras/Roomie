@@ -76,9 +76,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         // game instance to work on
         game = Game.getInstance();
-        game.initializeEvents(getResources(), HouseActivity.this.getPackageName());
-        game.initializeRandomizer(getResources(), HouseActivity.this.getPackageName());
-        game.initializeGameEnvironment(getResources(), HouseActivity.this.getPackageName());
 
         // house fragments
         kitchenFragment = new KitchenFragment();
@@ -327,7 +324,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                showEventDialog("Earthquake! You have died.","GAME OVER!");
+                // TODO
             }
         }
         else if (observable == game.getCurrentEvent())

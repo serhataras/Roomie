@@ -24,7 +24,7 @@ public class LoginFragment extends Fragment {
     private EditText nameInput;
     private Button startGameButton;
 
-    private Gender gender; // female = false, male = true
+    private Gender gender;
     private Game game;
 
     public LoginFragment()
