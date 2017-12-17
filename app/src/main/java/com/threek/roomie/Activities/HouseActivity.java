@@ -66,6 +66,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
     // game instance
     private Game game;
 
+    // boolean to hold backpack has opened
+    private boolean backpackHasOpened;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +145,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
         currentFragment = livingRoomFragment;
         thisRoomText.setText(livingRoomFragment.getName());
 
+        // finished activity initialize
+        backpackHasOpened = false;
+
         // add observers to the game
         game.addObservers(this);
 
@@ -164,9 +170,20 @@ public class HouseActivity extends AppCompatActivity implements Observer
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
-        updateStatBars();
+
+        // choose outside options after the outside activities return
+        if (!game.isGameHasStarted() && !backpackHasOpened)
+        {
+            chooseOutsideOption();
+        }
+        else if (backpackHasOpened)
+        {
+            updateStatBars();
+            backpackHasOpened = false;
+        }
     }
 
     // button listener for changing the rooms
@@ -224,6 +241,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         @Override
         public void onClick(View view)
         {
+            backpackHasOpened = true;
             Intent intent = new Intent(HouseActivity.this, BackpackActivity.class);
             startActivity(intent);
         }
@@ -258,7 +276,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         if (observable == game.getPressedButtonId())
         {
             // if the option is not extreme
-            if (game.checkExtremeOption() == false)
+            if (!game.checkExtremeOption())
             {
                 // get the option type from the current event
                 OptionType type = game.whichOption();
@@ -268,6 +286,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 {
                     // choose house option
                     game.chooseHouseOption();
+
+                    // update stat bars and change the current event
+                    updateStatBars();
+                    game.changeCurrentEvent();
                 }
 
                 // if the option type is night club
@@ -276,9 +298,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the night club activity
                     Intent intent = new Intent(HouseActivity.this, NightClubActivity.class);
                     startActivity(intent);
-
-                    // choose nightclub option
-                    game.chooseNightClubOption();
                 }
 
                 // if the option type is cafe
@@ -287,9 +306,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the cafe activity
                     Intent intent = new Intent(HouseActivity.this, CafeActivity.class);
                     startActivity(intent);
-
-                    // choose cafe option
-                    game.chooseCafeOption();
                 }
 
                 // if the option type is library
@@ -298,9 +314,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the library activity
                     Intent intent = new Intent(HouseActivity.this, LibraryActivity.class);
                     startActivity(intent);
-
-                    // choose library option
-                    game.chooseLibraryOption();
                 }
 
                 else if (type == OptionType.SCHOOL_OPTION)
@@ -308,14 +321,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the school activity
                     Intent intent = new Intent(HouseActivity.this, SchoolActivity.class);
                     startActivity(intent);
-
-                    // choose house option
-                    game.chooseSchoolOption();
                 }
-
-                // update stat bars and change the current event
-                updateStatBars();
-                game.changeCurrentEvent();
             }
 
             // if the option is extreme
@@ -326,9 +332,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
         else if (observable == game.getCurrentEvent())
         {
-
-                prepareButtonsForTheCurrentEvent();
-
+            prepareButtonsForTheCurrentEvent();
         }
     }
     public void updateStatBars()
@@ -415,5 +419,41 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // then activate
         activateHouseButtons();
         activateOutsideButtons();
+    }
+
+    public void chooseOutsideOption()
+    {
+        OptionType type = game.whichOption();
+
+        // if the option type is night club
+        if (type == OptionType.NIGHT_CLUB_OPTION)
+        {
+            // choose nightclub option
+            game.chooseNightClubOption();
+        }
+
+        // if the option type is cafe
+        else if (type == OptionType.CAFE_OPTION)
+        {
+            // choose cafe option
+            game.chooseCafeOption();
+        }
+
+        // if the option type is library
+        else if (type == OptionType.LIBRARY_OPTION)
+        {
+            // choose library option
+            game.chooseLibraryOption();
+        }
+
+        else if (type == OptionType.SCHOOL_OPTION)
+        {
+            // choose house option
+            game.chooseSchoolOption();
+        }
+
+        // update stat bars and change the current event
+        updateStatBars();
+        game.changeCurrentEvent();
     }
 }
