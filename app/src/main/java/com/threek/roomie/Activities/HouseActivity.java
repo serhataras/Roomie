@@ -313,6 +313,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     startActivity(intent);
                 }
 
+                // if the option type is school
                 else if (type == OptionType.SCHOOL_OPTION)
                 {
                     // start the school activity
@@ -324,15 +325,25 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                // TODO
+                onGameOver();
             }
         }
         else if (observable == game.getCurrentEvent())
         {
-            prepareButtonsForTheCurrentEvent();
+            // if game is over, return to the first activity
+            if (game.isGameOver())
+            {
+                onGameOver();
+            }
+            else
+            {
+                prepareButtonsForTheCurrentEvent();
+            }
         }
     }
-    public void updateStatBars()
+
+    // methods for setting up the ui components
+    private void updateStatBars()
     {
         moneyBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.MONEY));
         gradesBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.GRADES));
@@ -340,7 +351,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
     }
 
-    public void activateOutsideButtons()
+    private void activateOutsideButtons()
     {
         int id1 = game.getActivatedButtons()[0];
         int id2 = game.getActivatedButtons()[1];
@@ -368,7 +379,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
     }
 
-    public void deactivateOutsideButtons()
+    private void deactivateOutsideButtons()
     {
         schoolButton.setEnabled(false);
         schoolButton.setAlpha(0.3f);
@@ -383,7 +394,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         cafeButton.setAlpha(0.3f);
     }
 
-    public void activateHouseButtons()
+    private void activateHouseButtons()
     {
         int id1 = game.getActivatedButtons()[0];
         int id2 = game.getActivatedButtons()[1];
@@ -399,7 +410,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         kitchenFragment.activateButton(id2);
     }
 
-    public void deactivateHouseButtons()
+    private void deactivateHouseButtons()
     {
         livingRoomFragment.deactivateAllButtons();
         bedroomFragment.deactivateAllButtons();
@@ -407,7 +418,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         kitchenFragment.deactivateAllButtons();
     }
 
-    public void prepareButtonsForTheCurrentEvent()
+    private void prepareButtonsForTheCurrentEvent()
     {
         // first deactivate
         deactivateHouseButtons();
@@ -418,7 +429,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         activateOutsideButtons();
     }
 
-    public void chooseOutsideOption()
+    private void chooseOutsideOption()
     {
         OptionType type = game.whichOption();
 
@@ -452,5 +463,132 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // update stat bars and change the current event
         updateStatBars();
         game.changeCurrentEvent();
+    }
+
+
+    // methods for asking user before exiting the game
+    private void exit()
+    {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        backButtonDialog(new PromptRunnable()
+        {
+            @Override
+            public void run() {
+                if (this.getValue())
+                    exit();
+            }
+        });
+    }
+
+    // alert user for back button pressed
+    private void backButtonDialog(final PromptRunnable postrun)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        postrun.setValue(true);
+                        postrun.run();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        postrun.setValue(false);
+                        postrun.run();
+                        break;
+                }
+            }
+        };
+
+        DialogInterface.OnCancelListener dialogCancelListener = new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialog)
+            {
+                postrun.setValue(false);
+                postrun.run();
+            }
+        };
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Warning!")
+                .setMessage("Do you want to exit? All the progress will be lost.")
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener)
+                .setOnCancelListener(dialogCancelListener);
+        dialog.show();
+    }
+
+    // class for waiting dialog box input
+    private class PromptRunnable implements Runnable
+    {
+        private boolean saveClick;
+
+        void setValue(boolean saveClick)
+        {
+            this.saveClick = saveClick;
+        }
+
+        boolean getValue()
+        {
+            return this.saveClick;
+        }
+
+        public void run()
+        {
+            this.run();
+        }
+    }
+
+    public void onGameOver()
+    {
+        gameOverDialog(new PromptRunnable()
+        {
+            @Override
+            public void run() {
+                if (this.getValue())
+                    finish();
+            }
+        });
+    }
+
+    // alert user when the game is over
+    private void gameOverDialog(final PromptRunnable postrun)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        postrun.setValue(true);
+                        postrun.run();
+                        break;
+                }
+            }
+        };
+
+        DialogInterface.OnCancelListener dialogCancelListener = new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialog)
+            {
+                postrun.setValue(true);
+                postrun.run();
+            }
+        };
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Game is over!")
+                .setMessage("Game is finished. Thanks for playing.")
+                .setNeutralButton("Ok", dialogClickListener)
+                .setOnCancelListener(dialogCancelListener);
+        dialog.show();
     }
 }
