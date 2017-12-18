@@ -68,6 +68,7 @@ public class Game
     {
         events = new Events(r, pn);
         currentEvent.setValue(events.getStart());
+        Log.e("CEEEEEEEEE", currentEvent.getValue().toString());
     }
 
     private void initializeGameEnvironment(Resources r, String pn)

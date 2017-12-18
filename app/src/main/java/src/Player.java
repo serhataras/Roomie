@@ -19,7 +19,10 @@ public class Player
     {
         name = "";
         gender = Gender.FEMALE;
+
         stats = new Stats();
+        stats.makeStatsRandom();
+
         backpack = new Backpack();
     }
 

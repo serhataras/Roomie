@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.OutsideActivity" />
         <activity android:name=".Activities.HouseActivity" />
         <activity android:name=".Activities.BackpackActivity"/>
         <activity android:name=".Activities.SchoolActivity"/>

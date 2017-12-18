@@ -3,4 +3,5 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/bath_tile"
     android:tileMode="repeat"
+    android:alpha="0.4"
     />

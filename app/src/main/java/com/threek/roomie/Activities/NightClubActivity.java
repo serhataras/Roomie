@@ -48,6 +48,10 @@ public class NightClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nightclub);
 
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
         game = Game.getInstance();
         NightClub club = (NightClub) game.getGameEnvironment().getOutdoorEnvironment(OptionType.NIGHT_CLUB_OPTION);//Holds the temporary NightClub of the singleton Game object
 

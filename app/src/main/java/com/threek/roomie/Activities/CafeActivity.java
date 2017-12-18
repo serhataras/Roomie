@@ -42,6 +42,10 @@ public class CafeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cafe);
 
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
         game = Game.getInstance();
         CustomListAdapter adapter = new CustomListAdapter();
 

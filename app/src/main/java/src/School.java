@@ -97,7 +97,7 @@ public class School extends Outdoor
     public void updateChallengeSuccess()
     {
         QuizQuestion currentQuestion = questions[random];
-        String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex()];
+        String correctAnswer = currentQuestion.getOptions()[currentQuestion.getCorrectAnswerIndex() + 1];
 
         if(correctAnswer.equalsIgnoreCase(getSelectedAnswer()))
         {

@@ -26,6 +26,7 @@ import com.threek.roomie.R;
 import java.util.Observable;
 import java.util.Observer;
 
+import src.Enums.Gender;
 import src.Enums.OptionType;
 import src.Enums.StatType;
 import src.Game;
@@ -74,6 +75,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
 
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
         // game instance to work on
         game = Game.getInstance();
 
@@ -91,6 +96,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 showEventDialog(game.sendEventQuestion(), "Question");
             }
         });
+        setPlayerPicture();
 
         playerNameText = (TextView) findViewById(R.id.playerNameText);
         playerNameText.setText(game.getPlayer().getName());
@@ -590,5 +596,17 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 .setNeutralButton("Ok", dialogClickListener)
                 .setOnCancelListener(dialogCancelListener);
         dialog.show();
+    }
+
+    private void setPlayerPicture()
+    {
+        if (game.getPlayer().getGender() == Gender.MALE)
+        {
+            playerButton.setImageDrawable(getDrawable(R.drawable.male_n));
+        }
+        else
+        {
+            playerButton.setImageDrawable(getDrawable(R.drawable.female_n));
+        }
     }
 }
