@@ -36,13 +36,15 @@ public class School extends Outdoor
         BufferedReader br = null;
         InputStream in = null;
 
-        try {
+        try
+        {
             in = r.openRawResource(r.getIdentifier("quiz", "raw", pn));
             br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
             String sCurrentLine;
             int index = 0;
-            while ((sCurrentLine = br.readLine()) != null && index < MAX_QUESTION) {
+            while ((sCurrentLine = br.readLine()) != null && index < MAX_QUESTION)
+            {
                 int starInd = sCurrentLine.indexOf('?');
 
                 setOptionsArray(sCurrentLine.substring(starInd+1,starInd+3), sCurrentLine.substring(starInd+4,starInd+6),
@@ -52,31 +54,32 @@ public class School extends Outdoor
                 options = new String[4];
 
             }
-
-        } catch (IOException e) {
-
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
 
-        } finally {
-
-            try {
-
+        }
+        finally
+        {
+            try
+            {
                 if (br != null)
                     br.close();
 
                 if (in != null)
                     in.close();
-
-            } catch (IOException ex) {
-
+            }
+            catch (IOException ex)
+            {
                 ex.printStackTrace();
-
             }
 
         }
     }
 
-    private void setOptionsArray(String i, String i1, String i2, String i3) {
+    private void setOptionsArray(String i, String i1, String i2, String i3)
+    {
         options[0] = i;
         options[1] = i1;
         options[2] = i2;

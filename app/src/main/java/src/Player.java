@@ -15,14 +15,16 @@ public class Player
     private Stats stats;
     private Backpack backpack;
 
-    public Player(){
+    public Player()
+    {
         name = "";
         gender = Gender.FEMALE;
         stats = new Stats();
         backpack = new Backpack();
     }
 
-    public Player(String name, Gender gender) {
+    public Player(String name, Gender gender)
+    {
         this.name = name;
         this.gender = gender;
         stats = new Stats();

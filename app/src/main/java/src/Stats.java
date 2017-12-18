@@ -65,7 +65,7 @@ public class Stats
 
     public void makeStatsZero()
     {
-        for(int i = 0; i < NUMBER_OF_STATS; i++)
+        for (int i = 0; i < NUMBER_OF_STATS; i++)
             this.stats[i] = MIN_STAT;
     }
 

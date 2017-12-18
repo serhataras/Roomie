@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by eliztekcan on 31.10.2017.
  */
 
-class Graph {
+public class Graph {
     private Map<Event, List<Event>> adjacencyList;
     private int vertices;
 
