@@ -102,7 +102,7 @@ public class Events
                             lr = LivingRoomItems.BIGTABLE;
                         }
                         System.out.println("1 " + lr);
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
                     }
 
                     else if(rtype == RoomType.KITCHEN)
@@ -124,7 +124,7 @@ public class Events
                         {
                             k = KitchenItems.TABLE;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
                     }
 
                     else if(rtype == RoomType.BEDROOM)
@@ -146,7 +146,7 @@ public class Events
                         {
                             bedr = BedroomItems.WARDROBE;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
                     }
 
                     else if(rtype == RoomType.BATHROOM)
@@ -160,7 +160,7 @@ public class Events
                         {
                             bathr = BathroomItems.TOILET;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
                     }
 
                     opt1 = new Option(OptionType.HOUSE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
@@ -168,22 +168,22 @@ public class Events
                 }
                 else if(sCurrentLine.substring(qInd+2, qInd+3).equals("S") ) //school
                 {
-                    int id = House.idGenerator(OptionType.SCHOOL_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.SCHOOL_OPTION,null,null);
                     opt1 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
                 else if(sCurrentLine.substring(qInd+2, qInd+3).equals("L") ) //library
                 {
-                    int id = House.idGenerator(OptionType.LIBRARY_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.LIBRARY_OPTION,null,null);
                     opt1 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
                 else if(sCurrentLine.substring(qInd+2, qInd+3).equals("N") ) //night club
                 {
-                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
                     opt1 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(starInd, lineInd), effect,id);
                 }
                 else if(sCurrentLine.substring(qInd+2, qInd+3).equals("C") ) //cafe
                 {
-                    int id = House.idGenerator(OptionType.CAFE_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.CAFE_OPTION,null,null);
                     opt1 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(starInd, lineInd), effect, id);
                 }
 
@@ -230,7 +230,7 @@ public class Events
                         {
                             lr = LivingRoomItems.BIGTABLE;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, lr);
                     }
 
                     if(rtype == RoomType.KITCHEN)
@@ -252,7 +252,7 @@ public class Events
                         {
                             k = KitchenItems.TABLE;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, k);
                     }
 
                     if(rtype == RoomType.BEDROOM)
@@ -274,7 +274,7 @@ public class Events
                         {
                             bedr = BedroomItems.WARDROBE;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, bedr);
                     }
 
                     if(rtype == RoomType.BATHROOM)
@@ -288,7 +288,7 @@ public class Events
                         {
                             bathr = BathroomItems.TOILET;
                         }
-                        id = House.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
+                        id = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, bathr);
                     }
 
 
@@ -297,25 +297,25 @@ public class Events
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("S") )
                 {
-                    int id = House.idGenerator(OptionType.SCHOOL_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.SCHOOL_OPTION,null,null);
                     opt2 = new Option(OptionType.SCHOOL_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("L") )
                 {
-                    int id = House.idGenerator(OptionType.LIBRARY_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.LIBRARY_OPTION,null,null);
                     opt2 = new Option(OptionType.LIBRARY_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("N") )
                 {
-                    int id = House.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.NIGHT_CLUB_OPTION,null,null);
                     opt2 = new Option(OptionType.NIGHT_CLUB_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
 
                 }
                 else if(sCurrentLine.substring(qInd+3, qInd+4).equals("C") )
                 {
-                    int id = House.idGenerator(OptionType.CAFE_OPTION,null,null);
+                    int id = Generator.idGenerator(OptionType.CAFE_OPTION,null,null);
                     opt2 = new Option(OptionType.CAFE_OPTION, sCurrentLine.substring(lineInd, qInd), effect2, id);
                 }
                 Option[] arr = new Option[Event.getMaxOption()];

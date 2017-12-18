@@ -30,6 +30,7 @@ import src.Enums.Gender;
 import src.Enums.OptionType;
 import src.Enums.StatType;
 import src.Game;
+import src.Generator;
 import src.House;
 import src.Item;
 import src.Observable.ObservableEvent;
@@ -108,19 +109,19 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // outside buttons
         schoolButton = (Button) findViewById(R.id.schoolButton);
         schoolButton.setOnClickListener(new ItemListener());
-        schoolButton.setId(House.idGenerator(OptionType.SCHOOL_OPTION, null, null));
+        schoolButton.setId(Generator.idGenerator(OptionType.SCHOOL_OPTION, null, null));
 
         libraryButton = (Button) findViewById(R.id.libraryButton);
         libraryButton.setOnClickListener(new ItemListener());
-        libraryButton.setId(House.idGenerator(OptionType.LIBRARY_OPTION, null, null));
+        libraryButton.setId(Generator.idGenerator(OptionType.LIBRARY_OPTION, null, null));
 
         nightClubButton = (Button) findViewById(R.id.nightClubButton);
         nightClubButton.setOnClickListener(new ItemListener());
-        nightClubButton.setId(House.idGenerator(OptionType.NIGHT_CLUB_OPTION, null, null));
+        nightClubButton.setId(Generator.idGenerator(OptionType.NIGHT_CLUB_OPTION, null, null));
 
         cafeButton = (Button) findViewById(R.id.cafeButton);
         cafeButton.setOnClickListener(new ItemListener());
-        cafeButton.setId(House.idGenerator(OptionType.CAFE_OPTION, null, null));
+        cafeButton.setId(Generator.idGenerator(OptionType.CAFE_OPTION, null, null));
 
         changeButton = (Button) findViewById(R.id.changeRoomButton);
         changeButton.setOnClickListener(new ChangeRoomListener());
