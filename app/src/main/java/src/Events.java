@@ -52,7 +52,7 @@ public class Events
             while ((sCurrentLine = br.readLine()) != null && index < MAX_EVENT_COUNT) {
                 int starInd = sCurrentLine.indexOf('*');
                 int lineInd = sCurrentLine.indexOf('-');
-                int qInd    = sCurrentLine.indexOf('?');
+                int qInd    = sCurrentLine.indexOf(')');
                 int aInd    = sCurrentLine.indexOf('+');
                 int eqInd   = sCurrentLine.indexOf('=');
                 int colInd  = sCurrentLine.indexOf(':');
