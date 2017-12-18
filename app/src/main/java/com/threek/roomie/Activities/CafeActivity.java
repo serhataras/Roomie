@@ -35,7 +35,6 @@ import src.Game;
 public class CafeActivity extends AppCompatActivity
 {
     private Game game;
-    private CustomListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +43,7 @@ public class CafeActivity extends AppCompatActivity
         setContentView(R.layout.activity_cafe);
 
         game = Game.getInstance();
-        adapter = new CustomListAdapter();
+        CustomListAdapter adapter = new CustomListAdapter();
 
         ListView listView = (ListView) findViewById(R.id.foodmenuview);
         listView.setAdapter(adapter);
