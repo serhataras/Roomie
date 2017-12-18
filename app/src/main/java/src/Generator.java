@@ -2,7 +2,6 @@ package src;
 
 import android.content.res.Resources;
 
-import com.sun.tools.javah.Gen;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

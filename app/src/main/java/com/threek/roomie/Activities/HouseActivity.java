@@ -97,7 +97,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 showEventDialog(game.sendEventQuestion(), "Question");
             }
         });
-        setPlayerPicture();
 
         playerNameText = (TextView) findViewById(R.id.playerNameText);
         playerNameText.setText(game.getPlayer().getName());
@@ -155,7 +154,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // add observers to the game
         game.addObservers(this);
 
-        // initialize the stat bars
+        // initialize the stat bars and player picture
         updateStatBars();
     }
 
@@ -332,7 +331,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
-                onGameOver();
+                onExtremeCase();
             }
         }
         else if (observable == game.getCurrentEvent())
@@ -356,6 +355,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
         gradesBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.GRADES));
         socialityBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.SOCIALITY));
         healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
+
+        setPlayerPicture();
     }
 
     private void activateOutsideButtons()
@@ -553,6 +554,52 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
     }
 
+    public void onExtremeCase()
+    {
+        extremeCaseDialog(new PromptRunnable()
+        {
+            @Override
+            public void run() {
+                if (this.getValue())
+                    finish();
+            }
+        });
+    }
+
+    // alert user when the game is over
+    private void extremeCaseDialog(final PromptRunnable postrun)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        postrun.setValue(true);
+                        postrun.run();
+                        break;
+                }
+            }
+        };
+
+        DialogInterface.OnCancelListener dialogCancelListener = new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialog)
+            {
+                postrun.setValue(true);
+                postrun.run();
+            }
+        };
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Game is over!")
+                .setMessage(Generator.extremeEventGenerator(getResources(), HouseActivity.this.getPackageName(), game.whichOption()))
+                .setNeutralButton("Ok", dialogClickListener)
+                .setOnCancelListener(dialogCancelListener);
+        dialog.show();
+    }
+
     public void onGameOver()
     {
         gameOverDialog(new PromptRunnable()
@@ -593,7 +640,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Game is over!")
-                .setMessage("Game is finished. Thanks for playing.")
+                .setMessage(Generator.endGenerator(getResources(), HouseActivity.this.getPackageName(), game.getPlayer().getStats()))
                 .setNeutralButton("Ok", dialogClickListener)
                 .setOnCancelListener(dialogCancelListener);
         dialog.show();
@@ -601,13 +648,48 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
     private void setPlayerPicture()
     {
+        final int FIRST_BOUNDARY = 12;
+        final int SECOND_BOUNDARY = FIRST_BOUNDARY + 1;
+        final int THIRD_BOUNDARY = 26;
+        final int FOURTH_BOUNDARY = THIRD_BOUNDARY + 1;
+        final int FIFTH_BOUNDARY = 40;
+
+        int moneyStat = moneyBar.getProgress();
+        int gradesStat = gradesBar.getProgress();
+        int socialityStat = socialityBar.getProgress();
+        int healthStat = healthBar.getProgress();
+
+        int sum = moneyStat + gradesStat + socialityStat + healthStat;
+
         if (game.getPlayer().getGender() == Gender.MALE)
         {
-            playerButton.setImageDrawable(getDrawable(R.drawable.male_n));
+            if (sum <= FIRST_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.male_s));
+            }
+            else if (sum >= SECOND_BOUNDARY && sum <= THIRD_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.male_n));
+            }
+            else if (sum >= FOURTH_BOUNDARY && sum <= FIFTH_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.male_h));
+            }
         }
         else
         {
-            playerButton.setImageDrawable(getDrawable(R.drawable.female_n));
+            if (sum <= FIRST_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.female_s));
+            }
+            else if (sum >= SECOND_BOUNDARY && sum <= THIRD_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.female_n));
+            }
+            else if (sum >= FOURTH_BOUNDARY && sum <= FIFTH_BOUNDARY)
+            {
+                playerButton.setImageDrawable(getDrawable(R.drawable.female_h));
+            }
         }
     }
 }
