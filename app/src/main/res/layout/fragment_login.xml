@@ -30,9 +30,9 @@
             android:id="@+id/nameInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/femaleButton"
+            android:layout_above="@+id/startGameButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="22dp"
+            android:layout_marginBottom="30dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/lf_name" />
@@ -41,13 +41,14 @@
             android:id="@+id/startGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="122dp"
+            android:layout_alignEnd="@+id/femaleButton"
+            android:layout_alignStart="@+id/maleButton"
+            android:layout_below="@+id/maleButton"
+            android:layout_marginTop="82dp"
+            android:backgroundTint="@color/colorPrimary"
             android:text="@string/lf_gameStart"
-            android:textStyle="bold"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </FrameLayout>

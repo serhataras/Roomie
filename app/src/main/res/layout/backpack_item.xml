@@ -29,7 +29,7 @@
             android:layout_alignBottom="@+id/itemText"
             android:layout_marginEnd="7dp"
             android:layout_toStartOf="@+id/sellButton"
-            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
             android:text="Use"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
@@ -42,7 +42,7 @@
             android:layout_alignBottom="@+id/useButton"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="24dp"
-            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
             android:text="Sell"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />

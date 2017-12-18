@@ -24,10 +24,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="14dp"
+            android:backgroundTint="@color/colorPrimary"
             android:text="Exıt the Club"
-            android:textStyle="bold"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timeView"

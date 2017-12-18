@@ -26,10 +26,10 @@ android:descendantFocusability="blocksDescendants">
         android:layout_alignParentTop="true"
         android:layout_marginEnd="11dp"
         android:layout_marginTop="13dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Buy"
-        android:textStyle="bold"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/foodPrice"

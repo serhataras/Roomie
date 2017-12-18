@@ -40,14 +40,14 @@
                     android:layout_alignBottom="@+id/useAll"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="82dp"
+                    android:backgroundTint="@color/colorPrimary"
                     android:text="@string/backpack_Sell_All"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.168"
-                    app:layout_constraintStart_toEndOf="@+id/useAll"
-                    android:textStyle="bold"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/colorAccent"/>
+                    app:layout_constraintStart_toEndOf="@+id/useAll" />
 
                 <Button
                     android:id="@+id/useAll"
@@ -56,12 +56,12 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="27dp"
                     android:layout_toStartOf="@+id/sellAll"
+                    android:backgroundTint="@color/colorPrimary"
                     android:text="@string/Backpack_Use_All"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/colorAccent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
             </RelativeLayout>
 
         </LinearLayout>
