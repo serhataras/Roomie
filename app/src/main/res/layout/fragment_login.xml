@@ -44,7 +44,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="122dp"
-            android:text="@string/lf_gameStart" />
+            android:text="@string/lf_gameStart"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorAccent"/>
 
     </RelativeLayout>
 </FrameLayout>

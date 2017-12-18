@@ -37,13 +37,16 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/playerNameText"
                 android:layout_marginEnd="17dp"
-                android:text="Open backpack"
-                android:textSize="8sp" />
+                android:background="@color/colorPrimary"
+                android:text="Backpack"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <FrameLayout
                 android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="310dp"
+                android:layout_height="200dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/playerButton"
                 android:layout_marginTop="7dp">
@@ -59,7 +62,8 @@
                 android:layout_marginTop="12dp"
                 android:layout_toEndOf="@+id/playerButton"
                 android:text="Name"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -90,8 +94,11 @@
                 android:layout_below="@+id/thisRoomText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
                 android:text="Change Room"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <RelativeLayout
@@ -122,6 +129,7 @@
                         android:layout_weight="1"
                         android:text="Grades"
                         android:textSize="15sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="313dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -143,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
@@ -151,6 +160,7 @@
                         android:layout_centerVertical="true"
                         android:layout_weight="1"
                         android:text="Sociality"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="236dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -185,6 +195,7 @@
                         android:layout_weight="1"
                         android:text="Health"
                         android:textSize="15sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="66dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -220,6 +231,7 @@
                         android:layout_weight="1"
                         android:text="Money"
                         android:textSize="15sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="140dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -254,24 +266,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="School"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/libraryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="Lıbrary"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/nightClubButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="Dısco"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cafeButton"
@@ -280,8 +301,11 @@
                 android:layout_alignEnd="@+id/linearLayout"
                 android:layout_below="@+id/relativeLayout2"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="Cafe"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>

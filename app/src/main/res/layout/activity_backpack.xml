@@ -44,7 +44,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.168"
-                    app:layout_constraintStart_toEndOf="@+id/useAll" />
+                    app:layout_constraintStart_toEndOf="@+id/useAll"
+                    android:textStyle="bold"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"/>
 
                 <Button
                     android:id="@+id/useAll"
@@ -55,7 +58,10 @@
                     android:layout_toStartOf="@+id/sellAll"
                     android:text="@string/Backpack_Use_All"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textStyle="bold"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"/>
             </RelativeLayout>
 
         </LinearLayout>
