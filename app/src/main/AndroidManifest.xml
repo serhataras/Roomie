@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.threek.roomie">
-    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".Activities.Splash"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,11 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.HouseActivity" />
-        <activity android:name=".Activities.BackpackActivity"/>
-        <activity android:name=".Activities.SchoolActivity"/>
-        <activity android:name=".Activities.CafeActivity"/>
-        <activity android:name=".Activities.LibraryActivity"/>
-        <activity android:name=".Activities.NightClubActivity"></activity>
+        <activity android:name=".Activities.BackpackActivity" />
+        <activity android:name=".Activities.SchoolActivity" />
+        <activity android:name=".Activities.CafeActivity" />
+        <activity android:name=".Activities.LibraryActivity" />
+        <activity android:name=".Activities.NightClubActivity" />
+        <activity android:name=".Activities.LoginActivity"></activity>
     </application>
 
 </manifest>

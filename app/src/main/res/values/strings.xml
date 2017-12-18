@@ -13,5 +13,6 @@
     <string name="Backpack_Use_Item">Use</string>
     <string name="Backpack_Sell_Item">Sell</string>
     <string name="zzz">zZZ</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
