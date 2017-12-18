@@ -24,6 +24,7 @@ import java.util.List;
 
 import src.*;
 import src.Enums.OptionType;
+import src.Enums.StatType;
 import src.FoodItem;
 import src.Game;
 
@@ -34,7 +35,6 @@ import src.Game;
 public class CafeActivity extends AppCompatActivity
 {
     private Game game;
-    private CustomListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,7 +43,7 @@ public class CafeActivity extends AppCompatActivity
         setContentView(R.layout.activity_cafe);
 
         game = Game.getInstance();
-        adapter = new CustomListAdapter();
+        CustomListAdapter adapter = new CustomListAdapter();
 
         ListView listView = (ListView) findViewById(R.id.foodmenuview);
         listView.setAdapter(adapter);
@@ -95,6 +95,14 @@ public class CafeActivity extends AppCompatActivity
                     finish();
                 }
             });
+
+            // deactivate button if the player has not enough money
+            if (game.getPlayer().getStats().getStatByIndex(StatType.MONEY) < currentItem.getPrice())
+            {
+                useButton.setEnabled(false);
+                useButton.setAlpha(0.7f);
+                itemText.setText(currentItem.getName() + " (Not enough money to buy!)");
+            }
 
             // returns the view for the current row
             return convertView;

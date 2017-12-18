@@ -48,19 +48,34 @@ public class Game
         return instance;
     }
 
-    public void initializeEvents(Resources r, String pn)
+    public void reCreateGame()
+    {
+        player = new Player();
+        currentEvent = new ObservableEvent(null);
+        pressedButtonId = new ObservableId(-1);
+        gameHasStarted = true;
+        gameOver = false;
+    }
+
+    public void initializeGameObjects(Resources r, String pn)
+    {
+        initializeEvents(r, pn);
+        initializeGameEnvironment(r, pn);
+        initializeRandomizer(r, pn);
+    }
+
+    private void initializeEvents(Resources r, String pn)
     {
         events = new Events(r, pn);
         currentEvent.setValue(events.getStart());
-        Log.e("Event", events.getStart().toString());
     }
 
-    public void initializeGameEnvironment(Resources r, String pn)
+    private void initializeGameEnvironment(Resources r, String pn)
     {
         gameEnvironment = new GameEnvironment(r, pn);
     }
 
-    public void initializeRandomizer(Resources r, String pn){
+    private void initializeRandomizer(Resources r, String pn){
         random = new Randomizer(r, pn);
     }
 
@@ -127,8 +142,9 @@ public class Game
         }
     }
 
-    public boolean isGameOver(){
-        if(currentEvent == null || gameOver == true )
+    public boolean isGameOver()
+    {
+        if (currentEvent == null || gameOver)
         {
             gameOver = true;
         }

@@ -37,15 +37,15 @@ public class NightClub extends Outdoor
     @Override
     public void updateChallengeSuccess()
     {
-        Log.e("SHAKE", getShakeAmount() + "");
-       if(getShakeAmount() > getMAX_SHAKE())
-       {
+        Log.e("SHAKE AMOUNT: ", getShakeAmount() + "");
+        if(getShakeAmount() > getMAX_SHAKE() / 10)
+        {
            super.setChallengeSuccess(true);
-       }
-       else
-       {
+        }
+        else
+        {
            super.setChallengeSuccess(false);
-       }
+        }
 
     }
 }

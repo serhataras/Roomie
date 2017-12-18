@@ -31,7 +31,6 @@ import src.Enums.StatType;
 import src.Game;
 import src.House;
 import src.Item;
-import src.NightClub;
 import src.Observable.ObservableEvent;
 import src.Observable.ObservableId;
 import src.Option;
@@ -67,6 +66,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
     // game instance
     private Game game;
 
+    // boolean to hold backpack has opened
+    private boolean backpackHasOpened;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +76,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
 
         // game instance to work on
         game = Game.getInstance();
-        game.initializeEvents(getResources(), HouseActivity.this.getPackageName());
-        game.initializeRandomizer(getResources(), HouseActivity.this.getPackageName());
-        game.initializeGameEnvironment(getResources(), HouseActivity.this.getPackageName());
 
         // house fragments
         kitchenFragment = new KitchenFragment();
@@ -143,6 +142,9 @@ public class HouseActivity extends AppCompatActivity implements Observer
         currentFragment = livingRoomFragment;
         thisRoomText.setText(livingRoomFragment.getName());
 
+        // finished activity initialize
+        backpackHasOpened = false;
+
         // add observers to the game
         game.addObservers(this);
 
@@ -165,9 +167,20 @@ public class HouseActivity extends AppCompatActivity implements Observer
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
-        updateStatBars();
+
+        // choose outside options after the outside activities return
+        if (!game.isGameHasStarted() && !backpackHasOpened)
+        {
+            chooseOutsideOption();
+        }
+        else if (backpackHasOpened)
+        {
+            updateStatBars();
+            backpackHasOpened = false;
+        }
     }
 
     // button listener for changing the rooms
@@ -225,6 +238,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         @Override
         public void onClick(View view)
         {
+            backpackHasOpened = true;
             Intent intent = new Intent(HouseActivity.this, BackpackActivity.class);
             startActivity(intent);
         }
@@ -259,7 +273,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         if (observable == game.getPressedButtonId())
         {
             // if the option is not extreme
-            if (game.checkExtremeOption() == false)
+            if (!game.checkExtremeOption())
             {
                 // get the option type from the current event
                 OptionType type = game.whichOption();
@@ -269,6 +283,10 @@ public class HouseActivity extends AppCompatActivity implements Observer
                 {
                     // choose house option
                     game.chooseHouseOption();
+
+                    // update stat bars and change the current event
+                    updateStatBars();
+                    game.changeCurrentEvent();
                 }
 
                 // if the option type is night club
@@ -277,9 +295,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the night club activity
                     Intent intent = new Intent(HouseActivity.this, NightClubActivity.class);
                     startActivity(intent);
-
-                    // choose nightclub option
-                    game.chooseNightClubOption();
                 }
 
                 // if the option type is cafe
@@ -288,9 +303,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the cafe activity
                     Intent intent = new Intent(HouseActivity.this, CafeActivity.class);
                     startActivity(intent);
-
-                    // choose cafe option
-                    game.chooseCafeOption();
                 }
 
                 // if the option type is library
@@ -299,53 +311,39 @@ public class HouseActivity extends AppCompatActivity implements Observer
                     // start the library activity
                     Intent intent = new Intent(HouseActivity.this, LibraryActivity.class);
                     startActivity(intent);
-
-                    // choose library option
-                    game.chooseLibraryOption();
                 }
 
+                // if the option type is school
                 else if (type == OptionType.SCHOOL_OPTION)
                 {
                     // start the school activity
                     Intent intent = new Intent(HouseActivity.this, SchoolActivity.class);
                     startActivity(intent);
-
-                    // choose house option
-                    game.chooseSchoolOption();
                 }
-
-                // update stat bars and change the current event
-                updateStatBars();
-                game.changeCurrentEvent();
             }
 
             // if the option is extreme
             else
             {
-                showEventDialog("Earthquake! You have died.","Game over!");
-                finish();
+                onGameOver();
             }
         }
         else if (observable == game.getCurrentEvent())
         {
+            // if game is over, return to the first activity
             if (game.isGameOver())
             {
-                showEventDialog("Thanks for playing.","Game over!");
-                try
-                {
-                    Thread.sleep(2000);
-                }
-                catch (Exception e)
-                {
-
-                }
-
-                finish();
+                onGameOver();
             }
-            prepareButtonsForTheCurrentEvent();
+            else
+            {
+                prepareButtonsForTheCurrentEvent();
+            }
         }
     }
-    public void updateStatBars()
+
+    // methods for setting up the ui components
+    private void updateStatBars()
     {
         moneyBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.MONEY));
         gradesBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.GRADES));
@@ -353,7 +351,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
     }
 
-    public void activateOutsideButtons()
+    private void activateOutsideButtons()
     {
         int id1 = game.getActivatedButtons()[0];
         int id2 = game.getActivatedButtons()[1];
@@ -381,7 +379,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
     }
 
-    public void deactivateOutsideButtons()
+    private void deactivateOutsideButtons()
     {
         schoolButton.setEnabled(false);
         schoolButton.setAlpha(0.3f);
@@ -396,7 +394,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         cafeButton.setAlpha(0.3f);
     }
 
-    public void activateHouseButtons()
+    private void activateHouseButtons()
     {
         int id1 = game.getActivatedButtons()[0];
         int id2 = game.getActivatedButtons()[1];
@@ -412,7 +410,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         kitchenFragment.activateButton(id2);
     }
 
-    public void deactivateHouseButtons()
+    private void deactivateHouseButtons()
     {
         livingRoomFragment.deactivateAllButtons();
         bedroomFragment.deactivateAllButtons();
@@ -420,7 +418,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         kitchenFragment.deactivateAllButtons();
     }
 
-    public void prepareButtonsForTheCurrentEvent()
+    private void prepareButtonsForTheCurrentEvent()
     {
         // first deactivate
         deactivateHouseButtons();
@@ -429,5 +427,168 @@ public class HouseActivity extends AppCompatActivity implements Observer
         // then activate
         activateHouseButtons();
         activateOutsideButtons();
+    }
+
+    private void chooseOutsideOption()
+    {
+        OptionType type = game.whichOption();
+
+        // if the option type is night club
+        if (type == OptionType.NIGHT_CLUB_OPTION)
+        {
+            // choose nightclub option
+            game.chooseNightClubOption();
+        }
+
+        // if the option type is cafe
+        else if (type == OptionType.CAFE_OPTION)
+        {
+            // choose cafe option
+            game.chooseCafeOption();
+        }
+
+        // if the option type is library
+        else if (type == OptionType.LIBRARY_OPTION)
+        {
+            // choose library option
+            game.chooseLibraryOption();
+        }
+
+        else if (type == OptionType.SCHOOL_OPTION)
+        {
+            // choose house option
+            game.chooseSchoolOption();
+        }
+
+        // update stat bars and change the current event
+        updateStatBars();
+        game.changeCurrentEvent();
+    }
+
+
+    // methods for asking user before exiting the game
+    private void exit()
+    {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        backButtonDialog(new PromptRunnable()
+        {
+            @Override
+            public void run() {
+                if (this.getValue())
+                    exit();
+            }
+        });
+    }
+
+    // alert user for back button pressed
+    private void backButtonDialog(final PromptRunnable postrun)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        postrun.setValue(true);
+                        postrun.run();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        postrun.setValue(false);
+                        postrun.run();
+                        break;
+                }
+            }
+        };
+
+        DialogInterface.OnCancelListener dialogCancelListener = new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialog)
+            {
+                postrun.setValue(false);
+                postrun.run();
+            }
+        };
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Warning!")
+                .setMessage("Do you want to exit? All the progress will be lost.")
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener)
+                .setOnCancelListener(dialogCancelListener);
+        dialog.show();
+    }
+
+    // class for waiting dialog box input
+    private class PromptRunnable implements Runnable
+    {
+        private boolean saveClick;
+
+        void setValue(boolean saveClick)
+        {
+            this.saveClick = saveClick;
+        }
+
+        boolean getValue()
+        {
+            return this.saveClick;
+        }
+
+        public void run()
+        {
+            this.run();
+        }
+    }
+
+    public void onGameOver()
+    {
+        gameOverDialog(new PromptRunnable()
+        {
+            @Override
+            public void run() {
+                if (this.getValue())
+                    finish();
+            }
+        });
+    }
+
+    // alert user when the game is over
+    private void gameOverDialog(final PromptRunnable postrun)
+    {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        postrun.setValue(true);
+                        postrun.run();
+                        break;
+                }
+            }
+        };
+
+        DialogInterface.OnCancelListener dialogCancelListener = new DialogInterface.OnCancelListener()
+        {
+            @Override
+            public void onCancel(DialogInterface dialog)
+            {
+                postrun.setValue(true);
+                postrun.run();
+            }
+        };
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Game is over!")
+                .setMessage("Game is finished. Thanks for playing.")
+                .setNeutralButton("Ok", dialogClickListener)
+                .setOnCancelListener(dialogCancelListener);
+        dialog.show();
     }
 }

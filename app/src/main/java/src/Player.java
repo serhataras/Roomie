@@ -1,5 +1,7 @@
 package src;
 
+import android.util.Log;
+
 import src.Enums.Gender;
 import src.Enums.StatType;
 
@@ -68,7 +70,9 @@ public class Player
         if (backpack.hasAnItem(item))
         {
             backpack.remove(index);
+            Log.e("PRICE", item.toString() + "");
             this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
+            Log.e("MONEY", stats.getStatByIndex(StatType.MONEY) + "");
         }
     }
 
