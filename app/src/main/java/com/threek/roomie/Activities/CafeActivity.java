@@ -24,6 +24,7 @@ import java.util.List;
 
 import src.*;
 import src.Enums.OptionType;
+import src.Enums.StatType;
 import src.FoodItem;
 import src.Game;
 
@@ -95,6 +96,14 @@ public class CafeActivity extends AppCompatActivity
                     finish();
                 }
             });
+
+            // deactivate button if the player has not enough money
+            if (game.getPlayer().getStats().getStatByIndex(StatType.MONEY) < currentItem.getPrice())
+            {
+                useButton.setEnabled(false);
+                useButton.setAlpha(0.7f);
+                itemText.setText(currentItem.getName() + " (Not enough money to buy!)");
+            }
 
             // returns the view for the current row
             return convertView;

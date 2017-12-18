@@ -144,7 +144,7 @@ public class Game
 
     public boolean isGameOver()
     {
-        if (currentEvent == null || gameOver == true )
+        if (currentEvent == null || gameOver)
         {
             gameOver = true;
         }
