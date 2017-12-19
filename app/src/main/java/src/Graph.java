@@ -37,8 +37,23 @@ public class Graph {
     }
 
     public void setNeighbors(Event event, List<Event> neighbors){
-        System.out.println(event + " " + neighbors);
-        adjacencyList.put(event, neighbors);
+        if(neighbors.size() == 2)
+        {
+            //System.out.println(event + " " + neighbors);
+            adjacencyList.put(event, neighbors);
+        }
+        else if ( neighbors.size() == 1)
+        {
+            neighbors.add(null);
+            adjacencyList.put(event, neighbors);
+        }
+        else
+        {
+            List<Event> nullList = new LinkedList<>();
+            nullList.add(null);
+            nullList.add(null);
+            adjacencyList.put(event, nullList);
+        }
     }
 
     @Override
