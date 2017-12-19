@@ -392,11 +392,14 @@ public class Events
                 Event cur   = allEvents[index];
                 int left    = Integer.parseInt(sCurrentLine.substring(lInd+1, lInd+4).replaceAll("\\s+",""))-1;
                 int right   = Integer.parseInt(sCurrentLine.substring(lInd+3, lInd+5).replaceAll("\\s+",""))-1;
+                System.out.println(left + " " + right);
                 if(left != -1)
                     neighbors.add(allEvents[left]);
                 if ( right != -1)
                     neighbors.add(allEvents[right]);
+                //System.out.println(neighbors);
                 eventCollection.setNeighbors(cur, neighbors);
+                System.out.print("Is empty for index" + index + " " + neighbors.isEmpty());
                 index ++;
             }
             try {
