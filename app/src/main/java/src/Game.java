@@ -131,7 +131,7 @@ public class Game
         //option 2
         else if (pressedButtonId.getValue() == options[1].getId())
         {
-            currentEvent.setValue(events.getLeft(currentEvent.getValue()));
+            currentEvent.setValue(events.getRight(currentEvent.getValue()));
         }
     }
 
