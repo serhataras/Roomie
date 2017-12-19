@@ -7,6 +7,8 @@ import src.Enums.OptionType;
  */
 public class Option
 {
+    private final int RANDOM_CONST = 25;
+
     private OptionType optionType;
     private String optionStr;
     private int id;
@@ -67,9 +69,9 @@ public class Option
 
     public void assignExtremeCase(){
         //assign rand to a random number in range [1,10]
-        int rand = 1 + (int) (Math.random() * 10);
+        int rand = 1 + (int) (Math.random() * RANDOM_CONST);
         //if the random number is 10, our option results in an extreme case
-        if(rand == 10)
+        if(rand == RANDOM_CONST)
             isExtreme = true;
         else
             isExtreme = false;

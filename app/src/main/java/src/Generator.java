@@ -103,7 +103,7 @@ public class Generator {
                 int ampInd = sCurrentLine.indexOf('&');
                 possible_ends[index] = sCurrentLine.substring(0, ampInd);
                 int[] arr = new int[4];
-                arr[0] = Integer.parseInt(sCurrentLine.substring(ampInd+1,ampInd+2));
+                arr[0] = Integer.parseInt(sCurrentLine.substring(ampInd+2,ampInd+3));
                 arr[1] = Integer.parseInt(sCurrentLine.substring(ampInd+4,ampInd+5));
                 arr[2] = Integer.parseInt(sCurrentLine.substring(ampInd+6,ampInd+7));
                 arr[3] = Integer.parseInt(sCurrentLine.substring(ampInd+8,ampInd+9));
