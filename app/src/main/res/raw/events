@@ -1,7 +1,7 @@
-It's the first day of school. Do you wanna go to school or have breakfast and be late? *Go to school -Have breakfast and be late ) SH +1  2  =0  4  2  0  :0  -1 -1 0  ~ 3 2 @S -<K F
-You can catch the second class. Do you wanna go to school or watch TV? *Go to school -Watch TV ) SH +3  4  =0  4  2  0 :0  0  -5 0 ~ 3 4 @S -<L T
-It was a tiring day at school. You can go to sleep or go to the night club? *Go to sleep -Go to the night club ) HN +5  6  =5  0  0  0  :0  5  -1 -4  ~ 4 4 @E E<N -
-You are hungry. Do you wanna eat at home or go to the Cafe? *Eat at home -Go to the Cafe ) HC +7  8  =3  0  0  0 :3  5  0  0  ~ 5 6 @K T<C -
-You have an assignment. Do you wanna go to the library and study or stay home and play games with roomies? *Go to the library and complete assignment -Stay home and play card games with roomies ) LH +9  10 =0  2  5  0 :0  5  4  0  ~ 6 6 @L -<E D
-Its your best friends birthday but you have an assignment due. Do you prefer to go to the night club or stay home and study? *Go to the night club -Stay home and study ) NH +11 12 =0  6  -1 -1 :0  0  3  0 ~ 7 4 @N -<L B
-You are tired. You can take a bath and relax or read for history class? *Take a bath and relax - read for history class) HH +11 12 =1  0  0  0 :0  0  3  0 ~ 2 0 @A B<E O
+It's the first day of school. Do you wanna go to school or have breakfast and be late? *Go to school -Have breakfast and be late ) SH +1  2  =0  2  2  0  :1  -1 -1 0  ~ 3 2 @S -<K F
+You can catch the second class. Do you wanna go to school or watch TV? *Go to school -Watch TV ) SH +3  4  =0  1  1  0 :0  0  -2 0 ~ 3 4 @S -<L T
+It was a tiring day at school. You can go to sleep or go to the night club? *Go to sleep -Go to the night club ) HN +5  6  =2  0  0  0  :0  4  -1 -2  ~ 4 4 @E E<N -
+You are hungry. Do you wanna eat at home or go to the Cafe? *Eat at home -Go to the Cafe ) HC +7  8  =1  -1  0  0 :0  3  0  0  ~ 5 6 @K T<C -
+You have an assignment. Do you wanna go to the library and study or stay home and play games with roomies? *Go to the library and complete assignment -Stay home and play card games with roomies ) LH +9  10 =0  0  3  0 :0  2  0  0  ~ 6 6 @L -<L B
+Its your best friends birthday but you have an assignment due. Do you prefer to go to the night club or stay home and study? *Go to the night club -Stay home and study ) NH +11 12 =0  3  -1 -1 :0  -1  2  0 ~ 7 4 @N -<E D
+You are tired. You can take a bath and relax or read for history class? *Take a bath and relax - read for history class) HH +11 12 =1  0  0  0 :0  0  2  0 ~ 2 0 @A B<E O

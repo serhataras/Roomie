@@ -123,7 +123,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/gradesText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -140,13 +140,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_below="@+id/textView1"
+                        android:layout_below="@+id/gradesText"
                         android:layout_centerHorizontal="true"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView1"
+                        app:layout_constraintTop_toBottomOf="@+id/gradesText"
                         tools:layout_editor_absoluteX="313dp" />
                 </RelativeLayout>
 
@@ -156,7 +156,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/socialityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -172,13 +172,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView2"
-                        android:layout_alignStart="@+id/textView2"
-                        android:layout_below="@+id/textView2"
+                        android:layout_alignEnd="@+id/socialityText"
+                        android:layout_alignStart="@+id/socialityText"
+                        android:layout_below="@+id/socialityText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        app:layout_constraintTop_toBottomOf="@+id/socialityText"
                         tools:layout_editor_absoluteX="236dp" />
 
 
@@ -190,7 +190,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/healthText"
                         android:layout_width="49dp"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -207,13 +207,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView3"
-                        android:layout_alignStart="@+id/textView3"
-                        android:layout_below="@+id/textView3"
+                        android:layout_alignEnd="@+id/healthText"
+                        android:layout_alignStart="@+id/healthText"
+                        android:layout_below="@+id/healthText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView3"
+                        app:layout_constraintTop_toBottomOf="@+id/healthText"
                         tools:layout_editor_absoluteX="58dp" />
 
                 </RelativeLayout>
@@ -226,7 +226,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/moneyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -243,13 +243,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView4"
-                        android:layout_alignStart="@+id/textView4"
-                        android:layout_below="@+id/textView4"
+                        android:layout_alignEnd="@+id/moneyText"
+                        android:layout_alignStart="@+id/moneyText"
+                        android:layout_below="@+id/moneyText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintTop_toBottomOf="@+id/moneyText"
                         tools:layout_editor_absoluteX="140dp" />
                 </RelativeLayout>
 

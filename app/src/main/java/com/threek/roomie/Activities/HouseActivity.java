@@ -60,6 +60,11 @@ public class HouseActivity extends AppCompatActivity implements Observer
     private ProgressBar socialityBar;
     private ProgressBar gradesBar;
 
+    private TextView healthText;
+    private TextView moneyText;
+    private TextView socialityText;
+    private TextView gradesText;
+
     private Button schoolButton;
     private Button libraryButton;
     private Button nightClubButton;
@@ -131,7 +136,11 @@ public class HouseActivity extends AppCompatActivity implements Observer
         moneyBar = (ProgressBar) findViewById(R.id.moneyBar);
         socialityBar = (ProgressBar) findViewById(R.id.socialityBar);
         gradesBar = (ProgressBar) findViewById(R.id.gradesBar);
-        updateStatBars();
+
+        healthText = (TextView) findViewById(R.id.healthText);
+        moneyText = (TextView) findViewById(R.id.moneyText);
+        socialityText = (TextView) findViewById(R.id.socialityText);
+        gradesText = (TextView) findViewById(R.id.gradesText);
 
         // adds all fragments to the activity and shows only the living room fragment
         getSupportFragmentManager().beginTransaction().add(R.id.content, kitchenFragment).commitNow();
@@ -331,6 +340,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if the option is extreme
             else
             {
+                // call extreme option dialog
                 onExtremeCase();
             }
         }
@@ -339,6 +349,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if game is over, return to the first activity
             if (game.isGameOver())
             {
+                // regular game end
                 onGameOver();
             }
             else
@@ -351,11 +362,25 @@ public class HouseActivity extends AppCompatActivity implements Observer
     // methods for setting up the ui components
     private void updateStatBars()
     {
-        moneyBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.MONEY));
-        gradesBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.GRADES));
-        socialityBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.SOCIALITY));
-        healthBar.setProgress(game.getPlayer().getStats().getStatByIndex(StatType.HEALTH));
+        // take the stats
+        int money = game.getPlayer().getStats().getStatByIndex(StatType.MONEY);
+        int grades = game.getPlayer().getStats().getStatByIndex(StatType.GRADES);
+        int sociality = game.getPlayer().getStats().getStatByIndex(StatType.SOCIALITY);
+        int health = game.getPlayer().getStats().getStatByIndex(StatType.HEALTH);
 
+        // refresh the bars
+        moneyBar.setProgress(money);
+        gradesBar.setProgress(grades);
+        socialityBar.setProgress(sociality);
+        healthBar.setProgress(health);
+
+        // refresh the texts
+        moneyText.setText("Money" + " (" + money + ")");
+        gradesText.setText("Grades" + " (" + grades + ")");
+        socialityText.setText("Sociality" + " (" + sociality + ")");
+        healthText.setText("Health" + " (" + health + ")");
+
+        // set player's picture
         setPlayerPicture();
     }
 
@@ -473,7 +498,6 @@ public class HouseActivity extends AppCompatActivity implements Observer
         game.changeCurrentEvent();
     }
 
-
     // methods for asking user before exiting the game
     private void exit()
     {
@@ -554,7 +578,7 @@ public class HouseActivity extends AppCompatActivity implements Observer
         }
     }
 
-    public void onExtremeCase()
+    private void onExtremeCase()
     {
         extremeCaseDialog(new PromptRunnable()
         {

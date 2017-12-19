@@ -72,7 +72,7 @@ public class Stats
     public void makeStatsRandom()
     {
         for (int i = 0; i < NUMBER_OF_STATS; i++)
-            this.stats[i] = 1 + (int) (Math.random() * 10);
+            this.stats[i] = 1 + (int) (Math.random() * 3);
     }
 
     public void checkBoundaries(int index)
