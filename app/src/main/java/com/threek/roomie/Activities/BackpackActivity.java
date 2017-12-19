@@ -1,5 +1,7 @@
 package com.threek.roomie.Activities;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +36,11 @@ public class BackpackActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
 
         game = Game.getInstance();
+
+        if (game.getPlayer().getBackpack().getItemCount() == 0)
+        {
+            showDialog("Your backpack is empty!");
+        }
         adapter = new CustomListAdapter();
 
         ListView listView = (ListView) findViewById(R.id.backpackList);
@@ -115,4 +122,19 @@ public class BackpackActivity extends AppCompatActivity {
             return convertView;
         }
     }
+
+    private void showDialog(String message)
+    {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Warning!");
+        alertDialog.setMessage(message);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
 }
+

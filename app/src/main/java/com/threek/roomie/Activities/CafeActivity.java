@@ -104,8 +104,8 @@ public class CafeActivity extends AppCompatActivity
             if (game.getPlayer().getStats().getStatByIndex(StatType.MONEY) < currentItem.getPrice())
             {
                 useButton.setEnabled(false);
-                useButton.setAlpha(0.7f);
-                itemText.setText(currentItem.getName() + " (Not enough money to buy!)");
+                useButton.setAlpha(0.3f);
+                itemText.setText(currentItem.getName() + " (Not enough money!)");
             }
 
             // returns the view for the current row

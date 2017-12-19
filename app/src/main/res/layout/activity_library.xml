@@ -45,7 +45,7 @@
             android:layout_below="@+id/textView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="62dp"
-            android:text="Be Quiet in the Library for 5 seconds"
+            android:text="Be quiet in the library for 5 seconds."
             android:textSize="18sp"
             android:textStyle="bold" />
 

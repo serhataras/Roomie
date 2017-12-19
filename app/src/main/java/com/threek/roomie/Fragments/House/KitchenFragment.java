@@ -89,7 +89,7 @@ public class KitchenFragment extends Fragment {
         for (int i = 0; i < 4; i++)
         {
             buttons[i].setEnabled(false);
-            buttons[i].setAlpha(0.4f);
+            buttons[i].setAlpha(0.35f);
         }
     }
 

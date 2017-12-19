@@ -13,7 +13,7 @@
         <ImageButton
             android:id="@+id/bigtable"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="66dp"
             android:layout_marginTop="5dp"
             android:background="@null"
             android:src="@drawable/bigtable" />
@@ -31,7 +31,7 @@
         <ImageButton
             android:id="@+id/tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:layout_below="@+id/plants"
             android:layout_centerHorizontal="true"
             android:background="@null"

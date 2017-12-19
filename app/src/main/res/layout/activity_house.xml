@@ -51,7 +51,7 @@
                 android:layout_height="200dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/playerButton"
-                android:layout_marginTop="18dp">
+                android:layout_marginTop="42dp">
 
             </FrameLayout>
 
@@ -126,11 +126,11 @@
                         android:id="@+id/gradesText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/gradesBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Grades"
-                        android:textSize="15sp"
+                        android:text="Textview"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="313dp"
                         tools:layout_editor_absoluteY="10dp" />
@@ -140,8 +140,9 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_below="@+id/gradesText"
-                        android:layout_centerHorizontal="true"
+                        android:layout_alignEnd="@+id/gradesText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/gradesText"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
                         android:max="10"
@@ -159,10 +160,11 @@
                         android:id="@+id/socialityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/socialityBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Sociality"
+                        android:text="Textview"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="236dp"
                         tools:layout_editor_absoluteY="10dp" />
@@ -173,8 +175,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
                         android:layout_alignEnd="@+id/socialityText"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/socialityText"
-                        android:layout_below="@+id/socialityText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
@@ -189,25 +191,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/healthText"
-                        android:layout_width="49dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_weight="1"
-                        android:text="Health"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="66dp"
-                        tools:layout_editor_absoluteY="10dp" />
-
                     <ProgressBar
                         android:id="@+id/healthBar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
                         android:layout_alignEnd="@+id/healthText"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/healthText"
                         android:layout_below="@+id/healthText"
                         android:layout_weight="1"
@@ -215,6 +205,17 @@
                         android:progress="10"
                         app:layout_constraintTop_toBottomOf="@+id/healthText"
                         tools:layout_editor_absoluteX="58dp" />
+
+                    <TextView
+                        android:id="@+id/healthText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="9dp"
+                        android:text="TextView"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
 
@@ -229,11 +230,11 @@
                         android:id="@+id/moneyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/moneyBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Money"
-                        android:textSize="15sp"
+                        android:text="textview"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         tools:layout_editor_absoluteX="140dp"
                         tools:layout_editor_absoluteY="10dp" />
@@ -244,8 +245,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
                         android:layout_alignEnd="@+id/moneyText"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignStart="@+id/moneyText"
-                        android:layout_below="@+id/moneyText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
