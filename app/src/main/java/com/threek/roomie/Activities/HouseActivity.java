@@ -349,6 +349,8 @@ public class HouseActivity extends AppCompatActivity implements Observer
             // if game is over, return to the first activity
             if (game.isGameOver())
             {
+                Log.e("CURRE", "ZAA");
+
                 // regular game end
                 onGameOver();
             }

@@ -137,7 +137,7 @@ public class Game
 
     public boolean isGameOver()
     {
-        if (currentEvent == null)
+        if (currentEvent.getValue() == null)
         {
             return true;
         }
@@ -277,7 +277,11 @@ public class Game
 
     public int[] getActivatedButtons()
     {
-        return currentEvent.getValue().getOptionsId();
+        if (currentEvent.getValue() != null)
+            return currentEvent.getValue().getOptionsId();
+
+        return new int[]{-1, -1};
+
     }
 
     public OptionType whichOption()
