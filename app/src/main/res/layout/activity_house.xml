@@ -26,27 +26,32 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="9dp"
+                android:backgroundTint="@color/colorPrimary"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <Button
                 android:id="@+id/backpackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/playerNameText"
+                android:layout_alignBottom="@+id/playerNameText"
                 android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/playerNameText"
-                android:layout_marginEnd="17dp"
-                android:text="Open backpack"
-                android:textSize="8sp" />
+                android:layout_marginEnd="23dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Backpack"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <FrameLayout
                 android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="310dp"
+                android:layout_height="200dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/playerButton"
-                android:layout_marginTop="7dp">
+                android:layout_marginTop="42dp">
 
             </FrameLayout>
 
@@ -54,12 +59,13 @@
                 android:id="@+id/playerNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/playerButton"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="12dp"
+                android:layout_above="@+id/content"
+                android:layout_marginBottom="21dp"
+                android:layout_marginStart="11dp"
                 android:layout_toEndOf="@+id/playerButton"
                 android:text="Name"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -90,8 +96,11 @@
                 android:layout_below="@+id/thisRoomText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
-                android:text="Change Room"
-                android:textSize="12sp" />
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="Swıtch Room"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <RelativeLayout
@@ -114,14 +123,15 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/gradesText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/gradesBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Grades"
-                        android:textSize="15sp"
+                        android:text="Textview"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="313dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -130,12 +140,14 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_below="@+id/textView1"
-                        android:layout_centerHorizontal="true"
+                        android:layout_alignEnd="@+id/gradesText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/gradesText"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorPrimary"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView1"
+                        app:layout_constraintTop_toBottomOf="@+id/gradesText"
                         tools:layout_editor_absoluteX="313dp" />
                 </RelativeLayout>
 
@@ -143,14 +155,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/socialityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/socialityBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Sociality"
+                        android:text="Textview"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="236dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -159,13 +174,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView2"
-                        android:layout_alignStart="@+id/textView2"
-                        android:layout_below="@+id/textView2"
+                        android:layout_alignEnd="@+id/socialityText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/socialityText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        app:layout_constraintTop_toBottomOf="@+id/socialityText"
                         tools:layout_editor_absoluteX="236dp" />
 
 
@@ -176,31 +191,31 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="49dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_weight="1"
-                        android:text="Health"
-                        android:textSize="15sp"
-                        tools:layout_editor_absoluteX="66dp"
-                        tools:layout_editor_absoluteY="10dp" />
-
                     <ProgressBar
                         android:id="@+id/healthBar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView3"
-                        android:layout_alignStart="@+id/textView3"
-                        android:layout_below="@+id/textView3"
+                        android:layout_alignEnd="@+id/healthText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/healthText"
+                        android:layout_below="@+id/healthText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView3"
+                        app:layout_constraintTop_toBottomOf="@+id/healthText"
                         tools:layout_editor_absoluteX="58dp" />
+
+                    <TextView
+                        android:id="@+id/healthText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="9dp"
+                        android:text="TextView"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
 
@@ -212,14 +227,15 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/moneyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/moneyBar"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_weight="1"
-                        android:text="Money"
-                        android:textSize="15sp"
+                        android:text="textview"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         tools:layout_editor_absoluteX="140dp"
                         tools:layout_editor_absoluteY="10dp" />
 
@@ -228,13 +244,13 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="21dp"
-                        android:layout_alignEnd="@+id/textView4"
-                        android:layout_alignStart="@+id/textView4"
-                        android:layout_below="@+id/textView4"
+                        android:layout_alignEnd="@+id/moneyText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/moneyText"
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="10"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintTop_toBottomOf="@+id/moneyText"
                         tools:layout_editor_absoluteX="140dp" />
                 </RelativeLayout>
 
@@ -254,24 +270,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="School"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/libraryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Lıbrary"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/nightClubButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Dısco"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cafeButton"
@@ -280,8 +305,11 @@
                 android:layout_alignEnd="@+id/linearLayout"
                 android:layout_below="@+id/relativeLayout2"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Cafe"
-                android:textSize="12sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>

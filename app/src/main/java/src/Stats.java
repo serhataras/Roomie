@@ -63,10 +63,16 @@ public class Stats
         stats[index.ordinal()] += change;
     }
 
-    public void makeStatsZero()
+    private void makeStatsZero()
     {
-        for(int i = 0; i < NUMBER_OF_STATS; i++)
+        for (int i = 0; i < NUMBER_OF_STATS; i++)
             this.stats[i] = MIN_STAT;
+    }
+
+    public void makeStatsRandom()
+    {
+        for (int i = 0; i < NUMBER_OF_STATS; i++)
+            this.stats[i] = 1 + (int) (Math.random() * 3);
     }
 
     public void checkBoundaries(int index)

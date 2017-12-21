@@ -24,7 +24,6 @@ public class Game
     private ObservableEvent currentEvent;
     private ObservableId pressedButtonId;
     private boolean gameHasStarted;
-    private boolean gameOver;
 
     // singleton object
     private static Game instance = null;
@@ -36,7 +35,6 @@ public class Game
         currentEvent = new ObservableEvent(null);
         pressedButtonId = new ObservableId(-1);
         gameHasStarted = true;
-        gameOver = false;
     }
 
     // method for getting singleton game instance
@@ -48,23 +46,37 @@ public class Game
         return instance;
     }
 
-    public void initializeEvents(Resources r, String pn)
+    public void reCreateGame()
+    {
+        player = new Player();
+        currentEvent = new ObservableEvent(null);
+        pressedButtonId = new ObservableId(-1);
+        gameHasStarted = true;
+    }
+
+    public void initializeGameObjects(Resources r, String pn)
+    {
+        initializeEvents(r, pn);
+        initializeGameEnvironment(r, pn);
+        initializeRandomizer(r, pn);
+    }
+
+    private void initializeEvents(Resources r, String pn)
     {
         events = new Events(r, pn);
         currentEvent.setValue(events.getStart());
-        Log.e("Event", events.getStart().toString());
     }
 
-    public void initializeGameEnvironment(Resources r, String pn)
+    private void initializeGameEnvironment(Resources r, String pn)
     {
         gameEnvironment = new GameEnvironment(r, pn);
     }
 
-    public void initializeRandomizer(Resources r, String pn){
+    private void initializeRandomizer(Resources r, String pn){
         random = new Randomizer(r, pn);
     }
 
-    public void activateButton()
+    private void activateButton()
     {
         int[] options = currentEvent.getValue().getOptionsId();
 
@@ -85,7 +97,7 @@ public class Game
         }
     }
 
-    public void deactivateAllButtons()
+    private void deactivateAllButtons()
     {
         House houseToSearch = gameEnvironment.getHouse();
 
@@ -109,30 +121,27 @@ public class Game
     public void changeCurrentEvent()
     {
         Option[] options = (currentEvent.getValue()).getOptionArray();
+
         //option 1
-        if(pressedButtonId.getValue() == options[0].getId()){
-            if(!options[0].isExtreme())
-                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
-            else
-                gameOver = true;
+        if (pressedButtonId.getValue() == options[0].getId())
+        {
+            currentEvent.setValue(events.getLeft(currentEvent.getValue()));
         }
+
         //option 2
         else if (pressedButtonId.getValue() == options[1].getId())
         {
-            if(!options[1].isExtreme())
-                currentEvent.setValue(events.getLeft(currentEvent.getValue()));
-            else
-                gameOver = true;
-
+            currentEvent.setValue(events.getRight(currentEvent.getValue()));
         }
     }
 
-    public boolean isGameOver(){
-        if(currentEvent == null || gameOver == true )
+    public boolean isGameOver()
+    {
+        if (currentEvent.getValue() == null)
         {
-            gameOver = true;
+            return true;
         }
-        return gameOver;
+        return false;
     }
 
     public boolean checkExtremeOption()
@@ -140,11 +149,10 @@ public class Game
         return currentEvent.getValue().isOptionExtreme(pressedButtonId.getValue());
     }
 
-    private Item addRandomItemToBackPack()
+    private void addRandomItemToBackPack()
     {
         Item item = random.throwItem();
         player.getBackpack().addItem(item);
-        return item;
     }
 
     public String sendEventQuestion()
@@ -269,7 +277,11 @@ public class Game
 
     public int[] getActivatedButtons()
     {
-        return currentEvent.getValue().getOptionsId();
+        if (currentEvent.getValue() != null)
+            return currentEvent.getValue().getOptionsId();
+
+        return new int[]{-1, -1};
+
     }
 
     public OptionType whichOption()
@@ -284,7 +296,6 @@ public class Game
 
     public FoodItem[] getFoodMenu()
     {
-        Log.e("ZAAA", ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu()[0].toString());
         return ((Cafe) gameEnvironment.getOutdoorEnvironment(OptionType.CAFE_OPTION)).getMenu();
     }
 
@@ -294,14 +305,6 @@ public class Game
 
     public GameEnvironment getGameEnvironment() {
         return gameEnvironment;
-    }
-
-    public Randomizer getRandom() {
-        return random;
-    }
-
-    public Events getEvents() {
-        return events;
     }
 
     public ObservableEvent getCurrentEvent()
@@ -330,10 +333,5 @@ public class Game
     {
         pressedButtonId.addObserver(observer);
         currentEvent.addObserver(observer);
-    }
-
-    public String getEventQuestion()
-    {
-        return currentEvent.getValue().getQuestion();
     }
 }

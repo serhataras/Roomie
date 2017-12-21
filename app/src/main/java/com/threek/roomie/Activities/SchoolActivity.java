@@ -34,8 +34,12 @@ public class SchoolActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
 
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
         //Singleton Attributes
-        game = game.getInstance();
+        game = Game.getInstance();
 
         quizQuestion = game.sendQuizQuestion();
         answerOptions = quizQuestion.getOptions();
@@ -92,7 +96,10 @@ public class SchoolActivity extends AppCompatActivity{
     }
 
     public void changeGameInstance(String answer){
-        ((School)game.getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).setSelectedAnswer(answer);
+        ((School) game.getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).setSelectedAnswer(answer);
+        ((School) game.getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).updateChallengeSuccess();
+        Log.e("CORR", ((School)game.getGameEnvironment().getOutdoorEnvironment(OptionType.SCHOOL_OPTION)).getSelectedAnswer());
+        Log.e("ANS", answer);
     }
 }
 

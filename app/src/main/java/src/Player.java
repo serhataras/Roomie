@@ -1,5 +1,7 @@
 package src;
 
+import android.util.Log;
+
 import src.Enums.Gender;
 import src.Enums.StatType;
 
@@ -13,14 +15,19 @@ public class Player
     private Stats stats;
     private Backpack backpack;
 
-    public Player(){
+    public Player()
+    {
         name = "";
         gender = Gender.FEMALE;
+
         stats = new Stats();
+        stats.makeStatsRandom();
+
         backpack = new Backpack();
     }
 
-    public Player(String name, Gender gender) {
+    public Player(String name, Gender gender)
+    {
         this.name = name;
         this.gender = gender;
         stats = new Stats();
@@ -68,7 +75,9 @@ public class Player
         if (backpack.hasAnItem(item))
         {
             backpack.remove(index);
+            Log.e("PRICE", item.toString() + "");
             this.stats.setStatByIndex(StatType.MONEY, item.getPrice());
+            Log.e("MONEY", stats.getStatByIndex(StatType.MONEY) + "");
         }
     }
 

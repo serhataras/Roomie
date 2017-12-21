@@ -41,6 +41,11 @@ public class LibraryActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
+
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
         game = Game.getInstance();
         timeView= (TextView)findViewById(R.id.timeView);
         library=((Library)game.getGameEnvironment().getOutdoorEnvironment(OptionType.LIBRARY_OPTION));

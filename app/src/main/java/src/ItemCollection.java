@@ -30,10 +30,10 @@ public class ItemCollection
 
     private void setBoostArray(int health, int sociality, int grades, int money)
     {
-        boost.setStatByIndex(StatType.HEALTH, health);
-        boost.setStatByIndex(StatType.SOCIALITY, sociality);
-        boost.setStatByIndex(StatType.GRADES, grades);
-        boost.setStatByIndex(StatType.MONEY, money);
+        boost.setStatByIndexNeg(StatType.HEALTH, health);
+        boost.setStatByIndexNeg(StatType.SOCIALITY, sociality);
+        boost.setStatByIndexNeg(StatType.GRADES, grades);
+        boost.setStatByIndexNeg(StatType.MONEY, money);
     }
 
     public void setItems(Item[] items) {

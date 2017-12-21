@@ -102,10 +102,6 @@ public class BackpackFragment extends Fragment {
             final Item currentItem = (Item) getItem(position);
 
             // get the TextView for item name and item description
-            //TextView textView = (TextView) convertView.findViewById(R.id.trip_text);
-            ImageView image = (ImageView) convertView.findViewById(R.id.itemImage);
-            image.setImageDrawable(currentItem.getImage());
-
             TextView itemText = (TextView) convertView.findViewById(R.id.itemText);
             itemText.setText(currentItem.getName());
 

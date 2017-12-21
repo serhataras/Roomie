@@ -17,13 +17,14 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="38dp"
-            android:background="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimary"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:shadowColor="@android:color/background_light"
-            android:text="Leave the Library Early"
+            android:text="Leave the Lıbrary Early"
             android:textColor="@color/colorAccent"
             android:textIsSelectable="false"
+            android:textStyle="bold"
             tools:shadowColor="@android:color/background_light" />
 
         <TextView
@@ -44,7 +45,7 @@
             android:layout_below="@+id/textView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="62dp"
-            android:text="Be Quiet in the Library for 5 seconds"
+            android:text="Be quiet in the library for 5 seconds."
             android:textSize="18sp"
             android:textStyle="bold" />
 

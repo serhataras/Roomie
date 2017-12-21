@@ -18,7 +18,7 @@ tools:context=".Activities.CafeActivity">
             <ListView
                 android:id="@+id/foodmenuview"
                 android:layout_width="match_parent"
-                android:layout_height="600dp">
+                android:layout_height="500dp">
 
             </ListView>
         </LinearLayout>

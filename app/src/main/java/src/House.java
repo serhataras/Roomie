@@ -17,26 +17,26 @@ public class House
     public static final int NUMBER_OF_ROOMS = 4;
 
     // bathroom buttons
-    public static final int BATH_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, BathroomItems.BATH);
-    public static final int TOILET_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, BathroomItems.TOILET);
+    public static final int BATH_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, BathroomItems.BATH);
+    public static final int TOILET_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BATHROOM, BathroomItems.TOILET);
 
     // bedroom buttons
-    public static final int BED_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.BED);
-    public static final int WARDROBE_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.WARDROBE);
-    public static final int DESK_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.DESK);
-    public static final int BOOKSHELF_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.BOOKSHELF);
+    public static final int BED_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.BED);
+    public static final int WARDROBE_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.WARDROBE);
+    public static final int DESK_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.DESK);
+    public static final int BOOKSHELF_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.BEDROOM, BedroomItems.BOOKSHELF);
 
     // kitchen buttons
-    public static final int FRIDGE_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.FRIDGE);
-    public static final int STALL_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.STALL);
-    public static final int CUPBOARD_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.CUPBOARD);
-    public static final int TABLE_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.TABLE);
+    public static final int FRIDGE_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.FRIDGE);
+    public static final int STALL_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.STALL);
+    public static final int CUPBOARD_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.CUPBOARD);
+    public static final int TABLE_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.KITCHEN, KitchenItems.TABLE);
 
     // bedroom buttons
-    public static final int TV_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.TV);
-    public static final int SOFA_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.SOFA);
-    public static final int PLANTS_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.PLANTS);
-    public static final int BIGTABLE_ID = idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.BIGTABLE);
+    public static final int TV_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.TV);
+    public static final int SOFA_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.SOFA);
+    public static final int PLANTS_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.PLANTS);
+    public static final int BIGTABLE_ID = Generator.idGenerator(OptionType.HOUSE_OPTION, RoomType.LIVINGROOM, LivingRoomItems.BIGTABLE);
 
 
     public House()
@@ -113,18 +113,4 @@ public class House
         rooms[RoomType.LIVINGROOM.ordinal()].getItems()[LivingRoomItems.BIGTABLE.ordinal()] = bigtable;
     }
 
-    public static int idGenerator(OptionType option, RoomType room, Enum item)
-    {
-        if (option == OptionType.HOUSE_OPTION)
-        {
-            int first = option.ordinal() * 100;
-            int second = room.ordinal() * 10;
-            int third = item.ordinal();
-            return first + second + third;
-        }
-        else
-        {
-            return option.ordinal() * 100;
-        }
-    }
 }
