@@ -4,13 +4,8 @@
 
 - Current Stage: Revised Design Report is uploaded to the GitHub. As developers of the Roomie, iteration is continue. Branches are created as 3 individual(eliz(Eliz Tekcan)-alkışlar(Deniz Alkışlar)-Yoda(Serhat Aras)) and 1 shared for the works of Deniz Alkışlar and Serhat Aras. Yet Master is ready to clone and pull and up to date. Reports' links and roadmap for the following weeks added to GitHub README.md.
 
-          Revised reports are finished. 
-          Implementation is heavly on the priority.
-          Teamwork must be organized.
-          Weekly meetings are in schedule.
-          Bug search, Activity and UI design needs focus.
-          **Meeting must be arranged with the Supervisor to work out the major problems.** 
-          
+                  Project Finished         
+
 ## Description of the Roomie - The Game
 
 
@@ -38,10 +33,11 @@ These situations are mainly focused on common problems and some extreme cases ab
 
 
 - Serhat Aras 
+- Deniz Alkışlar
 - Eliz Tekcan 
-- Selen Haysal 
-- Deniz Alkışlar 
-- Ekinsu Bozdağ
+
+
+
 
 
 ## Reports
